@@ -28,6 +28,8 @@
   "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
   "dependencies": {
     "cheerio": "0.20.0",
+    "child_pty": "3.0.7",
+    "electron-ipc-stream": "^0.2.0",
     "find-parent-dir": "0.3.0",
     "fs-extra": "0.30.0",
     "fstream": "1.0.8",
@@ -39,9 +41,8 @@
     "riot": "2.3.17",
     "riot-mui": "0.0.15",
     "riotgear": "3.5.0",
-    "terminal.js": "1.0.3",
-    "child_pty": "3.0.0",
-    "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4"
+    "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
+    "terminal.js": "1.0.3"
   },
   "devDependencies": {
     "electron-packager": "5.2.1",

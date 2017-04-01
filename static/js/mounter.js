@@ -1,5 +1,6 @@
 'use strict';
 const riot = require('riot');
+const IPCStream = require('electron-ipc-stream')
 
 function append_html(el, str) {
     const div = document.createElement('div');
@@ -42,7 +43,8 @@ class Mounter {
             opts.send = (channel, ...args) => {
                 console.log("sending along channel", channel);
                 ipc.send(`${prefix}${channel}`, ...args);
-            }
+            };
+
             //riot.mount(workspace_tag, opts);
             riot.mount(workspace_tag, opts);
         });
@@ -70,6 +72,11 @@ class Mounter {
             // Set up outgoing channel
             opts.send = (channel, ...args) => {
                 ipc.send(`${prefix}${channel}`, ...args);
+            };
+
+            // Helper function to create a wrapped IPC for streaming interface
+            opts.get_ipc_stream = (channel) => {
+                return new IPCStream(`${prefix}${channel}`);
             };
         };
 

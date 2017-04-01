@@ -42,8 +42,11 @@
         window.limit = require('./js/limit');
         require('./js/fabric.min');
         require('./js/darkroom');
-        //const mousemove = require('./js/mousemove');
-        //mousemove.activate();
+        require('terminal.js/dist/terminal'); // Get Terminal dependencies
+
+        // Set up mouse motion thing
+        const mousemove = require('./js/mousemove');
+        mousemove.activate();
 
         // Set up console logging:
         window.log = (...args) => ipc.send('_log', args.map(JSON.stringify).join(' '));
