@@ -38,7 +38,9 @@
     "node-uuid": "1.4.7",
     "riot": "2.3.17",
     "riot-mui": "0.0.15",
-    "riotgear": "^3.5.0",
+    "riotgear": "3.5.0",
+    "terminal.js": "1.0.3",
+    "child_pty": "3.0.0",
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4"
   },
   "devDependencies": {
