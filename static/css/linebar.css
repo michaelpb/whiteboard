@@ -1,0 +1,33 @@
+.uicore-linebar {
+    max-width: 40px;
+    width: 40px;
+    position: absolute;
+    display: block;
+    padding-right: 10px;
+    left: -42px;
+    top: 0px;
+}
+
+.uicore-linebar > .uicore-insertarrow {
+    position: absolute;
+}
+
+.uicore-linebar > button {
+    padding-left: 10px;
+    display: block;
+    max-width: 25px;
+    width: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.uicore-linebar > button:hover {
+    max-width: none !important;
+    width: auto !important;
+}
+
+.uicore-linebar > div.search-box {
+    width: 200px;
+    padding-top: 5px;
+    padding-right: 5px;
+}

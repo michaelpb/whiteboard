@@ -1,0 +1,104 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+div.left-pane,
+div.right-pane {
+    display: block;
+    background: white;
+    height: 100vh;
+    position: relative;
+}
+
+div.right-pane {
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overflow: auto;
+}
+
+div.left-pane {
+    height: 100vh;
+    max-height: 100vh;
+}
+
+div.left-pane-title {
+    height: 30px;
+    display: block;
+    text-align: center;
+}
+
+div.left-pane-contents {
+    height: calc(100vh - 30px);
+    max-height: calc(100vh - 30px);
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.left-pane {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.left-pane-close-button {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+}
+
+div.right-pane {
+    width: 100%;
+}
+
+.hide-without-mouse:hover,
+.mouse-is-moving .hide-without-mouse {
+    opacity: 1.0;
+}
+
+.hide-without-mouse {
+    opacity: 0.0;
+    transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+}
+
+@media all and (min-width: 1024px) {
+    div.left-pane {
+        width: 300px;
+        float: left;
+    }
+
+    div.right-pane.left-pane-visible {
+        width: calc(100% - 300px);
+        float: right;
+    }
+}
+
+.fixed-action-btn.top-left {
+  left: 23px;
+  top: 23px; }
+  .fixed-action-btn.top-left ul {
+    top: 64px; }
+    .fixed-action-btn.top-left ul li {
+      margin-top: 15px; }
+
+.fixed-action-btn.bottom-left {
+  left: 23px;
+  bottom: 23px; 
+  max-width: 50px; }
+
+
+.fixed-action-btn.top-right {
+  top: 23px; }
+  .fixed-action-btn.top-right ul {
+    top: 64px; }
+    .fixed-action-btn.top-right ul li {
+      margin-top: 15px; }
+

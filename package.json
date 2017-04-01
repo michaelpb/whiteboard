@@ -1,0 +1,51 @@
+{
+  "name": "whiteboard",
+  "version": "0.0.1",
+  "description": "Whiteboard - a slide-based activity system",
+  "bin": {
+    "whiteboard": "./bin/whiteboard"
+  },
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "node --harmony_default_parameters --harmony_destructuring --harmony_rest_parameters ./runtests.js",
+    "start": "electron --harmony_default_parameters --harmony_destructuring --harmony_rest_parameters lib/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/michaelb/whiteboard.git"
+  },
+  "keywords": [
+    "wordprocessor",
+    "editor",
+    "document",
+    "text"
+  ],
+  "engines": {
+    "node": ">=5.0"
+  },
+  "author": "Michael Bethencourt <michaelpb@gmail.com> (http://michaelb.org/)",
+  "license": "GPL-3.0",
+  "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
+  "dependencies": {
+    "cheerio": "0.20.0",
+    "find-parent-dir": "0.3.0",
+    "fs-extra": "0.30.0",
+    "fstream": "1.0.8",
+    "glob": "7.0.3",
+    "highlight": "0.2.4",
+    "katex": "0.5.1",
+    "lodash": "4.6.1",
+    "node-uuid": "1.4.7",
+    "riot": "2.3.17",
+    "riot-mui": "0.0.15",
+    "riotgear": "^3.5.0",
+    "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4"
+  },
+  "devDependencies": {
+    "electron-packager": "5.2.1",
+    "electron-prebuilt": "0.36.0",
+    "jasmine": "2.4.1",
+    "jasmine-spec-reporter": "2.4.0",
+    "lovelock": "0.1.1"
+  }
+}

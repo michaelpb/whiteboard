@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Whiteboard</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/materialize.custom.css" type="text/css" />
+    <link rel="stylesheet" href="css/riot-mui.min.8801f89.css" type="text/css" />
+    <link rel="stylesheet" href="css/workspace.css" type="text/css" />
+    <link rel="stylesheet" href="css/linebar.css" type="text/css" />
+    <link rel="stylesheet" href="css/darkroom.css" type="text/css" />
+    <style>
+        #splash { text-align: center; }
+        body {
+            background-color: #E3DBDB;
+        }
+    </style>
+  </head>
+  <body>
+    <div id='main'>
+        <div id='splash'>
+            <br />
+            <br />
+            <img src='img/logo.png' width='400px' />
+            <br />
+            <br />
+            <br />
+            <img src='img/throbber.gif' />
+        </div>
+    </div>
+    <script src="./js/jquery-2.1.3.js.tweaked.js"></script>
+    <script src="./js/materialize.js.tweaked.js"></script>
+    <script>
+        'use strict';
+        const riot = require('riot');
+        require('riot-mui/build/js/riot-mui');
+        require('../modules/components/base.tag');
+        const ipc = require('electron').ipcRenderer;
+
+        // Require front end libraries:
+        window.limit = require('./js/limit');
+        require('./js/fabric.min');
+        require('./js/darkroom');
+        //const mousemove = require('./js/mousemove');
+        //mousemove.activate();
+
+        // Set up console logging:
+        window.log = (...args) => ipc.send('_log', args.map(JSON.stringify).join(' '));
+        const Mounter = require('./js/mounter');
+        const mounter = new Mounter(ipc);
+        mounter.ready();
+    </script>
+  </body>
+</html>
