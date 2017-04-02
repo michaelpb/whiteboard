@@ -27,6 +27,7 @@
   "license": "GPL-3.0",
   "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
   "dependencies": {
+    "ace-builds": "1.2.6",
     "cheerio": "0.20.0",
     "electron-ipc-stream": "^0.2.0",
     "find-parent-dir": "0.3.0",

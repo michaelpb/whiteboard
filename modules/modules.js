@@ -16,5 +16,9 @@ module.exports = {
             path: 'terminal/terminal',
             tagname: 'terminal',
         },
+        editor: {
+            path: 'editor/editor',
+            tagname: 'editor',
+        },
     },
 };

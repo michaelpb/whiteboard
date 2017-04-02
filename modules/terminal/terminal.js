@@ -45,7 +45,7 @@ class Terminal extends WhiteboardModule {
         term.on('data', data => {
             //logs[term.pid] += data;
             this.stream.write(data);
-            console.log('| DATA ', term.pid, ' | ', data);
+            //console.log('| DATA ', term.pid, ' | ', data);
         });
 
         // bi-directional

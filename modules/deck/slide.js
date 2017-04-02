@@ -9,7 +9,6 @@ function _uid() {
     return id;
 }
 
-
 // Given a path and the parsed info from a single Slide, return an flat
 // of array of objects in the expected format (e.g. with 'typename' for
 // each one)
