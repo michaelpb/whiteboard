@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css" />
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/materialize.custom.css" type="text/css" />
+
+    <!-- add in xterm.js css -->
+    <!--<link rel="stylesheet" href="../node_modules/xterm/build/xterm.css" type="text/css" />-->
+    <link rel="stylesheet" href="../node_modules/xterm/dist/addons/fullscreen/fullscreen.css" type="text/css" />
+
     <link rel="stylesheet" href="css/riot-mui.min.8801f89.css" type="text/css" />
     <link rel="stylesheet" href="css/workspace.css" type="text/css" />
     <link rel="stylesheet" href="css/linebar.css" type="text/css" />
     <link rel="stylesheet" href="css/darkroom.css" type="text/css" />
+
     <style>
         #splash { text-align: center; }
         body {
@@ -31,6 +37,10 @@
     </div>
     <script src="./js/jquery-2.1.3.js.tweaked.js"></script>
     <script src="./js/materialize.js.tweaked.js"></script>
+    <script src="../node_modules/xterm/dist/xterm.js"></script>
+    <script src="../node_modules/xterm/dist/addons/fit/fit.js"></script>
+    <script src="../node_modules/xterm/dist/addons/attach/attach.js"></script>
+    <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
     <script>
         'use strict';
         const riot = require('riot');
@@ -42,7 +52,7 @@
         window.limit = require('./js/limit');
         require('./js/fabric.min');
         require('./js/darkroom');
-        require('terminal.js/dist/terminal'); // Get Terminal dependencies
+        //require('./js/terminaljs.1.0.3.tweaked.js'); // Get Terminal dependencies
 
         // Set up mouse motion thing
         const mousemove = require('./js/mousemove');

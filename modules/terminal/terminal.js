@@ -1,5 +1,6 @@
 'use strict';
 //const child_pty = require('child_pty');
+const pty = require('node-pty');
 
 // TODO: rename file
 const WhiteboardModule = require('../../lib/ScrollObjectEditor');
@@ -31,17 +32,24 @@ class Terminal extends WhiteboardModule {
             columns:80,
             rows:24,
         };
-        return;
-        this.pty = child_pty.spawn('/bin/bash', ['-c', 'echo "welcome"'], options);
-        this.pty.stdout.pipe(this.stream).pipe(pty.stdin);
-
-        /*
-        socket.on('disconnect', () => {
-            console.log("end");
-            this.pty.kill('SIGHUP');
-            delete this.pty;
+        const term = pty.spawn(process.platform === 'win32' ? 'cmd.exe' : 'bash', [], {
+            name: 'xterm-color',
+            cols: 80,
+            rows: 24,
+            cwd: process.env.PWD,
+            env: process.env,
         });
-        */
+        this.term = term;
+
+        console.log('Created terminal with PID: ' + term.pid);
+        term.on('data', data => {
+            //logs[term.pid] += data;
+            this.stream.write(data);
+            console.log('| DATA ', term.pid, ' | ', data);
+        });
+
+        // bi-directional
+        this.stream.on('data', data => this.term.write(data));
     }
 
     get_opts() {

@@ -27,6 +27,8 @@ npm.
       continuing
 
 2. Install dependencies by running `npm install -d`
+3. Rebuild binary dependencies against electron by running
+`./node_modules/.bin/electron-rebuild`
 3. Optionally, double check there's nothing wrong by running the unit tests
 with `npm test`
 
@@ -102,6 +104,5 @@ content : '''
 [More info](http://babiesfirstpostrequest.info/)
 '''
 ```
-
 
 

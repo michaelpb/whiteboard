@@ -1,6 +1,6 @@
 'use strict';
 const riot = require('riot');
-const IPCStream = require('electron-ipc-stream')
+const IPCStream = require('electron-ipc-stream');
 
 function append_html(el, str) {
     const div = document.createElement('div');
@@ -76,6 +76,7 @@ class Mounter {
 
             // Helper function to create a wrapped IPC for streaming interface
             opts.get_ipc_stream = (channel) => {
+                return new IPCStream('term');
                 return new IPCStream(`${prefix}${channel}`);
             };
         };

@@ -28,7 +28,6 @@
   "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
   "dependencies": {
     "cheerio": "0.20.0",
-    "child_pty": "3.0.7",
     "electron-ipc-stream": "^0.2.0",
     "find-parent-dir": "0.3.0",
     "fs-extra": "0.30.0",
@@ -37,16 +36,17 @@
     "highlight": "0.2.4",
     "katex": "0.5.1",
     "lodash": "4.6.1",
+    "node-pty": "0.6.3",
     "node-uuid": "1.4.7",
     "riot": "2.3.17",
     "riot-mui": "0.0.15",
     "riotgear": "3.5.0",
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
-    "terminal.js": "1.0.3"
+    "xterm": "2.4.0"
   },
   "devDependencies": {
-    "electron-packager": "5.2.1",
-    "electron-prebuilt": "0.36.0",
+    "electron-prebuilt": "1.4.13",
+    "electron-rebuild": "^1.5.7",
     "jasmine": "2.4.1",
     "jasmine-spec-reporter": "2.4.0",
     "lovelock": "0.1.1"
