@@ -4,7 +4,7 @@
 const marked = require('marked');
 
 // TODO: rename file
-const WhiteboardModule = require('../../lib/ScrollObjectEditor');
+const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 class Markdown extends WhiteboardModule {
     get tagname() {

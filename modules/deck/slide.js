@@ -1,7 +1,7 @@
 'use strict';
 
 // TODO: rename file
-const WhiteboardModule = require('../../lib/ScrollObjectEditor');
+const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 let id = 0;
 function _uid() {

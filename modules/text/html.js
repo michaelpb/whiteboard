@@ -1,7 +1,7 @@
 'use strict';
 
 // TODO: rename file
-const WhiteboardModule = require('../../lib/ScrollObjectEditor');
+const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 class HTML extends WhiteboardModule {
     get tagname() {
