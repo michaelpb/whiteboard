@@ -16,6 +16,7 @@
         this.on('mount', () => {
             editor = ace.edit("EDITME");
             editor.setTheme("ace/theme/monokai");
+            editor.setOptions({fontSize: "18pt"});
             editor.getSession().setMode("ace/mode/javascript");
             $('#EDITME').height(100); // TODO FIX
             editor.resize();

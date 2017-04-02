@@ -1,6 +1,9 @@
 <terminal>
     <style scoped>
-        text-align: left;
+        .terminaljs {
+            text-align: left;
+            font-size: 18pt;
+        }
     </style>
     <pre class="terminaljs"></pre>
     <script>

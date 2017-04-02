@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/workspace.css" type="text/css" />
     <link rel="stylesheet" href="css/linebar.css" type="text/css" />
     <link rel="stylesheet" href="css/darkroom.css" type="text/css" />
+    <link rel="stylesheet" href="css/drawingboard.css" type="text/css" />
 
     <style>
         #splash { text-align: center; }
@@ -38,9 +39,13 @@
     </div>
     <script src="./js/jquery-2.1.3.js.tweaked.js"></script>
     <script src="./js/materialize.js.tweaked.js"></script>
+
+    <!-- another tweaked script -->
+    <script src="./js/drawingboard.tweaked.js"></script>
+
+    <!-- xterm stuff -->
     <script src="../node_modules/xterm/dist/xterm.js"></script>
     <script src="../node_modules/xterm/dist/addons/fit/fit.js"></script>
-    <!--<script src="../node_modules/xterm/dist/addons/attach/attach.js"></script>-->
     <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
 
     <!-- Include relevant node modules for ACE code editor -->
@@ -49,26 +54,28 @@
     <!--<script src="../node_modules/ace-builds/src/theme-solarized_dark.js"></script>-->
     <script>
         'use strict';
-        const riot = require('riot');
-        require('riot-mui/build/js/riot-mui');
-        require('../modules/components/base.tag');
-        const ipc = require('electron').ipcRenderer;
+        function launch() {
+            window.riot = require('riot');
+            require('riot-mui/build/js/riot-mui');
+            require('../modules/components/base.tag');
+            window.ipc = require('electron').ipcRenderer;
 
-        // Require front end libraries:
-        window.limit = require('./js/limit');
-        require('./js/fabric.min');
-        require('./js/darkroom');
-        //require('./js/terminaljs.1.0.3.tweaked.js'); // Get Terminal dependencies
+            // Require front end libraries:
+            window.limit = require('./js/limit');
+            require('./js/fabric.min');
+            require('./js/darkroom');
 
-        // Set up mouse motion thing
-        const mousemove = require('./js/mousemove');
-        mousemove.activate();
+            // Set up mouse motion thing
+            const mousemove = require('./js/mousemove');
+            mousemove.activate();
 
-        // Set up console logging:
-        window.log = (...args) => ipc.send('_log', args.map(JSON.stringify).join(' '));
-        const Mounter = require('./js/mounter');
-        const mounter = new Mounter(ipc);
-        mounter.ready();
+            // Set up console logging:
+            window.log = (...args) => ipc.send('_log', args.map(JSON.stringify).join(' '));
+            const Mounter = require('./js/mounter');
+            const mounter = new Mounter(ipc);
+            mounter.ready();
+        }
+        setTimeout(launch, 10);
     </script>
   </body>
 </html>
