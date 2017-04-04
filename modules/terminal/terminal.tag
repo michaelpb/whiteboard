@@ -2,7 +2,7 @@
     <style scoped>
         .terminaljs {
             text-align: left;
-            font-size: 14pt;
+            font-size: 18pt;
             height: 100%;
             width: 100%;
             min-height: 100%;

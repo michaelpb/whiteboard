@@ -124,7 +124,10 @@
 </collection>
 
 <collection-item>
-    <li class="collection-item {active: active}" onClick={onClick}>
+    <li class="collection-item brown 
+    {active ? 'darken-4' : 'lighten-4'}
+    {active ? 'white-text' : 'black-text'}
+    " onClick={onClick}>
         <yield />
     </li>
 </collection-item>
@@ -142,7 +145,7 @@
 
 <bubble-beam>
     <div class="fixed-action-btn hide-without-mouse" style="left: 10px; bottom: 10px">
-        <a class="btn-floating btn-large red lighten-1" onclick="opts.onclick">
+        <a class="btn-floating btn-large brown lighten-1" onclick="opts.onclick">
             <i class="large mdi-action-receipt"></i>
         </a>
         <ul>

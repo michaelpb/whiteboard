@@ -49,6 +49,17 @@ div.left-pane {
     z-index: 100;
 }
 
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+input, button, textarea, :focus {
+    outline: none; // You should add some other style for :focus to help UX/a11y
+}
+
 .left-pane-close-button {
     position: absolute;
     left: 0px;
@@ -57,6 +68,10 @@ div.left-pane {
 
 div.right-pane {
     width: 100%;
+}
+
+div.hidden {
+    display: none;
 }
 
 .hide-without-mouse:hover,
@@ -80,6 +95,11 @@ div.right-pane {
         width: calc(100% - 300px);
         float: right;
     }
+}
+
+.fixed-action-btn {
+        height: 70px;
+        width: 50px;
 }
 
 .fixed-action-btn.top-left {

@@ -402,6 +402,134 @@
          result="composite2"
          id="feComposite6438-5-9" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4696">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4698" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite4700" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="5"
+         result="blur"
+         id="feGaussianBlur4702" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4704" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="atop"
+         result="composite2"
+         id="feComposite4706" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4708">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4710" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite4712" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="5"
+         result="blur"
+         id="feGaussianBlur4714" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4716" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="atop"
+         result="composite2"
+         id="feComposite4718" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4720">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4722" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite4724" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="5"
+         result="blur"
+         id="feGaussianBlur4726" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4728" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="atop"
+         result="composite2"
+         id="feComposite4730" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4732">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4734" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite4736" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="5"
+         result="blur"
+         id="feGaussianBlur4738" />
+      <feOffset
+         dx="0"
+         dy="0"
+         result="offset"
+         id="feOffset4740" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="atop"
+         result="composite2"
+         id="feComposite4742" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -410,9 +538,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="508.42056"
-     inkscape:cy="935.09313"
+     inkscape:zoom="2.8"
+     inkscape:cx="546.85278"
+     inkscape:cy="942.91799"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -429,7 +557,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -940,11 +1068,12 @@
          id="flowPara4925-36-7"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';fill:#000000">WhiteBoard</flowPara></flowRoot>    <g
        id="g6813"
-       inkscape:export-filename="/home/michaelb/projects/whiteboard/static/img/logo.png"
-       inkscape:export-xdpi="152.31799"
-       inkscape:export-ydpi="152.31799">
+       inkscape:export-filename="/home/michaelb/projects/whiteboard/static/img/icon.png"
+       inkscape:export-xdpi="261.40518"
+       inkscape:export-ydpi="261.40518"
+       transform="translate(0.07200761,9.6684191)">
       <g
-         transform="translate(378.75287,-806.17695)"
+         transform="matrix(0,1,-1,0,1352.1145,-54.243851)"
          id="g6620-1">
         <path
            inkscape:connector-curvature="0"
@@ -968,7 +1097,7 @@
            inkscape:connector-curvature="0" />
       </g>
       <flowRoot
-         transform="translate(456.96285,20.876035)"
+         transform="translate(456.89084,20.804083)"
          xml:space="preserve"
          id="flowRoot4792-6-62-5-2-9-3-8-9-1-3-0-7-7-0-4"
          style="font-style:normal;font-weight:normal;font-size:50.41379547px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><flowRegion
@@ -981,5 +1110,31 @@
              y="5.611156" /></flowRegion><flowPara
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'TeX Gyre Schola Math';-inkscape-font-specification:'TeX Gyre Schola Math';fill:#ffffff;stroke:none;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
            id="flowPara4804-3-8-2-1-4-0-8-6-0-8-0-9-0-4-9">ω</flowPara></flowRoot>    </g>
+    <g
+       id="g4376"
+       transform="matrix(0,1,-1,0,745.7809,-353.26506)">
+      <path
+         id="path5280-6-5-7-3"
+         d="m 574.91458,195.53825 -50.7832,0 0,16.3867 c 0,8.6742 6.98207,15.6562 15.65625,15.6562 l 19.46875,0 c 8.67418,0 15.6582,-6.982 15.6582,-15.6562 l 0,-16.3867 z"
+         style="opacity:1;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:2.78102541;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98602941;filter:url(#filter4732)"
+         inkscape:connector-curvature="0" />
+      <path
+         id="rect4790-3-0-7-1-5-18-1-1-6"
+         d="m 539.78763,164.9347 c -8.67418,0 -15.65625,6.98207 -15.65625,15.65625 l 0,14.9473 50.7832,0 0,-14.9473 c 0,-8.67418 -6.98402,-15.65625 -15.6582,-15.65625 l -19.46875,0 z"
+         style="opacity:1;fill:#483737;fill-opacity:1;stroke:none;stroke-width:2.78102541;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98602941;filter:url(#filter4720)"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="ccscc"
+         inkscape:connector-curvature="0"
+         id="path5475-0-3-7"
+         d="m 574.82601,180.19656 -50.69463,15.34169 0,-15.4925 c 0,-2.6816 0.80507,-5.15682 2.11328,-7.32154 z"
+         style="opacity:1;fill:#6c5353;fill-opacity:1;stroke:none;stroke-width:2.78102541;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98602941;filter:url(#filter4708)" />
+      <path
+         sodipodi:nodetypes="ccscc"
+         inkscape:connector-curvature="0"
+         id="path5475-3-5"
+         d="m 574.69974,211.49674 -50.56836,-15.95849 0,16.3867 c 0,2.8364 0.80507,5.4545 2.11328,7.7441 z"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.78102541;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98602941;filter:url(#filter4696)" />
+    </g>
   </g>
 </svg>

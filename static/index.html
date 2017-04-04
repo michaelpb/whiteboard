@@ -54,12 +54,20 @@
     <script src="../node_modules/xterm/dist/addons/fit/fit.js"></script>
     <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
 
+    <!-- mousetrap.js -->
+    <script src="../node_modules/mousetrap/mousetrap.js"></script>
+
     <!-- Include relevant node modules for ACE code editor -->
     <script src="../node_modules/ace-builds/src-noconflict/ace.js"></script>
     <!--<script src="../node_modules/ace-builds/src/mode-javascript.js"></script>-->
     <!--<script src="../node_modules/ace-builds/src/theme-solarized_dark.js"></script>-->
     <script>
         'use strict';
+        function prep() {
+            var electron = require('electron');
+            electron.webFrame.setZoomLevelLimits(1, 1);
+        }
+
         function launch() {
             window.riot = require('riot');
             require('riot-mui/build/js/riot-mui');
