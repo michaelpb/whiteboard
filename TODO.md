@@ -1,5 +1,24 @@
 # TODO
 
+## Code quality
+
+### Tests
+
+After feature-set settles down:
+
+- [ ] Write e2e tests with lovelock
+- [ ] Unit tests for each module
+
+### modular-electron-editor
+- [ ] Split off `modular-electron-editor` (contains everything in `lib/`)
+- [ ] Add test discovery system
+- [ ] Add static resource requirement system (e.g. js + img resources)
+- [ ] Re-arrange lib as such:
+    * No static or modules directories
+    * `lib/` - will be the new `modules` directory
+    * `lib/main.js` is the new main, that just calls one function from MEE
+    * `lib/modules.json` - as before, contains modules
+
 ## Per-app
 
 ### Terminal
@@ -26,13 +45,9 @@
 - [ ] Save state for browser
 - [X] Save state for terminal
 
-### Core API
-- [ ] Split off libwhiteboard
-- [ ] Split off `modular-electron` (contains everything in `lib/`)
-- [ ] Add auto-generate options to libwhiteboard
-
 ### Import dialog
 - [ ] Load different module by default if no target is specified
+- [ ] Add auto-generate options
 
 # Pipe dreams
 
