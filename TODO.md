@@ -3,11 +3,18 @@
 - [ ] Auto-fill screen real-estate
 - [ ] Borders / optional UI on panels
 - [ ] Adjustable font-size
+- [ ] Switch UI framework from Materialize?
+    * Topcoat looks nice, and more "desktopy": http://topcoat.io/
+    * Riot.js is associated with BlazeCSS (already used by RG
+      components): http://blazecss.com/
+    * Photon, while designed for electron, is mushy gray macOS look:
+      http://photonkit.com/
 
 # Tab persistence
-- [ ] Properly delineate
-- [ ] Save state for editor
-- [ ] Save state for PNG
+- [X] Save state for editor
+- [ ] Save state for canvas
+- [ ] Save state for browser
+- [X] Save state for terminal
 
 # Core API
 - [ ] Split off libwhiteboard
