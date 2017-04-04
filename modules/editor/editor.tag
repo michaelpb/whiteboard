@@ -12,7 +12,7 @@
             height: 100%;
         }
         .editor-wrapper ul.tabs,
-        .editor-wrapper ul.tabs > a {
+        .editor-wrapper ul.tabs a {
             cursor: default;
             text-transform: none;
         }
@@ -66,18 +66,19 @@
         }
 
         change_tab(ev) {
-            console.log('selected index', ev);
+            ev.preventUpdate = true;
             const {active, path} = ev.item;
-            opts.send('change_tab', this.editor.getValue(), path);
-            /*if (active) {
+            this.opts.send('change_tab', this.editor.getValue(), path);
+            if (active) {
                 // already active, do nothing
             } else {
-                opts.send('activate', path);
-            }*/
+                this.opts.send('activate', path);
+            }
         }
 
         do_save(ev) {
-            opts.send('save', this.editor.getValue());
+            ev.preventUpdate = true;
+            this.opts.send('save', this.editor.getValue());
         }
 
         this.on('mount', () => {

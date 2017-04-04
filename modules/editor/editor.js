@@ -16,6 +16,20 @@ const TEST_DATA = [
     },
 ];
 
+function split_text(text) {
+    if (text.includes('\n')) {
+        // Split by newline
+        return text.split('\n');
+    } else {
+        return text.split(',');
+    }
+}
+
+const DEFAULT_EMPTY = {
+    path: 'new_file',
+    text: '...',
+};
+
 class Editor extends WhiteboardModule {
     get tagname() {
         return 'editor';
@@ -23,17 +37,33 @@ class Editor extends WhiteboardModule {
 
     constructor(...args) {
         super(...args);
-        this.data = Array.from(TEST_DATA);
+
+        let file_list = split_text(this.wbobj.text);
+
+        this.data = Array.from(file_list.map(partial_path => {
+            const path = pathlib.resolve(partial_path.trim());
+            let text = '';
+            // TODO: remove sync
+            if (fs.existsSync(path)) {
+                text = fs.readFileSync(path).toString();
+            }
+            return {path, text};
+        }));
+
+        if (this.data.length === 0) {
+            this.data = [DEFAULT_EMPTY];
+        }
+
+        console.log('this .data ', this.data);
+        //this.data = TEST_DATA;
+        console.log('this .data ', this.data);
+
+        this.active_file_path = this.data[0].path;
+        this.active_file_text = this.data[0].text;
         this.setup_events();
-        this.active_file_path = 'test.js';
-        this.active_file_text = '...';
     }
 
     setup_events(match) {
-        this.on('ready', (event, payload) => {
-            this.activate('test.js');
-        });
-
         this.on('change_tab', (event, updated_text, new_path) => {
             this.set_text(this.active_file_path, updated_text);
             this.activate(new_path);
@@ -62,12 +92,16 @@ class Editor extends WhiteboardModule {
     }
 
     get_file(path) {
-        return this.data.find(file => file.path === path);
+        const file = this.data.find(file => file.path === path);
+        if (!file) {
+            console.error('cannot find file ', file);
+        }
+        return file;
     }
 
     activate(path) {
+        const active_file = this.get_file(path);
         this.active_file_path = path;
-        const active_file = this.get_file(this.active_file_path);
         this.active_file_text = active_file.text;
         this.update();
     }
@@ -79,8 +113,7 @@ class Editor extends WhiteboardModule {
                 path: file.path,
                 active: file.path === this.active_file_path,
             }));
-        const {active_file_text} = this;
-        return {tabs, text: active_file_text};
+        return {tabs, text: this.active_file_text};
     }
 }
 
