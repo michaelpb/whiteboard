@@ -29,6 +29,7 @@ function create_term(container, stream, ipc_send) {
         scrollback: 1000,
         tabStopWidth: 8,
     });
+    //ipc_send('resize', 80, 24);
 
     term.open(container);
     _attach(term, stream);
@@ -38,6 +39,7 @@ function create_term(container, stream, ipc_send) {
         const {cols, rows} = size;
         ipc_send('resize', cols, rows);
     });
+    term.emit('scroll', term.ydisp); // hack i found in VSCode src
     term.fit();
 
     // Whenever the container resizes, make the term fit

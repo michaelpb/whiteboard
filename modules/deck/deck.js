@@ -1,6 +1,5 @@
 'use strict';
 
-// TODO: rename file
 const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 function capitalize(str) {

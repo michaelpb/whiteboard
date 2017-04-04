@@ -3,10 +3,13 @@
 const pty = require('node-pty');
 const pathlib = require('path');
 const fs = require('fs');
+const tmp = require('tmp');
 
 const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 const TERM_CHANNEL = 'term';
+
+const BASH_SCRIPT_PREFIX = 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi';
 
 function capitalize(str) {
     return str.slice(0, 1).toUpperCase() + str.slice(1);
@@ -24,6 +27,7 @@ class Terminal extends WhiteboardModule {
             cols: 80,
             rows: 24,
         };
+        this.text = String(this.wbobj.text).trim();
         this.setup_events();
     }
 
@@ -47,9 +51,41 @@ class Terminal extends WhiteboardModule {
         });
     }
 
+    create_tmp_script(text) {
+        this.clear_tmp_script();
+        this.tmp_script = tmp.fileSync();
+        const contents = new Buffer(`${BASH_SCRIPT_PREFIX}\n\n${text}`);
+        fs.writeSync(this.tmp_script.fd, contents);
+    }
+
+    clear_tmp_script() {
+        // Always clean up ahead of time
+        if (this.tmp_script) {
+            this.tmp_script.removeCallback();
+            this.tmp_script === null;
+        }
+    }
+
+    _get_args() {
+        const result = [];
+        if (this.text.includes('\n')) {
+            // No initial dir, just initialization script, put this in a tmp
+            // file and load via bash
+            // TODO broken
+            //this.create_tmp_script(this.text);
+            //result.push('--rcfile');
+            //result.push(this.tmp_script.name);
+        }
+        return result;
+    }
+
     _get_wd() {
+        if (this.text.includes('\n')) {
+            // No initial dir, just initialization script
+            return process.env.PWD;
+        }
         // Ensure its a legit directory
-        const path = pathlib.resolve(process.env.PWD, String(this.wbobj.text));
+        const path = pathlib.resolve(process.env.PWD, this.text);
         return fs.existsSync(path) ? path : process.env.PWD;
     }
 
@@ -64,7 +100,7 @@ class Terminal extends WhiteboardModule {
             env: process.env,
         };
         const shell = process.platform === 'win32' ? 'cmd.exe' : 'bash';
-        const term = pty.spawn(shell, [], opts);
+        const term = pty.spawn(shell, this._get_args(), opts);
         this.term = term;
 
         console.log('Created terminal with PID: ' + term.pid);
@@ -82,9 +118,8 @@ class Terminal extends WhiteboardModule {
     }
 
     do_resize() {
-        const {rows, cols} = this.requested_size;
-        console.log('Terminal: Resizing to', this.requested_size);
-        this.term.resize(Math.max(rows, 5), Math.max(cols, 10));
+        const {cols, rows} = this.requested_size;
+        this.term.resize(Math.max(cols, 10), Math.max(rows, 5));
     }
 
     get_opts() {

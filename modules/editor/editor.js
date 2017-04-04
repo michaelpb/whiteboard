@@ -5,17 +5,6 @@ const WhiteboardModule = require('../../lib/WhiteboardModule');
 const fs = require('fs');
 const pathlib = require('path');
 
-const TEST_DATA = [
-    {
-        path: 'test.js',
-        text: 'var test_contents = "test";'
-    },
-    {
-        path: 'full/path/greeting.js',
-        text: 'function greeting () {\n  console.log("hi");\n}\n'
-    },
-];
-
 function split_text(text) {
     if (text.includes('\n')) {
         // Split by newline
@@ -55,7 +44,6 @@ class Editor extends WhiteboardModule {
         }
 
         console.log('this .data ', this.data);
-        //this.data = TEST_DATA;
         console.log('this .data ', this.data);
 
         this.active_file_path = this.data[0].path;
@@ -79,6 +67,9 @@ class Editor extends WhiteboardModule {
         // Saves the given path with the new text
         const active_file = this.get_file(path);
         active_file.text = new_text;
+        if (path === this.active_file_path) {
+            this.active_file_text = new_text;
+        }
         fs.writeFile(active_file.path, new_text, err => {
             if (err) {
                 console.error('error writing file: ', err);
