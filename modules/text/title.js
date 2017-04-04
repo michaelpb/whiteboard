@@ -1,6 +1,5 @@
 'use strict';
 
-// TODO: rename file
 const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 class Title extends WhiteboardModule {
@@ -12,6 +11,12 @@ class Title extends WhiteboardModule {
     /*constructor(...args) {
         super(...args);
     }*/
+
+    static get layout_hint() {
+        return {
+            prefer_top: true,
+        }
+    }
 
     get_opts() {
         return {

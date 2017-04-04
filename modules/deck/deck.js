@@ -68,7 +68,7 @@ class Deck extends WhiteboardModule {
                 path: obj.path,
                 active: match(obj),
                 typename: obj.typename,
-                title: capitalize(obj.name || obj.typename || ''),
+                title: capitalize(obj.title || obj.typename || ''),
             });
         }
 

@@ -129,6 +129,10 @@
     </li>
 </collection-item>
 
+<text-size-select>
+    <rg-pagination></rg-pagination>
+</text-size-select>
+
 <mat-input-field>
     <div class="input-field col s6">
         <input value={opts.value} name={opts.name} id={opts.name} type="text" class="validate" />

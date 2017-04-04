@@ -1,7 +1,41 @@
 <slide>
-    <div each={opts.panes} class="outer-pane">
-        <!-- Generate mount points for each pane contents -->
-        <div id="{mount_id}"></div>
+    <style scoped>
+        .outer-pane {
+            /*font-size: 10vmin;*/
+        }
+        .row.single-row {
+            min-height: 10vh;
+            height: 10vh;
+        }
+
+        .row.double-row {
+            min-height: 85vh;
+            height: 85vh;
+        }
+
+        /* match inner tags, ensure filling up space */
+        .outer-pane > div,
+        .outer-pane > div > * {
+            height: 100%;
+            width: 100%;
+            min-height: 100%;
+            min-width: 100%;
+            display: block;
+        }
+
+        div.outer-pane.col {
+            height: 100%;
+            display: block;
+        }
+    </style>
+
+    <div each={opts.pane_rows} class="row {row_panes.length === 1 ? 'single-row' : 'double-row'}">
+        <div each={row_panes}
+            class="outer-pane col {column_class}"
+            style={row_style}>
+            <!-- Generate mount points for each pane contents -->
+            <div id="{mount_id}"></div>
+        </div>
     </div>
 
     <!--

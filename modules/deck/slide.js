@@ -1,6 +1,5 @@
 'use strict';
 
-// TODO: rename file
 const WhiteboardModule = require('../../lib/WhiteboardModule');
 
 let id = 0;
@@ -9,28 +8,31 @@ function _uid() {
     return id;
 }
 
-// Given a path and the parsed info from a single Slide, return an flat
-// of array of objects in the expected format (e.g. with 'typename' for
-// each one)
-function _munge_info(path, slide_info) {
-    const objects = [];
-    let i = 0;
-    for (const typename of Object.keys(slide_info)) {
-        i++;
-        const pane_info = slide_info[typename];
-        const uid = _uid();
-        const pane_path = `${path}~${_uid()}`;
-        const pane_obj = {
-            typename,
-            path: pane_path,
-            mount_id: 'slide_pane_' + uid,
-            text: pane_info,
-        };
-        objects.push(pane_obj);
+function layout_rows(unordered_panes) {
+    const panes = Array.from(unordered_panes);
+    // TODO a mess
+    const make_row = (panes, style) => ({
+        row_panes: panes,
+        column_class: `s${12 / panes.length}`,
+    });
+
+    const rows = [];
+    while (panes.length > 0) {
+        const first_pane = panes.pop();
+        if (first_pane.layout_hint.prefer_top || panes.length === 0) {
+            rows.unshift(make_row([first_pane]));
+            continue;
+        }
+
+        // Instead push both together
+        const second_pane = panes.pop();
+        rows.push(make_row([first_pane, second_pane]));
     }
-    console.log('this is objects', objects);
-    return objects;
+
+    // now attach style
+    return rows;
 }
+
 
 class Slide extends WhiteboardModule {
     get tagname() {
@@ -42,8 +44,29 @@ class Slide extends WhiteboardModule {
         super(...args);
 
         // Setup each pane sub-editor
-        this.panes = _munge_info(this.wbobj.path, this.wbobj.info);
+        this._make_pane_info(this.wbobj.path, this.wbobj.info);
         this.setup_events();
+    }
+
+    // Given a path and the parsed info from a single Slide, return an
+    // flat of array of objects in the expected format (e.g. with
+    // 'typename' for each one)
+    _make_pane_info(path, slide_info) {
+        this.panes = [];
+        for (const typename of Object.keys(slide_info)) {
+            const pane_info = slide_info[typename];
+            const uid = _uid();
+            const pane_path = `${path}~${_uid()}`;
+            const editor_class = this.editor.get_editor_class(typename);
+            const pane_obj = {
+                typename,
+                layout_hint: editor_class.layout_hint || {},
+                path: pane_path,
+                mount_id: 'slide_pane_' + uid,
+                text: pane_info,
+            };
+            this.panes.push(pane_obj);
+        }
     }
 
     mount_panes() {
@@ -63,6 +86,8 @@ class Slide extends WhiteboardModule {
     get_opts() {
         return {
             panes: this.panes,
+            pane_rows: layout_rows(this.panes),
+            layout_name: 'vertical',
         };
     }
 }

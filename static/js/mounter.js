@@ -76,7 +76,7 @@ class Mounter {
 
             // Helper function to create a wrapped IPC for streaming interface
             opts.get_ipc_stream = (channel) => {
-                return new IPCStream('term');
+                console.log(`ipc channel: ${prefix}${channel}`);
                 return new IPCStream(`${prefix}${channel}`);
             };
         };
@@ -111,7 +111,6 @@ class Mounter {
 
         // Add in the HTML in the right location for riot to find
         mount_location.innerHTML = faux_tags
-
 
         // Finally, mount the element where it belongs
         prep_opts(opts);

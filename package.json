@@ -35,6 +35,7 @@
     "fstream": "1.0.8",
     "glob": "7.0.3",
     "highlight": "0.2.4",
+    "javascript-detect-element-resize": "^0.5.3",
     "katex": "0.5.1",
     "lodash": "4.6.1",
     "marked": "0.3.6",

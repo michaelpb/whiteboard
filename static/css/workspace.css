@@ -4,12 +4,13 @@ html {
 
 body {
     height: 100%;
+    background: -webkit-radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
+    background: radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
 }
 
 div.left-pane,
 div.right-pane {
     display: block;
-    background: white;
     height: 100vh;
     position: relative;
 }

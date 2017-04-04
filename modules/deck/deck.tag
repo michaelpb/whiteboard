@@ -41,8 +41,6 @@
         <div id="editor_pane"></div>
     </div>
     <script>
-        document.body.style.background = 'white'; // Hack to fix
-
         toggle(ev) {
             // TODO not sure why its item -> item here...
             opts.send('toggle', ev.item.item.typename);
@@ -54,5 +52,11 @@
             window.log('togglin');
             opts.send('toggle_deck');
         }
+
+        this.on('mount', function () {
+            document.body.style.background = 'white'; // Hack to fix
+            $('#splash').remove(); // delete splash
+            $('#main').show(); // Unhide main
+        });
     </script>
 </deck>
