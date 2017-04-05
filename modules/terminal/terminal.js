@@ -80,13 +80,14 @@ class Terminal extends WhiteboardModule {
     }
 
     _get_wd() {
+        const cwd = process.cwd();
         if (this.text.includes('\n')) {
             // No initial dir, just initialization script
-            return process.env.PWD;
+            return cwd;
         }
         // Ensure its a legit directory
-        const path = pathlib.resolve(process.env.PWD, this.text);
-        return fs.existsSync(path) ? path : process.env.PWD;
+        const path = pathlib.resolve(cwd, this.text);
+        return fs.existsSync(path) ? path : cwd;
     }
 
     spawn() {
@@ -107,7 +108,6 @@ class Terminal extends WhiteboardModule {
         term.on('data', data => {
             //logs[term.pid] += data;
             this.stream.write(data);
-            //console.log('| DATA ', term.pid, ' | ', data);
         });
 
         // bi-directional

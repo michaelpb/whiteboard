@@ -22,7 +22,6 @@ function layout_rows(unordered_panes) {
         const first_pane = panes.pop();
         rows.unshift(make_row([first_pane]));
     }
-    console.log('this is rows', rows);
     return rows;
 
 
