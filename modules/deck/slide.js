@@ -14,9 +14,20 @@ function layout_rows(unordered_panes) {
     const make_row = (panes, style) => ({
         row_panes: panes,
         column_class: `s${12 / panes.length}`,
+        row_class: `slide-row-${panes[0].layout_hint.prefer_top ? 'short' : 'half'}`,
     });
 
     const rows = [];
+    while (panes.length > 0) {
+        const first_pane = panes.pop();
+        rows.unshift(make_row([first_pane]));
+    }
+    console.log('this is rows', rows);
+    return rows;
+
+
+    // TODO: VERTICAL SPLIT BELOW:
+
     while (panes.length > 0) {
         const first_pane = panes.pop();
         if (first_pane.layout_hint.prefer_top || panes.length === 0) {

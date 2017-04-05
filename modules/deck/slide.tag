@@ -13,6 +13,10 @@
             height: 85vh;
         }
 
+        .row.slide-row-half {
+            height: 42vh;
+        }
+
         /* match inner tags, ensure filling up space */
         .outer-pane > div,
         .outer-pane > div > * {
@@ -29,7 +33,7 @@
         }
     </style>
 
-    <div each={opts.pane_rows} class="row {row_panes.length === 1 ? 'single-row' : 'double-row'}">
+    <div each={opts.pane_rows} class="row {row_panes.length === 1 ? 'single-row' : 'double-row'} {row_class}">
         <div each={row_panes}
             class="outer-pane col {column_class}"
             style={row_style}>

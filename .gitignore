@@ -16,3 +16,5 @@ docs/_build/*
 
 node_modules/*
 tmp/*
+
+runner.sh

@@ -4,6 +4,7 @@ html {
 
 body {
     height: 100%;
+    overflow: hidden;
     background: -webkit-radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
     background: radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
 }
@@ -17,9 +18,9 @@ div.right-pane {
 
 div.right-pane {
     text-align: center;
-    overflow-y: auto;
+    /*overflow-y: auto;
     overflow-x: hidden;
-    overflow: auto;
+    overflow: auto;*/
 }
 
 div.left-pane {
