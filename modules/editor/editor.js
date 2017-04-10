@@ -2,6 +2,7 @@
 
 const WhiteboardModule = require('../../lib/WhiteboardModule');
 
+const glob = require('glob');
 const fs = require('fs');
 const pathlib = require('path');
 
@@ -25,14 +26,20 @@ class Editor extends WhiteboardModule {
     }
 
     constructor(...args) {
+        // TODO: remove sync?
         super(...args);
 
-        let file_list = split_text(this.wbobj.text);
+        // Converts the text into a list of files, some of which might
+        // be globs. These it attempts to resolve and put all in paths.
+        const file_list = split_text(this.wbobj.text);
+        const globs = file_list.filter(glob.hasMagic);
+        const normal_paths = file_list.filter(path => !glob.hasMagic(path));
+        const flattened_paths = normal_paths.concat
+            .apply(normal_paths, globs.map(gpath => glob.sync(gpath.trim())));
 
-        this.data = Array.from(file_list.map(partial_path => {
+        this.data = Array.from(flattened_paths.map(partial_path => {
             const path = pathlib.resolve(partial_path.trim());
             let text = '';
-            // TODO: remove sync
             if (fs.existsSync(path)) {
                 text = fs.readFileSync(path).toString();
             }
@@ -42,9 +49,6 @@ class Editor extends WhiteboardModule {
         if (this.data.length === 0) {
             this.data = [DEFAULT_EMPTY];
         }
-
-        console.log('this .data ', this.data);
-        console.log('this .data ', this.data);
 
         this.active_file_path = this.data[0].path;
         this.active_file_text = this.data[0].text;
@@ -77,6 +81,16 @@ class Editor extends WhiteboardModule {
         });
     }
 
+    get_context_menu() {
+        return [
+            {
+                label: 'Save',
+                accelerator: 'CommandOrControl+S',
+                click: () => this.ipc_send('trigger_save'),
+            },
+        ];
+    }
+
     set_text(path, new_text) {
         const active_file = this.get_file(path);
         active_file.text = new_text;
@@ -104,7 +118,9 @@ class Editor extends WhiteboardModule {
                 path: file.path,
                 active: file.path === this.active_file_path,
             }));
-        return {tabs, text: this.active_file_text};
+        const path = this.active_file_path;
+        const text = this.active_file_text;
+        return {path, tabs, text};
     }
 }
 

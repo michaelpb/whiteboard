@@ -30,18 +30,23 @@ class Deck extends WhiteboardModule {
 
         //this.next_previous_menu = new Menu();
 
-        // once we're loaded, setup a nice menu
-        this.context_menu = this.make_menu();
-
-        // for now just have both be the menu
-        Menu.setApplicationMenu(this.context_menu);
-
         // Default font size is 18 for now
         this.default_font_size = 18;
+
+        this.set_menu()
     }
 
     make_menu() {
+        return Menu.buildFromTemplate(template);
+    }
+
+    set_menu(prepend_menu = []) {
+        if (prepend_menu.length > 0) {
+            // Add a separator after
+            prepend_menu.push({type: 'separator'});
+        }
         const template = [
+            {role: 'toggledevtools'},
             {
                 label: 'Next →',
                 accelerator: 'CommandOrControl+Right',
@@ -53,6 +58,7 @@ class Deck extends WhiteboardModule {
                 click: () => this.previous_slide(),
             },
             {type: 'separator'},
+            ...prepend_menu,
             {role: 'togglefullscreen'},
             {
                 label: 'Zoom',
@@ -81,15 +87,19 @@ class Deck extends WhiteboardModule {
             },
             */
         ];
+        // once we're loaded, setup a nice menu
+        this.context_menu = Menu.buildFromTemplate(template);
 
-        return Menu.buildFromTemplate(template);
+        // for now just have both be the context and global menu
+        Menu.setApplicationMenu(this.context_menu);
     }
 
     activate(path) {
         this.set_active(obj => obj.path === path);
         const activated = this.wbobj.objects.find(obj => obj.path === path);
         this.last_activated = activated;
-        this.editor.mount(null, activated, '#editor_pane');
+        const slide_editor = this.editor.mount(null, activated, '#editor_pane');
+        slide_editor.parent_editor = this;
         this.update();
     }
 

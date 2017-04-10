@@ -29,51 +29,26 @@ npm.
 2. Install dependencies by running `npm install -d`
 3. Rebuild binary dependencies against electron by running
 `./node_modules/.bin/electron-rebuild`
-3. Optionally, double check there's nothing wrong by running the unit tests
-with `npm test`
+3. ~Optionally, double check there's nothing wrong by running the unit tests
+with npm test~
 
-## Auto-generating a slideshow
+## Running
 
-Whiteboard can auto-generate a slide-deck based on a certain directory
-structure. Example directory structure, for a hypothetical tutorial on using
-Electron.js:
-
-    electron_slide_show/
-        1-Electron_Hello_World/
-            hello_world.js
-        2-Example_project/
-            project/
-                package.json
-        3-API_usage/
-            example.js
-
-This will create a slideshow in alphabetical order. The default slide contains
-a text editor (with tabs open for each file), and a bash terminal already
-`cd`'ed into the relevant directory.
-
-To auto-generate the slideshow, run:
-
+1. Create a file called `test_whiteboard.cfg`:
+- ```
+[slide]
+title = Terminal and editor
+editor : ./testfile.js
+terminal = ./
 ```
-npm run start -- ./electron_slide_show/
-```
-
-## Using the GUI
-
-Hit `F1` to bring up a super-imposed UI.
-
-Shortcuts:
-
-* `Ctrl+Shift+[Right Arrow]` next slide
-* `Ctrl+Shift+[Left Arrow]` previous slide
+2. Run `npm run start -- test_whiteboard.cfg` to launch
 
 
-## Slideshow file format
+# Slideshow file format
 
 Example slideshow:
 
 ```
-[theme]
-css = ./css/theme.css
 
 [slide]
 title=POST Request Activity
@@ -82,9 +57,7 @@ editor=scratch.js, ./01-POST_Request/*.js
 
 [slide]
 # comments are ignored
-_layout=4x4
 title = POST Continued
-whiteboard = server_diagram.png
 terminal = ./01-POST_Request/
 content = text.md
 
@@ -95,7 +68,7 @@ editor : '''
     ./03-Example/file_01.js
     ./03-Example/file_02.js
 '''
-content : '''
+markdown : '''
 ## This is how you do a POST request
 
 1. Send the request

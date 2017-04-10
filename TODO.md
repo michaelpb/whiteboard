@@ -1,3 +1,14 @@
+
+# Next steps
+
+1. Spin off MEE, and improve code quality + documentation
+2. Rework code of slide system: Deck.js should be less abstract, more practical
+3. Auto-save changes in slideshow file
+4. Create new slides
+5. Add new panes
+6. Zero state: create new deck or use recent
+7. Drag n drop for quickly assembly slide decks
+
 # TODO
 
 ## Code quality
@@ -25,11 +36,15 @@ After feature-set settles down:
 - [ ] BUG: Error when bash exits (e.g. `Ctrl+D`). Should detect and offer to
   restart.
 
+### Slide
+- [ ] Pipedream: Draw on top
+- [ ] Pipedream: Add pane (need to clean up editor system)
+
 ## Topical
 
 ### Appearance
 - [ ] Layout engine
-- [ ] Auto-fill screen real-estate
+- [X] Auto-fill screen real-estate
 - [ ] Borders / optional UI on panels
 - [ ] Adjustable font-size
 - [ ] Switch UI framework from Materialize?
@@ -48,6 +63,23 @@ After feature-set settles down:
 ### Import dialog
 - [ ] Load different module by default if no target is specified
 - [ ] Add auto-generate options
+
+
+## Editor
+- [X] Autodetect filetype
+- [X] Support glob syntax for loading
+
+## New full right click menu
+
+### Contextual right click
+- [X] Keep track of "focused" pane (focus follows mouse, clicks, keyup)
+- [X] Full screen pane CSS (`z-index: 1000; top: 0; left 0; height: 100vh;
+  width: 100vh;`)
+- [X] Save (`Ctrl+S`)
+
+### Global right click
+- [X] All old actions
+- [X] Switch to horizontal, vertical, or grid layout (|| = or ::)
 
 # Pipe dreams
 

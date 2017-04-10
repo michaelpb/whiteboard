@@ -28,12 +28,14 @@
     <div class="editor-wrapper card deep-purple darken-4 z-depth-4">
         <div class="card-content white-text">
             <ul class="tabs deep-purple darken-4 white-text">
-                <li class="tab col s3" each={opts.tabs}>
+                <li class="tab col {parent.opts.tab_col_class} " each={opts.tabs}>
                     <a onclick={change_tab} class="{active: active} deep-purple {white-text: !active} {darken-4: !active} {lighten-4: active} {black-text: active}">{title}</a>
                 </li>
+                <!--
                 <a onclick={do_save} class="btn-floating waves-effect waves-light deep-purple upper-right-button">
                     <i class="large mdi-content-save"></i>
                 </a>
+                -->
             </ul>
             <div name='editor_node'></div>
         </div>
@@ -45,6 +47,7 @@
         require('../../node_modules/javascript-detect-element-resize/detect-element-resize');
 
         setup_editor() {
+            const modelist = ace.require("ace/ext/modelist")
             if (!this.editor) {
                 this.editor = ace.edit(this.editor_node);
             }
@@ -54,7 +57,8 @@
             }
             this.editor.setTheme("ace/theme/monokai");
             this.editor.setOptions({fontSize: "18pt"});
-            this.editor.getSession().setMode("ace/mode/javascript");
+            const mode = modelist.getModeForPath(this.opts.path).mode
+            this.editor.getSession().setMode(mode);
             this.editor_node.style.height = '95%'; // TODO FIX
             this.editor.resize();
 
@@ -77,17 +81,35 @@
         }
 
         do_save(ev) {
-            ev.preventUpdate = true;
+            if (ev) {
+                ev.preventUpdate = true;
+            }
             this.opts.send('save', this.editor.getValue());
         }
 
         this.on('mount', () => {
             this.setup_editor();
+            this.opts.on_ipc('trigger_save', () => this.do_save());
+        });
+
+        this.on('update', () => {
+            const tabs = this.opts.tabs || ['dummy'];
+            const len = Math.floor(12 / (tabs.length || 1));
+            const MIN = 1;
+            const MAX = 4;
+            const col_width = Math.max(Math.min(len, MAX), MIN);
+            this.opts.tab_col_class = `s${col_width}`;
         });
 
         this.on('updated', () => {
             if (this.opts.text != this.editor.getValue()) {
+                // update text
                 this.editor.setValue(this.opts.text, 1);
+
+                // update syntax highlight mode
+                const modelist = ace.require("ace/ext/modelist")
+                const mode = modelist.getModeForPath(this.opts.path).mode
+                this.editor.getSession().setMode(mode);
             }
         });
     </script>

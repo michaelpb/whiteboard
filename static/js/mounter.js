@@ -74,9 +74,13 @@ class Mounter {
                 ipc.send(`${prefix}${channel}`, ...args);
             };
 
+            // Set up incoming channel
+            opts.on_ipc = (channel, callback) => {
+                this.ipc.on(`${prefix}${channel}`, callback);
+            };
+
             // Helper function to create a wrapped IPC for streaming interface
             opts.get_ipc_stream = (channel) => {
-                console.log(`ipc channel: ${prefix}${channel}`);
                 return new IPCStream(`${prefix}${channel}`);
             };
         };
