@@ -1,4 +1,3 @@
-
 # Next steps
 
 1. Spin off MEE, and improve code quality + documentation

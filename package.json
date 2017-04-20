@@ -15,7 +15,8 @@
     "url": "git+ssh://git@bitbucket.org/michaelb/whiteboard.git"
   },
   "keywords": [
-    "wordprocessor",
+    "slideshow",
+    "tutorial",
     "editor",
     "document",
     "text"
@@ -48,6 +49,7 @@
     "riot-mui": "0.0.15",
     "riotgear": "3.5.0",
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
+    "elmoed": "git+https://bitbucket.org/michaelb/elmoed.git",
     "tmp": "0.0.31",
     "xterm": "2.4.0"
   },
