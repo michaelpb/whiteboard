@@ -1,4 +1,4 @@
-<editor>
+<wb-editor>
     <style scoped>
         .aceeditor-wrapper {
             height: 500px;
@@ -23,8 +23,6 @@
             position: absolute;
         }
     </style>
-
-
     <div class="editor-wrapper card deep-purple darken-4 z-depth-4">
         <div class="card-content white-text">
             <ul class="tabs deep-purple darken-4 white-text">
@@ -89,7 +87,7 @@
 
         this.on('mount', () => {
             this.setup_editor();
-            this.opts.on_ipc('trigger_save', () => this.do_save());
+            this.opts.on('trigger_save', () => this.do_save());
         });
 
         this.on('update', () => {
@@ -113,4 +111,4 @@
             }
         });
     </script>
-</editor>
+</wb-editor>

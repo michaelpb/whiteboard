@@ -1,4 +1,4 @@
-<deck>
+<wb-deck>
     <style scoped>
         li.collection-item {
             cursor: default;
@@ -16,34 +16,21 @@
             </button>
         </div>
         <div class="left-pane-contents">
-            <collection>
-                <virtual each={item in parent.opts.groups}>
-                    <collection-item onclick={parent.parent.toggle}>
-                        {item.collapsed ? '▸' : '▾' } <em>{item.label}s</em>
-                    </collection-item>
-                    <virtual if={!item.collapsed}>
-                        <collection-item each={item.objects} active={active} onclick={parent.parent.parent.activate}>
-                            &nbsp; &nbsp; &nbsp; {title}
-                        </collection-item>
-                    </virtual>
-                </virtual>
-            </collection>
-            <!--
-            <collection>
-                <collection-item each={parent.opts.objects} active={active} onclick={parent.parent.activate}>
-                    {title}
-                </collection-item>
-            </collection>
-            -->
+            <h2 each={opts.slides} onclick={activate}>
+                <span if={active}>
+                    XXX
+                </span>
+                &nbsp; &nbsp; &nbsp; {title}
+            </h2>
         </div>
     </div>
+
     <div class="right-pane {left-pane-visible: opts.pane_visible}">
         <div id="editor_pane"></div>
     </div>
 
-
     <!-- Next and previous controls -->
-    <div class="fixed-action-btn hide-without-mouse  {hidden: opts.pane_visible}"
+    <div class="fixed-action-btn hide-without-mouse {hidden: opts.pane_visible}"
             style="left: 10px; top: 10px;">
         <a class="btn-floating btn-large brown lighten-1" onclick={previous_slide}>
             <i class="large mdi-navigation-arrow-back"></i>
@@ -58,15 +45,9 @@
     </div>
 
     <script>
-        toggle(ev) {
-            // TODO not sure why its item -> item here...
-            ev.preventUpdate = true;
-            opts.send('toggle', ev.item.item.typename);
-        }
-
         activate(ev) {
             ev.preventUpdate = true;
-            opts.send('activate', ev.item.path);
+            opts.send('activate', ev.item.id);
         }
 
         next_slide(ev) {
@@ -102,4 +83,4 @@
             }, false);
         });
     </script>
-</deck>
+</wb-deck>

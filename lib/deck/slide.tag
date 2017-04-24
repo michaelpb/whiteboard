@@ -1,4 +1,4 @@
-<slide>
+<wb-slide>
     <style scoped>
         .outer-pane {
             /*font-size: 10vmin;*/
@@ -109,7 +109,7 @@
         }
 
         this.on('mount', () => {
-            this.opts.on_ipc('toggle_maximized_pane', toggle_maximized_pane);
+            this.opts.on('toggle_maximized_pane', toggle_maximized_pane);
         });
 
         this.on('updated', () => {
@@ -120,4 +120,4 @@
             }
         });
     </script>
-</slide>
+</wb-slide>

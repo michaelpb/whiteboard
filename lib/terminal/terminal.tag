@@ -1,4 +1,4 @@
-<terminal>
+<wb-terminal>
     <style scoped>
         .terminaljs {
             text-align: left;
@@ -26,15 +26,16 @@
     </div>
 
     <script>
+        'use strict';
         const {create_term} = require('./TerminalFE');
 
         // Essential: prevent default in terminal
         //this.on('update', ev => ev.preventUpdate = true);
 
         this.on('mount', () => {
-            const stream = opts.get_ipc_stream('term');
+            const stream = opts.getIPCStream('term');
             // XXX Riot 3 vvvv (switch to refs)
             create_term(this.term, stream, opts.send);
         });
     </script>
-</terminal>
+</wb-terminal>
