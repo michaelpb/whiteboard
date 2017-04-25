@@ -1,3 +1,3 @@
-<htmlpane>
+<wb-rawhtml>
     <raw html={opts.html} />
-</htmlpane>
+</wb-rawhtml>

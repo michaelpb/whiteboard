@@ -1,3 +1,3 @@
-<markdown>
+<wb-markdown>
     <raw html={opts.html} />
-</markdown>
+</wb-markdown>
