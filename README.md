@@ -1,7 +1,5 @@
 # whiteboard
 
-[![Build Status](https://drone.io/bitbucket.org/michaelb/whiteboard/status.png)](https://drone.io/bitbucket.org/michaelb/whiteboard/latest)
-
 -------------------------
 
 Whiteboard is a very simple Electron.js based slideshow app for
