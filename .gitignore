@@ -16,5 +16,5 @@ docs/_build/*
 
 node_modules/*
 tmp/*
+static/index.html.templated
 
-runner.sh
