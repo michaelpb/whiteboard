@@ -1,0 +1,8 @@
+
+[slide]
+title = Terminal and editor
+editor = ./testdir/test1.js,test2.html
+terminal = ./testdir
+
+[slide]
+title = Another thing
