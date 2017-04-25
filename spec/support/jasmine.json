@@ -1,8 +1,8 @@
 {
   "spec_dir": "spec",
   "spec_files": [
-    "modules/**/*.js",
-    "lib/**/*.js"
+    "lib/**/*.js",
+    "endtoend/**/*.js"
   ],
   "helpers": [
     "helpers/**/*.js"

@@ -7,15 +7,20 @@
   },
   "main": "lib/main.js",
   "scripts": {
-    "test": "node --harmony_default_parameters --harmony_destructuring --harmony_rest_parameters ./runtests.js",
-    "start": "electron --harmony_default_parameters --harmony_destructuring --harmony_rest_parameters lib/main.js"
+    "rebuild": "electron-rebuild",
+    "start": "electron lib/main.js",
+    "test-v-headless": "xvfb-run node ./runtests.js --verbose",
+    "test-v": "node ./runtests.js --verbose",
+    "test-headless": "xvfb-run node ./runtests.js",
+    "test": "node ./runtests.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/michaelb/whiteboard.git"
   },
   "keywords": [
-    "wordprocessor",
+    "slideshow",
+    "tutorial",
     "editor",
     "document",
     "text"
@@ -28,34 +33,31 @@
   "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
   "dependencies": {
     "ace-builds": "1.2.6",
-    "cheerio": "0.20.0",
     "electron-ipc-stream": "0.2.0",
+    "elmoed": "git+https://bitbucket.org/michaelb/elmoed.git",
     "find-parent-dir": "0.3.0",
     "fs-extra": "0.30.0",
     "fstream": "1.0.8",
     "glob": "7.0.3",
-    "highlight": "0.2.4",
-    "javascript-detect-element-resize": "^0.5.3",
-    "katex": "0.5.1",
-    "lodash": "4.6.1",
+    "javascript-detect-element-resize": "0.5.3",
+    "lodash": "^4.17.4",
     "marked": "0.3.6",
-    "mime-types": "^2.1.15",
-    "mousetrap": "^1.6.1",
-    "node-pty": "0.6.3",
+    "mime-types": "2.1.15",
+    "mousetrap": "1.6.1",
+    "node-pty": "0.6.4",
     "node-uuid": "1.4.7",
     "opn": "4.0.2",
-    "riot": "2.3.17",
-    "riot-mui": "0.0.15",
-    "riotgear": "3.5.0",
+    "riot": "3.4.3",
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
     "tmp": "0.0.31",
+    "xel": "0.0.12",
     "xterm": "2.4.0"
   },
   "devDependencies": {
-    "electron-prebuilt": "1.4.13",
+    "electron": "1.6.6",
     "electron-rebuild": "1.5.7",
     "jasmine": "2.4.1",
-    "jasmine-spec-reporter": "2.4.0",
-    "lovelock": "0.1.1"
+    "jasmine-spec-reporter": "4.0.0",
+    "spectron": "3.6.2"
   }
 }

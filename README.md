@@ -1,7 +1,5 @@
 # whiteboard
 
-[![Build Status](https://drone.io/bitbucket.org/michaelb/whiteboard/status.png)](https://drone.io/bitbucket.org/michaelb/whiteboard/latest)
-
 -------------------------
 
 Whiteboard is a very simple Electron.js based slideshow app for
@@ -28,7 +26,7 @@ npm.
 
 2. Install dependencies by running `npm install -d`
 3. Rebuild binary dependencies against electron by running
-`./node_modules/.bin/electron-rebuild`
+`./node_modules/.bin/electron-rebuild` (or just `npm run rebuild`)
 3. ~Optionally, double check there's nothing wrong by running the unit tests
 with npm test~
 
