@@ -8,8 +8,11 @@
   "main": "lib/main.js",
   "scripts": {
     "rebuild": "electron-rebuild",
-    "test": "node --harmony_default_parameters --harmony_destructuring --harmony_rest_parameters ./runtests.js",
-    "start": "electron lib/main.js"
+    "start": "electron lib/main.js",
+    "test-v-headless": "xvfb-run node ./runtests.js --verbose",
+    "test-v": "node ./runtests.js --verbose",
+    "test-headless": "xvfb-run node ./runtests.js",
+    "test": "node ./runtests.js"
   },
   "repository": {
     "type": "git",
