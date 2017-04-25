@@ -38,34 +38,40 @@
             </virtual>
         </x-tabs>
         <div class="card-content">
-            <div name='editor_node'></div>
+            <div ref="editor_node"></div>
         </div>
     </div>
 
 
     <script>
         'use strict';
-        require('../../node_modules/javascript-detect-element-resize/detect-element-resize');
+        // Monkeypatch document.createElementNS to get Ace to work. Bizarrely
+        // only introduced after upgrading Riot to 3 (as far as I can tell)
+        // This is probably the source of the bug:
+        // https://github.com/riot/riot/commit/d263e673c19735e32435ae2ec99cc919392dff12
+        document.createElementNS = (ns, name) => {
+            return document.createElement(name);
+        };
 
-        setup_editor() {
+        setup_editor(editor_node) {
             const modelist = ace.require("ace/ext/modelist")
             if (!this.editor) {
-                this.editor = ace.edit(this.editor_node);
+                this.editor = ace.edit(editor_node);
             }
 
-            if (this.opts.text != this.editor.getValue()) {
+            if (this.opts.text !== this.editor.getValue()) {
                 this.editor.setValue(this.opts.text, 1);
             }
             this.editor.setTheme("ace/theme/monokai");
             this.editor.setOptions({fontSize: "18pt"});
-            const mode = modelist.getModeForPath(this.opts.path).mode
+            const mode = modelist.getModeForPath(this.opts.path).mode;
             this.editor.getSession().setMode(mode);
-            this.editor_node.style.height = '90%'; // TODO FIX
+            editor_node.style.height = '90%'; // TODO FIX
             this.editor.resize();
 
             // Whenever the container resizes, make the term fit
-            window.addResizeListener(this.editor_node, () => {
-                this.editor_node.style.height = '90%'; // TODO FIX
+            window.addResizeListener(editor_node, () => {
+                editor_node.style.height = '90%'; // TODO FIX
                 this.editor.resize();
             });
         }
@@ -89,8 +95,10 @@
         }
 
         this.on('mount', () => {
-            this.setup_editor();
+            const {editor_node} = this.refs;
+            console.log('this is eidtoR_node', editor_node);
             this.opts.on('trigger_save', () => this.do_save());
+            this.setup_editor(editor_node);
         });
 
         this.on('update', () => {

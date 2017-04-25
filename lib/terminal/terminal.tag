@@ -19,7 +19,7 @@
     </style>
 
     <div class="terminal-wrapper">
-        <div name="term" class="terminaljs"></div>
+        <div ref="term" class="terminaljs"></div>
     </div>
 
     <script>
@@ -31,8 +31,11 @@
 
         this.on('mount', () => {
             const stream = opts.getIPCStream('term');
+            console.log('ready to do terminal');
+            const {term} = this.refs;
+            console.log('creating term', term);
             // XXX Riot 3 vvvv (switch to refs)
-            create_term(this.term, stream, opts.send);
+            create_term(term, stream, opts.send);
         });
     </script>
 </wb-terminal>

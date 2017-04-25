@@ -70,7 +70,7 @@
         'use strict';
 
         let last_focus = null;
-        trigger_gain_focus (ev) {
+        trigger_gain_focus(ev) {
             ev.preventUpdate = true;
 
             const mount_id = ev.item.mount_id;

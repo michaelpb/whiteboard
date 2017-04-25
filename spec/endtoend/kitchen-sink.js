@@ -1,5 +1,6 @@
 'use strict';
-const {spectronLaunch, waitUntilMounted, strip} = require('elmoed').testutils;
+const lodash = require('lodash');
+const {spectronLaunch, waitUntilMounted, strip, waitUntilBodyText} = require('elmoed').testutils;
 
 describe('Kitchen Sink test slideshow example', () => {
     const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
@@ -12,11 +13,23 @@ describe('Kitchen Sink test slideshow example', () => {
     });
 
     const EXPECTED_START = strip('Terminal and editor TEST1.JS TEST2.HTML').toLowerCase();
-    it('shows an editor and terminal with expected text', done => {
+    it('shows a slide with a term and editor', done => {
         waitUntilMounted(app, () => {
             app.client.getText('body').then(text => {
                 expect(strip(text).toLowerCase()).toContain(EXPECTED_START);
-                done();
+
+                const checkDone = lodash.after(2, done);
+
+                waitUntilBodyText(app, 'var', bodyText => {
+                    expect(strip(bodyText).toLowerCase()).toContain(strip('var example_js_file = true'));
+                    checkDone();
+                });
+
+                waitUntilBodyText(app, '$', bodyText => {
+                    // the PS1 prompt should contain this
+                    expect(strip(bodyText).toLowerCase()).toContain(strip('spec/support/data/kitchen-sink'));
+                    checkDone();
+                });
             });
         });
     });
