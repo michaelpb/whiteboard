@@ -20,10 +20,10 @@ After feature-set settles down:
 - [ ] Unit tests for each module
 
 ### modular-electron-editor
-- [ ] Split off `modular-electron-editor` (contains everything in `lib/`)
-- [ ] Add test discovery system
-- [ ] Add static resource requirement system (e.g. js + img resources)
-- [ ] Re-arrange lib as such:
+- [x] Split off `modular-electron-editor` (contains everything in `lib/`)
+- [x] Add test discovery system
+- [x] Add static resource requirement system (e.g. js + img resources)
+- [x] Re-arrange lib as such:
     * No static or modules directories
     * `lib/` - will be the new `modules` directory
     * `lib/main.js` is the new main, that just calls one function from MEE
