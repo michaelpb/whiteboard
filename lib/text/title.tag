@@ -1,5 +1,9 @@
 <wb-title>
-    <style>
+    <style scoped>
+        h1 {
+            font-size: 7vh;
+            text-align: center;
+        }
         .pane-fullscreen h1 {
             margin-top: 45vh;
             font-size: 10vh;

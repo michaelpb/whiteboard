@@ -11,30 +11,33 @@
         .editor-wrapper .card-content {
             height: 100%;
         }
-        .editor-wrapper ul.tabs,
-        .editor-wrapper ul.tabs a {
-            cursor: default;
-            text-transform: none;
-        }
 
         .upper-right-button {
             bottom: 5px;
             right: 0px;
             position: absolute;
         }
+
+        x-tabs {
+            max-height: 60px;
+        }
     </style>
-    <div class="editor-wrapper card deep-purple darken-4 z-depth-4">
-        <div class="card-content white-text">
-            <ul class="tabs deep-purple darken-4 white-text">
-                <li class="tab col {parent.opts.tab_col_class} " each={opts.tabs}>
-                    <a onclick={change_tab} class="{active: active} deep-purple {white-text: !active} {darken-4: !active} {lighten-4: active} {black-text: active}">{title}</a>
-                </li>
-                <!--
-                <a onclick={do_save} class="btn-floating waves-effect waves-light deep-purple upper-right-button">
-                    <i class="large mdi-content-save"></i>
-                </a>
-                -->
-            </ul>
+    <div class="editor-wrapper">
+        <x-tabs>
+            <virtual each={opts.tabs}>
+                <virtual if={active}>
+                    <x-tab selected>
+                        <x-label>{title}</x-label>
+                    </x-tab>
+                </virtual>
+                <virtual if={!active}>
+                    <x-tab onclick={change_tab}>
+                        <x-label>{title}</x-label>
+                    </x-tab>
+                </virtual>
+            </virtual>
+        </x-tabs>
+        <div class="card-content">
             <div name='editor_node'></div>
         </div>
     </div>
@@ -57,12 +60,12 @@
             this.editor.setOptions({fontSize: "18pt"});
             const mode = modelist.getModeForPath(this.opts.path).mode
             this.editor.getSession().setMode(mode);
-            this.editor_node.style.height = '95%'; // TODO FIX
+            this.editor_node.style.height = '90%'; // TODO FIX
             this.editor.resize();
 
             // Whenever the container resizes, make the term fit
             window.addResizeListener(this.editor_node, () => {
-                this.editor_node.style.height = '95%'; // TODO FIX
+                this.editor_node.style.height = '90%'; // TODO FIX
                 this.editor.resize();
             });
         }

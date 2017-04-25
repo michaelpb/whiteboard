@@ -18,11 +18,8 @@
         }
     </style>
 
-
-    <div class="terminal-wrapper card grey darken-4 z-depth-4">
-        <div class="card-content white-text">
-            <div name="term" class="terminaljs"></div>
-        </div>
+    <div class="terminal-wrapper">
+        <div name="term" class="terminaljs"></div>
     </div>
 
     <script>
