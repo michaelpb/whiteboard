@@ -11,14 +11,14 @@
 
         .terminal-wrapper {
             height: 100%;
-        }
-
-        .terminal-wrapper .card-content {
-            height: 100%;
+            background: black;
+            box-sizing: border-box;
+            padding: 5px;
+            line-height: 18pt;
         }
     </style>
 
-    <div class="terminal-wrapper">
+    <div class="terminal-wrapper xterm-theme-dark">
         <div ref="term" class="terminaljs"></div>
     </div>
 

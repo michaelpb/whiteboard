@@ -1,36 +1,5 @@
 <wb-slide>
-    <style scoped>
-        .outer-pane {
-            /*font-size: 10vmin;*/
-        }
-        .row.single-row {
-            min-height: 10vh;
-            height: 10vh;
-        }
-
-        .row.double-row {
-            min-height: 85vh;
-            height: 85vh;
-        }
-
-        .row.slide-row-half {
-            height: 42vh;
-        }
-
-        /* match inner tags, ensure filling up space */
-        .outer-pane > div,
-        .outer-pane > div > * {
-            height: 100%;
-            width: 100%;
-            min-height: 100%;
-            min-width: 100%;
-            display: block;
-        }
-
-        div.outer-pane.col {
-            height: 100%;
-            display: block;
-        }
+    <style>
 
         /* Full screen pop-up above everything */
         .pane-fullscreen {
@@ -47,22 +16,43 @@
         /* Pane is getting focused */
         /* For debugging: */
         .pane-focused {
-            border: 1px solid red;
+            /*border: 1px solid red;
             border: none;
-            box-shadow: 0px 0px 5px #a00;
+            box-shadow: 0px 0px 5px #a00;*/
+        }
+
+        /* match inner tags, ensure filling up space */
+        div.slide-outer-pane {
+            height: 100%;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .slide-outer-pane > div,
+        .slide-outer-pane > div > * {
+            height: 100%;
+            min-height: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        div.slide-row {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            clear: both;
         }
     </style>
 
-    <div each={opts.pane_rows} class="row {row_panes.length === 1 ? 'single-row' : 'double-row'} {row_class}">
-        <div each={row_panes}
-            class="outer-pane col {column_class}"
-            style={row_style}>
+    <div each={opts.pane_rows} style="height: {height}vh;" class="slide-row">
+        <div each={row_panes} style="width: {width}vw;" class="slide-outer-pane">
             <!-- Generate mount points for each pane contents -->
             <div id="{mount_id}"
                     onmouseenter={trigger_gain_focus}
                     onkeyup={trigger_gain_focus}
-                    onclick={trigger_gain_focus}
-                ></div>
+                    onclick={trigger_gain_focus}>
+            </div>
         </div>
     </div>
 

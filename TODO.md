@@ -1,6 +1,3 @@
-# Next steps
-
-
 # TODO
 
 ## Code quality
@@ -11,8 +8,10 @@ After feature-set settles down:
 
 - [X] Rework code of slide system: Deck.js should be less abstract, more
   practical
-- [ ] Write e2e tests with spectron
+- [X] Write e2e tests with spectron
 - [ ] Unit tests for each module
+    - [ ] Deck
+    - [X] Slide
 
 ### modular-electron-editor
 - [X] Split off `modular-electron-editor` (contains everything in `lib/`)
@@ -51,7 +50,7 @@ After feature-set settles down:
 
 ### Appearance
 - [ ] Remember window state: https://github.com/mawie81/electron-window-state
-- [ ] Layout engine
+- [X] Layout engine
 - [X] Auto-fill screen real-estate
 - [ ] Borders / optional UI on panels
 - [ ] Adjustable font-size
