@@ -135,8 +135,8 @@ describe('Slide', () => {
                 editor: 'lol.js',
                 layout: 'vertical',
             })).toEqual([
-                { width: 100, height: 10, row_panes: [pane_title]},
-                { width: 50, height: 90, row_panes: [pane_terminal, pane_editor]},
+                { width: 100, height: 60, row_panes: [pane_title]},
+                { width: 50, height: 40, row_panes: [pane_terminal, pane_editor]},
             ]);
         });
 
@@ -146,9 +146,9 @@ describe('Slide', () => {
                 terminal: 'thing',
                 html: 'lol',
             })).toEqual([
-                { width: 100, height: 10, row_panes: [pane_title]},
-                { width: 100, height: 45, row_panes: [pane_terminal]},
-                { width: 100, height: 45, row_panes: [pane_html]},
+                { width: 100, height: 60, row_panes: [pane_title]},
+                { width: 100, height: 20, row_panes: [pane_terminal]},
+                { width: 100, height: 20, row_panes: [pane_html]},
             ]);
         });
     });

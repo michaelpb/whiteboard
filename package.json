@@ -49,6 +49,7 @@
     "opn": "4.0.2",
     "riot": "3.4.3",
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
+    "sortablejs": "^1.5.1",
     "tmp": "0.0.31",
     "xel": "0.0.12",
     "xterm": "2.4.0"

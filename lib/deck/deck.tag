@@ -34,7 +34,7 @@
                 <x-label>Slide</x-label>
             </x-box>
         </x-button>
-        <div ondragstart={dragstart} each={opts.slides} onclick={activate} class="{deck-drawer-selected: is_active}">
+        <div each={opts.slides} onclick={activate} class="deck-drawer-wrapper {deck-drawer-selected: is_active}" data-slideid={id}>
             <wb-slide-preview panerows={panerows}>
             </wb-slide-preview>
         </div>
@@ -63,6 +63,8 @@
     -->
 
     <script>
+        'use strict';
+        const Sortable = require("sortablejs/Sortable");
         activate(ev) {
             ev.preventUpdate = true;
             opts.send('activate', ev.item.id);
@@ -87,6 +89,21 @@
             document.getElementById('slides_drawer').opened = true;
         }
 
+        setup_sortable() {
+            const drawer = document.getElementById('slides_drawer');
+            const sortable = Sortable.create(drawer, {
+                draggable: '.deck-drawer-wrapper',
+                dataIdAttr: 'data-slideid',
+                onEnd: () => {
+                    opts.send('reorder', sortable.toArray());
+                },
+            });
+        }
+
+        this.on('updated', () => {
+            this.setup_sortable();
+        });
+
         this.on('mount', function () {
             document.body.style.background = 'white'; // Hack to fix
             document.getElementById('splash').remove(); // delete splash
@@ -101,9 +118,10 @@
                 return false;
             }, false);
 
+            this.setup_sortable();
+            const drawer = document.getElementById('slides_drawer');
             opts.on('toggle_deck', () => {
-                const deck = document.getElementById('slides_drawer');
-                deck.opened = !deck.opened;
+                drawer.opened = !drawer.opened;
             });
         });
     </script>
