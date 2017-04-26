@@ -50,13 +50,13 @@ describe('Slide', () => {
         const PANE_4 = {hint: {}, num: 4};
         const PANE_T1 = {hint: {prefer_top: true}, num: 5};
         const PANE_T2 = {hint: {prefer_top: true}, num: 6};
-        fit('lays out an empty list', () => {
+        it('lays out an empty list', () => {
             expect(layout_rows('grid', [])).toEqual([]);
             expect(layout_rows('vertical', [])).toEqual([]);
             expect(layout_rows('horizontal', [])).toEqual([]);
         });
 
-        fit('lays out a standard 3 pane vertical look', () => {
+        it('lays out a standard 3 pane vertical look', () => {
             expect(layout_rows('vertical', [
                 PANE_1,
                 PANE_2,
@@ -75,7 +75,7 @@ describe('Slide', () => {
             ]);
         });
 
-        fit('lays out a standard 3 pane grid look', () => {
+        it('lays out a standard 3 pane grid look', () => {
             expect(layout_rows('grid', [
                 PANE_1,
                 PANE_2,
@@ -94,7 +94,7 @@ describe('Slide', () => {
             ]);
         });
 
-        fit('lays out a standard 3 pane horizontal look', () => {
+        it('lays out a standard 3 pane horizontal look', () => {
             expect(layout_rows('horizontal', [
                 PANE_1,
                 PANE_2,
@@ -118,7 +118,7 @@ describe('Slide', () => {
             ]);
         });
 
-        fit('lays out a 6 pane horizontal look', () => {
+        it('lays out a 6 pane horizontal look', () => {
             expect(layout_rows('horizontal', [
                 PANE_1,
                 PANE_2,
@@ -160,7 +160,7 @@ describe('Slide', () => {
             ]);
         });
 
-        fit('lays out a 5 pane grid', () => {
+        it('lays out a 5 pane grid', () => {
             expect(layout_rows('grid', [
                 PANE_1,
                 PANE_2,
