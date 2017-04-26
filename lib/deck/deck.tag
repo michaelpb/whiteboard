@@ -3,19 +3,41 @@
         li.collection-item {
             cursor: default;
         }
+
+        .deck-drawer x-button {
+            text-align: center;
+            width: 100%;
+        }
+
+        .deck-drawer {
+            overflow-y: auto;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .deck-drawer-selected {
+            background-color: whiteSmoke;
+        }
+
+        x-button img {
+            height: 18px;
+            width: 18px;
+        }
     </style>
 
     <!--<bubble-beam onclick={toggle_deck}></bubble-beam>-->
 
-    <x-drawer id="slides_drawer" position="left">
-        <x-box each={opts.slides}>
-            <x-card onclick={activate}>
-                <span if={is_active}>
-                    XXX
-                </span>
-                &nbsp; &nbsp; &nbsp; {title}
-            </x-card>
-        </x-box>
+    <x-drawer id="slides_drawer" position="left" class="deck-drawer">
+        <x-button onclick={add_slide}>
+            <x-box>
+                <img src="svg/si-glyph-plus.svg" />
+                <x-label>Slide</x-label>
+            </x-box>
+        </x-button>
+        <div ondragstart={dragstart} each={opts.slides} onclick={activate} class="{deck-drawer-selected: is_active}">
+            <wb-slide-preview panerows={panerows}>
+            </wb-slide-preview>
+        </div>
     </x-drawer>
 
     <div id="editor_pane"></div>
@@ -46,15 +68,18 @@
             opts.send('activate', ev.item.id);
         }
 
+        add_slide(ev) {
+            ev.preventUpdate = true;
+            opts.send('add_slide');
+        }
+
         next_slide(ev) {
             ev.preventUpdate = true;
-            console.log('next slide');
             opts.send('next_slide');
         }
 
         previous_slide(ev) {
             ev.preventUpdate = true;
-            console.log('prevoius slide');
             opts.send('previous_slide');
         }
 

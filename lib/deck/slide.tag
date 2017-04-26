@@ -111,3 +111,51 @@
         });
     </script>
 </wb-slide>
+
+<wb-slide-preview>
+    <style>
+        :scope {
+            display: inline-block;
+            height: 200px;
+            width: 240px;
+            margin: 20px;
+            padding: 5px;
+            text-align: center;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /* match inner tags, ensure filling up space */
+        div.slide-preview-pane {
+            height: 100%;
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            overflow: hidden;
+        }
+
+        div.slide-preview-row {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .slide-preview-title {
+            font-size: 24pt;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            background: 1px solid gray;
+        }
+    </style>
+    <div each={opts.panerows} style="height: {height}%;"  class="slide-preview-row">
+        <div each={row_panes} style="width: {width}%;" class="slide-preview-pane">
+            <!-- Generate mount points for each pane contents -->
+            <raw html={preview}></raw>
+        </div>
+    </div>
+</wb-slide-preview>
+

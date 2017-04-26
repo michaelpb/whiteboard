@@ -49,10 +49,10 @@ After feature-set settles down:
 - [ ] Drag n drop re-arrange panels and/or slides
 
 ### Appearance
+- [ ] Slide preview generator
 - [ ] Remember window state: https://github.com/mawie81/electron-window-state
 - [X] Layout engine
 - [X] Auto-fill screen real-estate
-- [ ] Borders / optional UI on panels
 - [ ] Adjustable font-size
 - [X] Switch UI framework from Materialize (switched to Xel)
 

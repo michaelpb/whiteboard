@@ -13,7 +13,7 @@
             height: 100%;
             background: black;
             box-sizing: border-box;
-            padding: 5px;
+            padding: 3px;
             line-height: 18pt;
         }
     </style>
