@@ -1,9 +1,5 @@
 <wb-editor>
     <style scoped>
-        .aceeditor-wrapper {
-            height: 500px;
-        }
-
         .editor-wrapper {
             height: 100%;
         }
@@ -19,10 +15,13 @@
         }
 
         x-tabs {
-            max-height: 60px;
+            height: 60px;
         }
     </style>
     <div class="editor-wrapper">
+        <!-- BUG WITH EDITOR: Because the tabs do not have an explicit width in
+        horizontal layout (!??) they cannot do the animation transiaiton, and
+        thus never even get an onclick event -->
         <x-tabs>
             <virtual each={opts.tabs}>
                 <virtual if={active}>
@@ -37,9 +36,7 @@
                 </virtual>
             </virtual>
         </x-tabs>
-        <div class="card-content">
-            <div ref="editor_node"></div>
-        </div>
+        <div class="editor-actual-node" ref="editor_node"></div>
     </div>
 
 
@@ -66,12 +63,12 @@
             this.editor.setOptions({fontSize: "18pt"});
             const mode = modelist.getModeForPath(this.opts.path).mode;
             this.editor.getSession().setMode(mode);
-            editor_node.style.height = '90%'; // TODO FIX
+            editor_node.style.height = 'calc(100% - 60px)';
             this.editor.resize();
 
             // Whenever the container resizes, make the term fit
             window.addResizeListener(editor_node, () => {
-                editor_node.style.height = '90%'; // TODO FIX
+                editor_node.style.height = 'calc(100% - 60px)';
                 this.editor.resize();
             });
         }
@@ -80,11 +77,6 @@
             ev.preventUpdate = true;
             const {active, path} = ev.item;
             this.opts.send('change_tab', this.editor.getValue(), path);
-            if (active) {
-                // already active, do nothing
-            } else {
-                this.opts.send('activate', path);
-            }
         }
 
         do_save(ev) {
@@ -99,15 +91,6 @@
             console.log('this is eidtoR_node', editor_node);
             this.opts.on('trigger_save', () => this.do_save());
             this.setup_editor(editor_node);
-        });
-
-        this.on('update', () => {
-            const tabs = this.opts.tabs || ['dummy'];
-            const len = Math.floor(12 / (tabs.length || 1));
-            const MIN = 1;
-            const MAX = 4;
-            const col_width = Math.max(Math.min(len, MAX), MIN);
-            this.opts.tab_col_class = `s${col_width}`;
         });
 
         this.on('updated', () => {
