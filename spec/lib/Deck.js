@@ -33,7 +33,7 @@ describe('Deck', () => {
     });
 
     describe('when opening an empty file', () => {
-        fit('sets up a menu', (done) => {
+        it('sets up a menu', (done) => {
             manager.createWindow('deck', deck => {
                 const menu = electron._getMockedMenu();
                 expect(menu).toBeTruthy();
@@ -41,7 +41,7 @@ describe('Deck', () => {
             }, {creating: true});
         });
 
-        fit('sets up a single slide placeholder', (done) => {
+        it('sets up a single slide placeholder', (done) => {
             manager.createWindow('deck', deck => {
                 expect(deck.slide_ids.length).toEqual(1);
                 expect(deck.active_slide_id).toBeTruthy();
