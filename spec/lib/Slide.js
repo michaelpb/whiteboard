@@ -100,6 +100,12 @@ describe('Slide', () => {
                 { width: 50, height: 45, row_panes: [PANE_3, PANE_4], },
             ]);
         });
+
+        it('lays out a single title', () => {
+            expect(layout_rows('horizontal', [PANE_T1])).toEqual([
+                { width: 100, height: 100, row_panes: [PANE_T1], },
+            ]);
+        });
     });
 
     describe('has a static function layout_pane_previews which', () => {
@@ -123,7 +129,7 @@ describe('Slide', () => {
         const pane_editor = {hint: {}, preview: '--'};
         const pane_html = {
             hint: {},
-            preview: Slide.get_default_iconic_preview('html'),
+            preview: Slide.get_default_iconic_preview('lol'),
         };
 
         const {layout_pane_previews} = Slide;
@@ -150,6 +156,13 @@ describe('Slide', () => {
                 { width: 100, height: 20, row_panes: [pane_terminal]},
                 { width: 100, height: 20, row_panes: [pane_html]},
             ]);
+        });
+
+        it('lays out a single title', () => {
+            expect(layout_pane_previews(manager, {title: 'test-title'}))
+                .toEqual([
+                    {width: 100, height: 100, row_panes: [pane_title]},
+                ]);
         });
     });
 });
