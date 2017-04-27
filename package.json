@@ -59,6 +59,7 @@
     "electron-rebuild": "1.5.7",
     "jasmine": "2.4.1",
     "jasmine-spec-reporter": "4.0.0",
+    "mockery": "^2.0.0",
     "spectron": "3.6.2"
   }
 }

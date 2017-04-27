@@ -40,7 +40,7 @@
         </div>
     </x-drawer>
 
-    <div id="editor_pane"></div>
+    <div id="current_slide"></div>
 
     <!-- Next and previous controls -->
     <!--
