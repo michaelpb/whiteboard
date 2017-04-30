@@ -11,7 +11,7 @@ After feature-set settles down:
 - [X] Write e2e tests with spectron
 - [ ] Improve e2e tests to properly shutdown PTY
 - [X] Unit tests for each module
-    - [ ] Deck
+    - [X] Deck
     - [X] Editor
     - [ ] Terminal
     - [X] Slide

@@ -73,7 +73,10 @@
             // Add the focus class to the current element
             if (last_focus !== null) {
                 const el = document.getElementById(last_focus);
-                el.classList.remove('pane-focused');
+                if (el) {
+                    window.log('last focus was not null, but invalid nonetheless', last_focus);
+                    el.classList.remove('pane-focused');
+                }
             }
             last_focus = mount_id;
             const el = document.getElementById(mount_id);
