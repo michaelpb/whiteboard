@@ -12,6 +12,8 @@ After feature-set settles down:
 - [ ] Improve e2e tests to properly shutdown PTY
 - [X] Unit tests for each module
     - [ ] Deck
+    - [X] Editor
+    - [ ] Terminal
     - [X] Slide
 
 ### modular-electron-editor
@@ -28,11 +30,12 @@ After feature-set settles down:
 
 Two extremely critical bugs persist:
 
-- [ ] Returning to slide with Editor breaks tabs
+- [X] Returning to slide with Editor breaks tabs
     - When switching to a new slide, then switching back again editor tabs will
       no longer work, and instead flicker on and off again the wrong tab
-- [ ] Seemingly randomly, after some use, toggling maximization will do it for
-  the wrong app
+- [X] Seemingly randomly, after some use, toggling maximization will do it for
+  the wrong pane
+    - Probably fixed..?
 
 
 ## Per-app
@@ -43,8 +46,7 @@ Two extremely critical bugs persist:
   restart.
 
 ### Editor
-- [ ] BUG: Too many tabs becomes unusable, needs a "More v" button with full
-  list or something
+- [X] BUG: Too many tabs becomes unusable
 
 
 ## Topical
@@ -52,9 +54,8 @@ Two extremely critical bugs persist:
 ### Deck editing
 - [X] Add slide
 - [X] Add pane
-- [ ] Delete slide
-- [ ] Delete pane
-- [ ] Edit pane
+- [X] Delete slide
+- [X] Delete pane
 - [ ] Drag-and-drop auto-creation
     - Top-level folders turn into slides
     - Recurse down and files become various panes (based on mimetype)
@@ -65,7 +66,7 @@ Two extremely critical bugs persist:
     - [ ] Slide-level options window (layout ?)
     - [ ] Pane-level options window (per-editor options)
 - [X] Zero state: new deck
-- [ ] Drag n drop re-arrange panels and/or slides
+- [ ] Drag n drop re-arrange panes
 
 ### Appearance
 - [X] Slide preview generator
@@ -85,6 +86,10 @@ Two extremely critical bugs persist:
 ## Editor
 - [X] Autodetect filetype
 - [X] Support glob syntax for loading
+- [X] Save as
+- [X] Open new tabs
+- [X] Close tabs
+- [X] Zero state
 
 ## Misc
 - [ ] Add Help menu option with about window:
@@ -109,6 +114,6 @@ Two extremely critical bugs persist:
 - Physics demos
 - Graphs
 - Embedded media (videos, etc)
-- Finish browser that maintains state
+- Finished browser that maintains state
 - Draw on top of any pane
 - Zip-based file format

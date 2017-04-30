@@ -33,12 +33,13 @@ with npm test~
 ## Running
 
 1. Create a file called `test_whiteboard.cfg`:
-- ```
-[slide]
-title = Terminal and editor
-editor : ./testfile.js
-terminal = ./
-```
+
+    [slide]
+    title = Terminal and editor
+    editor : ./testfile.js
+    terminal = ./
+
+
 2. Run `npm run start -- test_whiteboard.cfg` to launch
 
 
@@ -46,34 +47,30 @@ terminal = ./
 
 Example slideshow:
 
-```
+        [slide]
+        title=POST Request Activity
+        terminal=./01-POST_Request/
+        editor=scratch.js, ./01-POST_Request/*.js
 
-[slide]
-title=POST Request Activity
-terminal=./01-POST_Request/
-editor=scratch.js, ./01-POST_Request/*.js
+        [slide]
+        # comments are ignored
+        title = POST Continued
+        terminal = ./01-POST_Request/
 
-[slide]
-# comments are ignored
-title = POST Continued
-terminal = ./01-POST_Request/
-content = text.md
+        [slide]
+        title = Example
+        terminal = ./03-Example/
+        editor : '''
+            ./03-Example/file_01.js
+            ./03-Example/file_02.js
+        '''
+        markdown : '''
+        ## This is how you do a POST request
 
-[slide]
-title = Example
-terminal = ./03-Example/
-editor : '''
-    ./03-Example/file_01.js
-    ./03-Example/file_02.js
-'''
-markdown : '''
-## This is how you do a POST request
+        1. Send the request
+        2. Process the response
 
-1. Send the request
-2. Process the response
-
-[More info](http://babiesfirstpostrequest.info/)
-'''
-```
+        [More info](http://babiesfirstpostrequest.info/)
+        '''
 
 

@@ -49,6 +49,7 @@
         <div each={row_panes} style="width: {width}vw;" class="slide-outer-pane">
             <!-- Generate mount points for each pane contents -->
             <div id="{mount_id}"
+                    data-typename="{typename}"
                     onmouseenter={trigger_gain_focus}
                     onkeyup={trigger_gain_focus}
                     onclick={trigger_gain_focus}>
@@ -83,23 +84,29 @@
             this.opts.send('change_focus', mount_id);
         }
 
-        let current_max_pane = null;
-        function toggle_maximized_pane() {
-            if (current_max_pane === null) {
-                // Toggling on current focus
-                current_max_pane = last_focus;
-                const el = document.getElementById(current_max_pane);
-                el.classList.add('pane-fullscreen');
-            } else {
-                // Toggling off
-                const el = document.getElementById(current_max_pane);
-                el.classList.remove('pane-fullscreen');
-                current_max_pane = null;
+        function unmaximize_panes() {
+            const panes = document.querySelectorAll('.pane-fullscreen');
+            for (const pane of panes) {
+                pane.classList.remove('pane-fullscreen');
             }
         }
 
+        function maximize_pane(typename) {
+            // Toggling on current focus
+            unmaximize_panes();
+            let el = document.querySelector(`[data-typename="${typename}"]`);
+            if (!el) {
+                el = document.getElementById(last_focus);
+            }
+            el.classList.add('pane-fullscreen');
+        }
+
         this.on('mount', () => {
-            this.opts.on('toggle_maximized_pane', toggle_maximized_pane);
+            this.opts.on('maximize_pane', maximize_pane);
+            this.opts.on('unmaximize_pane', unmaximize_panes);
+            if (this.opts.maximized_pane) {
+                maximize_pane(this.opts.maximized_pane);
+            }
         });
 
         this.on('updated', () => {
@@ -107,6 +114,9 @@
             // remount the editors
             if (this.opts._needs_remount) {
                 this.opts.send('remount_editors');
+            }
+            if (this.opts.maximized_pane) {
+                maximize_pane(this.opts.maximized_pane);
             }
         });
     </script>

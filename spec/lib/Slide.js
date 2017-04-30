@@ -36,6 +36,22 @@ describe('Slide', () => {
             }, {testpane: 'test'});
         });
 
+        it('can toggle maximized pane', (done) => {
+            manager.createWindow('slide', slide => {
+                expect(slide.maximized_pane).not.toBeTruthy();
+                expect(slide.getProps().maximized_pane).not.toBeTruthy();
+                slide.toggle_maximize('testpane');
+                expect(slide.getProps().maximized_pane).toBeTruthy();
+                expect(slide.maximized_pane).toBeTruthy();
+                expect(slide.maximized_pane).toEqual('testpane');
+                expect(slide.getProps().maximized_pane).toEqual('testpane');
+                slide.toggle_maximize('testpane');
+                expect(slide.maximized_pane).not.toBeTruthy();
+                expect(slide.getProps().maximized_pane).not.toBeTruthy();
+                done();
+            }, {testpane: 'test'});
+        });
+
         afterEach(() => {
             manager = null;
         });

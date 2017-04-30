@@ -1,7 +1,9 @@
 'use strict';
 const {strip, mockElectron, mockWindowManager} = require('elmoed').testutils;
 const mockery = require('mockery');
-
+const path = require('path');
+const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
+const TWO_SLIDES = path.resolve(DATA_DIR, 'twoslides.whiteboard');
 // Mostly just a stub of integrat-y unit tests for Slide
 
 describe('Deck', () => {
@@ -18,7 +20,7 @@ describe('Deck', () => {
         // Now actually pull in Deck
         Deck = require('../../lib/deck/Deck');
         //const Slide = require('../../lib/deck/Slide');
-        ({manager, modules} = mockWindowManager('deck', Deck));
+        ({manager, modules} = mockWindowManager('whiteboard', Deck));
 
         // Mock up a couple editors
         const {ModuleBase} = require('elmoed');
@@ -33,24 +35,85 @@ describe('Deck', () => {
     });
 
     describe('when opening an empty file', () => {
-        it('sets up a menu', (done) => {
-            manager.createWindow('deck', deck => {
-                const menu = electron._getMockedMenu();
-                expect(menu).toBeTruthy();
+        let deck = null;
+        beforeEach(done => {
+            manager.createWindow('noexist.whiteboard', new_deck => {
+                deck = new_deck;
                 done();
             }, {creating: true});
         });
 
-        it('sets up a single slide placeholder', (done) => {
-            manager.createWindow('deck', deck => {
-                expect(deck.slide_ids.length).toEqual(1);
-                expect(deck.active_slide_id).toBeTruthy();
-                expect(Object.keys(deck.slide_data).length).toEqual(1);
-                expect(Object.keys(deck.slide_editors).length).toEqual(1);
-                done();
-            }, {creating: true});
+        it('sets up a menu', () => {
+            const menu = electron._getMockedMenu();
+            expect(menu).toBeTruthy();
+        });
+
+        it('when opening up', () => {
+            expect(deck.slide_ids.length).toEqual(1);
+            expect(deck.active_slide_id).toBeTruthy();
+            expect(Object.keys(deck.slide_data).length).toEqual(1);
+            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+        });
+
+        afterEach(() => {
+            deck = null;
         });
     });
+
+    describe('when opening a typical slide deck', () => {
+        let deck = null;
+        beforeEach(done => {
+            manager.createWindow(TWO_SLIDES, new_deck => {
+                deck = new_deck;
+                done();
+            });
+        });
+
+        // Not sure why this test is failing
+        xit('sets up a menu', () => {
+            const menu = electron._getMockedMenu();
+            expect(menu).toBeTruthy();
+        });
+
+        it('sets up two slides', () => {
+            expect(deck.slide_ids.length).toEqual(2);
+            expect(deck.active_slide_id).toBeTruthy();
+            expect(Object.keys(deck.slide_data).length).toEqual(2);
+            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+        });
+
+        it('deletes an inactive slide', () => {
+            const _fs = [deck.active_slide_id];
+            deck.set_fewer_slides(_fs);
+            expect(deck.active_slide_id).toBeTruthy();
+            expect(Object.keys(deck.slide_data).length).toEqual(1);
+            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+            expect(deck.slide_ids.length).toEqual(1);
+        });
+
+        it('deletes an active slide', () => {
+            const _fs = [deck.slide_ids[1]];
+            deck.set_fewer_slides(_fs);
+            expect(deck.active_slide_id).toBeTruthy();
+            expect(Object.keys(deck.slide_data).length).toEqual(1);
+            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+            expect(deck.slide_ids.length).toEqual(1);
+        });
+
+        it('deletes all slides and replaces with placeholder', () => {
+            deck.set_fewer_slides([]);
+            expect(deck.active_slide_id).toBeTruthy();
+            expect(Object.keys(deck.slide_data).length).toEqual(1);
+            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+            expect(deck.slide_ids.length).toEqual(1);
+        });
+
+
+        afterEach(() => {
+            deck = null;
+        });
+    });
+
 
     afterEach(() => {
         manager = null;

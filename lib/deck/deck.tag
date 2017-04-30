@@ -9,14 +9,29 @@
             width: 100%;
         }
 
-        .deck-drawer {
-            overflow-y: auto;
-            overflow-x: hidden;
+        .deck-drawer x-button {
             text-align: center;
+            width: 100%;
+        }
+
+        .deck-drawer-trash-icon {
+            opacity: 0.5;
+            height: 50%;
+            bottom: 25%;
+            position: absolute;
+            top: 25%;
         }
 
         .deck-drawer-selected {
             background-color: whiteSmoke;
+        }
+
+        #slides_trash {
+            height: 50%;
+        }
+
+        #slides_trash .deck-drawer-wrapper {
+            height:  40px;
         }
 
         x-button img {
@@ -24,8 +39,6 @@
             width: 18px;
         }
     </style>
-
-    <!--<bubble-beam onclick={toggle_deck}></bubble-beam>-->
 
     <x-drawer id="slides_drawer" position="left" class="deck-drawer">
         <x-button onclick={add_slide}>
@@ -40,27 +53,11 @@
         </div>
     </x-drawer>
 
+    <x-drawer id="slides_trash" position="right" class="deck-drawer">
+        <img src="svg/si-glyph-trash.svg" class="deck-drawer-trash-icon" />
+    </x-drawer>
+
     <div id="current_slide"></div>
-
-    <!-- Next and previous controls -->
-    <!--
-    <div class="right-pane">
-        <div id="editor_pane"></div>
-    </div>
-    <div class="fixed-action-btn hide-without-mouse {hidden: opts.pane_visible}"
-            style="left: 10px; top: 10px;">
-        <a class="btn-floating btn-large brown lighten-1" onclick={previous_slide}>
-            <i class="large mdi-navigation-arrow-back"></i>
-        </a>
-    </div>
-
-    <div class="fixed-action-btn hide-without-mouse {hidden: opts.pane_visible}"
-            style="right: 10px; top: 10px;">
-        <a class="btn-floating btn-large brown lighten-1" onclick={next_slide}>
-            <i class="large mdi-navigation-arrow-forward"></i>
-        </a>
-    </div>
-    -->
 
     <script>
         'use strict';
@@ -85,17 +82,39 @@
             opts.send('previous_slide');
         }
 
-        toggle_deck(ev) {
-            document.getElementById('slides_drawer').opened = true;
-        }
-
         setup_sortable() {
             const drawer = document.getElementById('slides_drawer');
+            const trashDrawer = document.getElementById('slides_trash');
+            const origHTML = trashDrawer.innerHTML;
+            let was_trashed = false;
             const sortable = Sortable.create(drawer, {
+                group: 'slides',
                 draggable: '.deck-drawer-wrapper',
                 dataIdAttr: 'data-slideid',
+                onStart: () => {
+                    was_trashed = false;
+                    slides_trash.opened = true;
+                },
                 onEnd: () => {
-                    opts.send('reorder', sortable.toArray());
+                    if (!was_trashed) {
+                        // send reorder event if we didn't just trash a
+                        // slide
+                        opts.send('reorder', sortable.toArray());
+                    }
+                    slides_trash.opened = false;
+                },
+            });
+            const sortable2 = Sortable.create(trashDrawer, {
+                group: {
+                    name: 'trash',
+                    put: ['slides'],
+                },
+                draggable: '.deck-drawer-wrapper',
+                dataIdAttr: 'data-slideid',
+                onAdd: evt => {
+                    was_trashed = true;
+                    slides_trash.innerHTML = origHTML;
+                    opts.send('set_fewer_slides', sortable.toArray());
                 },
             });
         }

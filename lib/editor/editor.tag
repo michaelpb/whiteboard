@@ -16,22 +16,30 @@
 
         x-tabs {
             height: 60px;
+            overflow-x: auto;
         }
     </style>
     <div class="editor-wrapper">
-        <!-- BUG WITH EDITOR: Because the tabs do not have an explicit width in
-        horizontal layout (!??) they cannot do the animation transiaiton, and
-        thus never even get an onclick event -->
         <x-tabs>
             <virtual each={opts.tabs}>
                 <virtual if={active}>
                     <x-tab selected>
-                        <x-label>{title}</x-label>
+                        <x-label>
+                            <virtual if={edited}>
+                                &bull;
+                            </virtual>
+                            {title}
+                        </x-label>
                     </x-tab>
                 </virtual>
                 <virtual if={!active}>
                     <x-tab onclick={change_tab}>
-                        <x-label>{title}</x-label>
+                        <x-label>
+                            <virtual if={edited}>
+                                &bull;
+                            </virtual>
+                            {title}
+                        </x-label>
                     </x-tab>
                 </virtual>
             </virtual>
@@ -76,20 +84,29 @@
         change_tab(ev) {
             ev.preventUpdate = true;
             const {active, path} = ev.item;
-            this.opts.send('change_tab', this.editor.getValue(), path);
+            this.opts.send('change_tab', this.editor.getValue(), this.opts.path, path);
         }
 
-        do_save(ev) {
+        clear_bullet() {
+        }
+
+        add_bullet() {
+        }
+
+        do_save(ev, is_saveas) {
             if (ev) {
                 ev.preventUpdate = true;
             }
-            this.opts.send('save', this.editor.getValue());
+            const name = is_saveas ? 'saveas' : 'save';
+            clear_bullet();
+            this.opts.send(name, this.editor.getValue());
         }
 
         this.on('mount', () => {
             const {editor_node} = this.refs;
             console.log('this is eidtoR_node', editor_node);
             this.opts.on('trigger_save', () => this.do_save());
+            this.opts.on('trigger_save_as', () => this.do_save(null, true));
             this.setup_editor(editor_node);
         });
 
