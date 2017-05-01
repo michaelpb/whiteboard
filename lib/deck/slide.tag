@@ -129,7 +129,7 @@
     <style>
         :scope {
             display: inline-block;
-            height: 200px;
+            height: 150px;
             width: 240px;
             margin: 20px;
             padding: 5px;

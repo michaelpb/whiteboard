@@ -44,6 +44,10 @@ Two extremely critical bugs persist:
 ### Terminal
 - [ ] BUG: Error when bash exits (e.g. `Ctrl+D`). Should detect and offer to
   restart.
+- [ ] BUG: When window is closed, bash still keeps on running in background.
+    - Solution: Add feature to elmoed that keeps track of all editors per
+      window, then trigger cleanup for all editors on window close, and kill
+      child processes.
 
 ### Editor
 - [X] BUG: Too many tabs becomes unusable
@@ -70,7 +74,7 @@ Two extremely critical bugs persist:
 
 ### Appearance
 - [X] Slide preview generator
-- [ ] Remember window state: https://github.com/mawie81/electron-window-state
+- [X] Remember window state (maybe https://github.com/mawie81/electron-window-state)
 - [X] Layout engine
 - [X] Auto-fill screen real-estate
 - [X] Switch UI framework from Materialize (switched to Xel)
@@ -81,7 +85,6 @@ Two extremely critical bugs persist:
 ### Tab persistence
 - [X] Save state for editor
 - [X] Save state for terminal
-
 
 ## Editor
 - [X] Autodetect filetype

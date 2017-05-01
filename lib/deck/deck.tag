@@ -1,9 +1,5 @@
 <wb-deck>
     <style scoped>
-        li.collection-item {
-            cursor: default;
-        }
-
         .deck-drawer x-button {
             text-align: center;
             width: 100%;
@@ -15,7 +11,7 @@
         }
 
         .deck-drawer-trash-icon {
-            opacity: 0.5;
+            opacity: 0.3;
             height: 50%;
             bottom: 25%;
             position: absolute;
@@ -24,6 +20,10 @@
 
         .deck-drawer-selected {
             background-color: whiteSmoke;
+        }
+        #slides_drawer {
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         #slides_trash {
@@ -34,16 +34,24 @@
             height:  40px;
         }
 
-        x-button img {
+        x-button img.deck-svg {
             height: 18px;
             width: 18px;
+        }
+        x-button img.deck-logo {
+            height: 64px;
+            width: 64px;
         }
     </style>
 
     <x-drawer id="slides_drawer" position="left" class="deck-drawer">
+        <x-button onclick={show_settings} skin="textured">
+            <img src="img/icon.png" class="deck-logo" />
+        </x-button>
+
         <x-button onclick={add_slide}>
             <x-box>
-                <img src="svg/si-glyph-plus.svg" />
+                <img src="svg/si-glyph-plus.svg" class="deck-svg" />
                 <x-label>Slide</x-label>
             </x-box>
         </x-button>
@@ -51,6 +59,7 @@
             <wb-slide-preview panerows={panerows}>
             </wb-slide-preview>
         </div>
+
     </x-drawer>
 
     <x-drawer id="slides_trash" position="right" class="deck-drawer">
@@ -125,7 +134,6 @@
 
         this.on('mount', function () {
             document.body.style.background = 'white'; // Hack to fix
-            document.getElementById('splash').remove(); // delete splash
 
             // show main element
             document.getElementById('main').style.display = "block";
