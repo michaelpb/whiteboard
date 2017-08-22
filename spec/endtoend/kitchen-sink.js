@@ -6,7 +6,7 @@ function _scrub(s) {
     return s.replace(/\W+/g, ''); // scrub non word chars
 }
 
-describe('Kitchen Sink test slideshow example', () => {
+xdescribe('Kitchen Sink test slideshow example', () => {
     const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
     let app = null;
     beforeEach(function(done) {
@@ -21,9 +21,8 @@ describe('Kitchen Sink test slideshow example', () => {
         waitUntilMounted(app, () => {
             app.client.getText('body').then(text => {
                 expect(strip(text).toLowerCase()).toContain(EXPECTED_START);
-                done();
+                // done();
 
-                /*
                 const checkDone = lodash.after(2, done);
 
                 waitUntilBodyText(app, 'var', bodyText => {
@@ -38,7 +37,6 @@ describe('Kitchen Sink test slideshow example', () => {
                         .toContain(_scrub('spec/support/data/kitchen-sink'));
                     checkDone();
                 });
-                */
             });
         });
     });
