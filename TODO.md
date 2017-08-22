@@ -1,5 +1,71 @@
 # TODO
 
+## Top Priority
+
+### Critical bugs
+- [ ] BUG: Rare bug where code editor stops working somehow
+- [ ] BUG: Rare bug where maximize stops working
+
+### Appearance
+- [X] Upgrade to latest Xel
+- [ ] Debug Xel Vanilla/Galaxy theme issues
+    - [ ] Change form material to Vanilla
+
+### Code quality
+- [X] Clean up unused packages
+- [X] Upgrade package versions
+- [ ] Remove use of deprecated functions
+- [ ] Add linting rules
+
+### Checklist
+- [X] Title
+- [ ] Code editor
+    - [ ] BUG: Can't "Save as" after creating new tab
+- [ ] Terminal
+- [ ] Markdown
+
+### Saving/loading features
+- [X] Blank state
+    - should work if running without any arguments
+    - half-assed solution: default to "new file" in tmp directory, maybe..?
+- [X] Add/remove panel
+- [X] Edit panel
+    - [X] Edit title (can even be "prompt")
+    - [X] Add or remove editor tabs
+    - [X] Edit markdown (simple textbox (?))
+- [ ] Save & Save As
+- [ ] Load
+- [ ] Load directory (import)
+
+
+### Packaging
+- [ ] Move to GitHub
+- [ ] Win/Lin/Mac
+- [ ] Filetype associations
+
+
+### High-Prio Nice to Haves
+- [ ] "Blow-up"
+    - Simpler solution to "whiteboard" annotations: Like shutter, select an
+      area of the screen to create a blowup (creates and saves a png image).
+      This allows for parts of the presentation to be focused on, and
+      annotated, and the annotations to be "returnable", e.g. one important
+      part of code or a website could be blown up and then diagrammed.
+    - [ ] Blowups can be created (selecting screen area)
+    - [ ] Blowups are stored in a top-level "blowups" editor (at the same level
+      as slides)
+    - [ ] A slide-editor like interface can drop in from the right to select
+      blow ups
+    - [ ] They can be viewed and drawn on (1 simple marker for now)
+
+```
+[blowup]
+background = _wb_blowups/01_fg.png
+foreground = _wb_blowups/01_bg.png
+
+```
+
+
 ## Code quality
 
 ### Tests
@@ -93,6 +159,7 @@ Two extremely critical bugs persist:
 - [X] Open new tabs
 - [X] Close tabs
 - [X] Zero state
+- [ ] "Autosave" option
 
 ## Misc
 - [ ] Add Help menu option with about window:

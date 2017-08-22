@@ -1,0 +1,7 @@
+#!/bin/bash
+
+google-font-download \
+    "Roboto:300" "Roboto:400" "Roboto:400italic" \
+    "Roboto:700" "Roboto:700italic" \
+    "Roboto Mono:300" "Roboto Mono:400" "Roboto:400italic" \
+    "Roboto Mono:700" "Roboto Mono:700italic"
