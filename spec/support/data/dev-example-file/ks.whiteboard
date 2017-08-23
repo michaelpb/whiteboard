@@ -1,20 +1,11 @@
 [slide]
-title=Yet Another slide
+title=Terminal and editor
 editor:"""
-/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new editor
-/home/michaelb/projects/whiteboard/spec/support/data/deck/twoslides.whiteboard
+/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/testdir/test1.js
+/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/testdir/test2.html
 """
 
-markdown:"""
-# This is my new example!
-how do you like it?
-"""
-
-layout=vertical
-terminal=/home/michaelb
-[slide]
-title=Some new slide, yo!
-editor=new editor
+terminal=/home/michaelb/projects/whiteboard
 [slide]
 title=Another thing
 markdown:"""
@@ -65,7 +56,3 @@ plurimus priora et velis hastam laevaque quid,
 arma tamen, ignobilitate nosti factoque.
 """
 
-[slide]
-title=Terminal and editor
-editor=./testdir/test1.js,test2.html
-terminal=./testdir

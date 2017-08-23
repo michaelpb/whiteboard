@@ -87,12 +87,6 @@
             this.opts.send('change_tab', this.editor.getValue(), this.opts.path, path);
         }
 
-        clear_bullet() {
-        }
-
-        add_bullet() {
-        }
-
         do_save(ev, is_saveas) {
             if (ev) {
                 ev.preventUpdate = true;
@@ -100,6 +94,14 @@
             const name = is_saveas ? 'saveas' : 'save';
             clear_bullet();
             this.opts.send(name, this.editor.getValue());
+        }
+
+        function clear_bullet() {
+            // TODO: remove all bullets from titles
+        }
+
+        function add_bullet() {
+            // TODO: add a bullet to the current title
         }
 
         this.on('mount', () => {

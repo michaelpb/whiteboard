@@ -5,8 +5,17 @@ html {
 body {
     height: 100%;
     overflow: hidden;
-    background: -webkit-radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
-    background: radial-gradient(rgb(239, 235, 233), rgb(255, 248, 225));
+}
+
+
+/*
+    Give a nice styled background -- needs important since Xel tries to
+    overwrite it
+*/
+body,
+.pane-fullscreen {
+    background-image: url(../img/texture-1457346.jpg) !important;
+    background-size: cover !important;
 }
 
 :not(input):not(textarea),

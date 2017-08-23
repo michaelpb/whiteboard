@@ -13,6 +13,11 @@
             background: white;
         }
 
+        .pane-fullscreen .centered-10vh-when-fullscreen {
+            padding-top: 45vh;
+            font-size: 10vh;
+        }
+
         /* Pane is getting focused */
         /* For debugging: */
         .pane-focused {

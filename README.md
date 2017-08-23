@@ -2,12 +2,12 @@
 
 -------------------------
 
-Whiteboard is a very simple Electron.js based slideshow app for
-demonstration-heavy presentations. It's great for guiding code-heavy classroom
-lectures, tutorials, workshops, or presentations.
+Whiteboard is a Electron.js based slideshow app for demonstration-heavy
+presentations. It's great for guiding code-heavy classroom lectures, tutorials,
+workshops, or presentations.
 
-*Whiteboard is very WIP and not ready for public usage. If you really, really want
-to dig in keep on reading.*
+**Whiteboard is very WIP and not ready for public usage. If you really, really want
+to dig in keep on reading.**
 
 
 ## Pre-built packages
@@ -39,12 +39,11 @@ with `npm run test`, or `npm run test-headless` (if you have `xvfb` installed)
 
 4. Run `npm run start` to launch
 
-Try runningg
+Try running
 `npm run start -- ./spec/support/data/dev-example-file/ks.whiteboard`
 to launch loading an example file
 
 # Slideshow file format
-
 
 ## Single slide
 

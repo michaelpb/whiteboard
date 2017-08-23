@@ -3,9 +3,9 @@
 ## Top Priority
 
 ### Critical bugs
-- [ ] BUG: Rare bug: Code editor stops working somehow
 - [ ] BUG: Rare bug: Maximize stops working after switching slides
-- [ ] BUG: Code editor: Can't "Save as" after creating new tab
+- [X] BUG: Rare bug: Code editor stops working somehow (possibly fixed?)
+- [X] BUG: Code editor: Can't "Save as" after creating new tab
 
 ### Appearance
 - [X] Upgrade to latest Xel
@@ -45,6 +45,8 @@
     - [X] Code editor
     - [X] Terminal
 
+### Quality of life
+- [ ] Auto-save for both Whiteboard and code editor
 
 ### Packaging
 - [ ] Move to GitHub
