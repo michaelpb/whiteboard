@@ -1,0 +1,243 @@
+/*
+
+Awful messy code that should be cleaned up but does the job, adding some basic
+styles to markdown
+
+Originally from: https://gist.github.com/andyferra/2554919
+
+*/
+
+
+wb-markdown 
+
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+wb-markdown 
+
+a:visited {
+  color: #0b0080;
+}
+wb-markdown 
+
+a:hover {
+  color: #06e;
+}
+wb-markdown 
+
+a:active {
+  color: #faa700;
+}
+wb-markdown 
+
+a:focus {
+  outline: thin dotted;
+}
+wb-markdown 
+
+a:hover, wb-markdown 
+a:active {
+  outline: 0;
+}
+wb-markdown 
+
+::-moz-selection {
+  background: rgba(255, wb-markdown  255, wb-markdown  0, wb-markdown  0.3);
+  color: #000;
+}
+wb-markdown 
+
+::selection {
+  background: rgba(255, wb-markdown  255, wb-markdown  0, wb-markdown  0.3);
+  color: #000;
+}
+wb-markdown 
+
+a::-moz-selection {
+  background: rgba(255, wb-markdown  255, wb-markdown  0, wb-markdown  0.3);
+  color: #0645ad;
+}
+wb-markdown 
+
+a::selection {
+  background: rgba(255, wb-markdown  255, wb-markdown  0, wb-markdown  0.3);
+  color: #0645ad;
+}
+wb-markdown 
+
+p {
+  margin: 1em 0;
+}
+wb-markdown 
+
+img {
+  max-width: 100%;
+}
+wb-markdown 
+
+h1, wb-markdown 
+h2, wb-markdown 
+h3, wb-markdown 
+h4, wb-markdown 
+h5, wb-markdown 
+h6 {
+  font-weight: normal;
+  color: #111;
+  line-height: 1em;
+}
+wb-markdown 
+
+h4, wb-markdown 
+h5, wb-markdown 
+h6 {
+  font-weight: bold;
+}
+wb-markdown 
+
+h1 {
+  font-size: 2.5em;
+}
+wb-markdown 
+
+h2 {
+  font-size: 2em;
+}
+wb-markdown 
+
+h3 {
+  font-size: 1.5em;
+}
+wb-markdown 
+
+h4 {
+  font-size: 1.2em;
+}
+wb-markdown 
+
+h5 {
+  font-size: 1em;
+}
+wb-markdown 
+
+h6 {
+  font-size: 0.9em;
+}
+wb-markdown 
+
+blockquote {
+  color: #666666;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em #eee solid;
+}
+wb-markdown 
+
+hr {
+  display: block;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  margin: 1em 0;
+  padding: 0;
+}
+wb-markdown 
+
+pre, wb-markdown 
+code, wb-markdown 
+kbd, wb-markdown 
+samp {
+  color: #000;
+  font-family: monospace, wb-markdown  monospace;
+  _font-family: 'courier new', wb-markdown  monospace;
+  font-size: 0.98em;
+}
+wb-markdown 
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+wb-markdown 
+
+b, wb-markdown 
+strong {
+  font-weight: bold;
+}
+wb-markdown 
+
+dfn {
+  font-style: italic;
+}
+wb-markdown 
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+wb-markdown 
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+wb-markdown 
+
+sub, wb-markdown 
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+wb-markdown 
+
+sup {
+  top: -0.5em;
+}
+wb-markdown 
+
+sub {
+  bottom: -0.25em;
+}
+wb-markdown 
+
+ul, wb-markdown 
+ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+wb-markdown 
+
+li p:last-child {
+  margin: 0;
+}
+wb-markdown 
+
+dd {
+  margin: 0 0 0 2em;
+}
+wb-markdown 
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+wb-markdown 
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+wb-markdown 
+
+td {
+  vertical-align: top;
+}
+
+
