@@ -3,8 +3,8 @@
 ## Top Priority
 
 ### Critical bugs
-- [ ] BUG: Rare bug where code editor stops working somehow
-- [ ] BUG: Maximize stops working after switching slides
+- [ ] BUG: Rare bug: Code editor stops working somehow
+- [ ] BUG: Rare bug: Maximize stops working after switching slides
 - [ ] BUG: Code editor: Can't "Save as" after creating new tab
 
 ### Appearance
@@ -15,9 +15,10 @@
 ### Code quality
 - [X] Clean up unused packages
 - [X] Upgrade package versions
+- [ ] Get E2E testing working again (downgrade spectron...?)
+    - [ ] Add a couple more E2E tests
 - [ ] Remove use of deprecated functions
 - [ ] Add linting rules
-- [ ] Get E2E testing working again (downgrade spectron...?)
 
 ### Basic apps working
 - [X] Title
@@ -35,8 +36,14 @@
 - [X] Edit panel
     - [X] Edit title (can even be "prompt")
     - [X] Add or remove editor tabs
+    - [X] Disable editor for Code Editor and Terminal
     - [X] Edit markdown (simple textbox (?))
-- [ ] Load
+- [X] Load
+- [X] Each app stores and recalls state
+    - [X] Title
+    - [X] Markdown
+    - [X] Code editor
+    - [X] Terminal
 
 
 ### Packaging
@@ -59,7 +66,7 @@
       blow ups
     - [ ] They can be viewed and drawn on (1 simple marker for now)
 - [ ] Web browser
-- [ ] Save & Save As
+- [X] Save & Save As
 - [ ] Import directory
 
 ```

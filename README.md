@@ -10,9 +10,9 @@ lectures, tutorials, workshops, or presentations.
 to dig in keep on reading.*
 
 
-## Built packages
+## Pre-built packages
 
-- Since Whiteboard is a WIP, there are no built packages at this time!
+- Since Whiteboard is a WIP, there are no pre-built packages at this time!
 
 ## Development
 
@@ -38,6 +38,10 @@ npm.
 with `npm run test`, or `npm run test-headless` (if you have `xvfb` installed)
 
 4. Run `npm run start` to launch
+
+Try runningg
+`npm run start -- ./spec/support/data/dev-example-file/ks.whiteboard`
+to launch loading an example file
 
 # Slideshow file format
 

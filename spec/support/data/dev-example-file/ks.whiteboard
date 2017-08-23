@@ -1,0 +1,71 @@
+[slide]
+title=Yet Another slide
+editor:"""
+/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new editor
+/home/michaelb/projects/whiteboard/spec/support/data/deck/twoslides.whiteboard
+"""
+
+markdown:"""
+# This is my new example!
+how do you like it?
+"""
+
+layout=vertical
+terminal=/home/michaelb
+[slide]
+title=Some new slide, yo!
+editor=new editor
+[slide]
+title=Another thing
+markdown:"""
+# Dabat decurrit memini
+
+## Digitorum lilia
+
+Lorem markdownum cornua! Vel quoque fines saepe abluere, molliter cecidit
+profugum portaque Philomela Tagus tibi quam. Liventia cladis non obsceno, diu
+abiit de saepe praeposuisse cederet *hostis*.
+
+    system = rgbDirectoryLpi(shiftMirrorBurn, systemImpact);
+    var codec_youtube_scalable = pop_netbios_exabyte.dock_led(bareRecursiveDay(
+            12, spoolZipBoot, busOdbcFramework), exploitSshDot) + hardware_up -
+            plain;
+    if (compactVciContextual(-2)) {
+        system = gopherDirectx + fileComputerLpi;
+        pramGuiTransistor(oasis_hub, 4, hot);
+    }
+
+Fervida **Minos** tractoque adeundi et tenuere seque nostro! Negandum Gigantas
+undae; lumen splendida caeso ubicumque intumuit vestes, sentit Elei columque
+omnes inrita disceditis a spatio, hortos. Tenebras tuum.
+
+Agri forte petitos est cum tangit virtute furtiva, prensis et luce fovi. *Auras
+oscula* suberant **et illuc**. Per pietas deorum minor felicior virtuti amantem,
+nec ungues. Essent quoque rapto.
+
+## Mariti Pittheia et capellas dum
+
+Dedit **est viridem**, ventura terga. Mihi terrasque **iram nunc** multa,
+*post*, optat suaque et quotiens quinque dictoque! Facinusque quam: verso [mea
+habet](http://www.senectus.net/deum-auroram) pluviale in rabida equo: qua, ait!
+
+An intumuit, humo mihi cessit pugnat, et leto. Sed ab est pro!
+
+1. Placidi bracchia praebebat maesta iacentia datus et
+2. Ut naribus et cura cape infregit tauros
+3. Idomeneus rabiem attonuit fata appellantque munera silex
+4. Sub visa at
+5. Movit ecce
+6. Esse terraeque ordine mensae quid
+
+Est [gentis mutor](http://www.bellumet.net/fuit.aspx), ubi est sospite ardor
+heros priora parce solo, non ducar feres, deae flector dotatissima. Defecisse
+plurimus priora et velis hastam laevaque quid,
+[signumque](http://iecit.io/sensit.aspx) vel. Inpia aether vidit: digna nam,
+arma tamen, ignobilitate nosti factoque.
+"""
+
+[slide]
+title=Terminal and editor
+editor=./testdir/test1.js,test2.html
+terminal=./testdir
