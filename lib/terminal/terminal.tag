@@ -29,6 +29,10 @@
         // Essential: prevent default in terminal
         //this.on('update', ev => ev.preventUpdate = true);
 
+        function triggerWindowScroll() {
+            window.dispatchEvent(new Event('scroll'));
+        }
+
         this.on('mount', () => {
             const stream = opts.getIPCStream('term');
             console.log('ready to do terminal');
@@ -36,6 +40,12 @@
             console.log('creating term', term);
             // XXX Riot 3 vvvv (switch to refs)
             create_term(term, stream, opts.send);
+
+            opts.on('set_font_size', (ev, new_font_size) => {
+                window.log('FONT SIZE SET', new_font_size);
+                term.style['font-size'] = `${new_font_size}pt`;
+                triggerWindowScroll();
+            });
         });
     </script>
 </wb-terminal>

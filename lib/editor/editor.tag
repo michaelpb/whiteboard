@@ -111,6 +111,8 @@
         });
 
         this.on('updated', () => {
+            const fontSize = `${this.opts.font_size}pt`;
+            this.editor.setOptions({fontSize});
             if (this.opts.text != this.editor.getValue()) {
                 // update text
                 this.editor.setValue(this.opts.text, 1);

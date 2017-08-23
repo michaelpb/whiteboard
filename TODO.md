@@ -4,7 +4,8 @@
 
 ### Critical bugs
 - [ ] BUG: Rare bug where code editor stops working somehow
-- [ ] BUG: Rare bug where maximize stops working
+- [ ] BUG: Maximize stops working after switching slides
+- [ ] BUG: Code editor: Can't "Save as" after creating new tab
 
 ### Appearance
 - [X] Upgrade to latest Xel
@@ -16,13 +17,15 @@
 - [X] Upgrade package versions
 - [ ] Remove use of deprecated functions
 - [ ] Add linting rules
+- [ ] Get E2E testing working again (downgrade spectron...?)
 
-### Checklist
+### Basic apps working
 - [X] Title
-- [ ] Code editor
-    - [ ] BUG: Can't "Save as" after creating new tab
-- [ ] Terminal
-- [ ] Markdown
+- [X] Code editor
+    - [X] Req'd feature: quick and dirty adjust font-size
+- [X] Terminal
+    - [X] Req'd feature: quick and dirty adjust font-size & remount
+- [X] Markdown
 
 ### Saving/loading features
 - [X] Blank state
@@ -33,9 +36,7 @@
     - [X] Edit title (can even be "prompt")
     - [X] Add or remove editor tabs
     - [X] Edit markdown (simple textbox (?))
-- [ ] Save & Save As
 - [ ] Load
-- [ ] Load directory (import)
 
 
 ### Packaging
@@ -57,6 +58,9 @@
     - [ ] A slide-editor like interface can drop in from the right to select
       blow ups
     - [ ] They can be viewed and drawn on (1 simple marker for now)
+- [ ] Web browser
+- [ ] Save & Save As
+- [ ] Import directory
 
 ```
 [blowup]
