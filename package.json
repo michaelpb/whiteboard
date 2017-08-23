@@ -48,6 +48,7 @@
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
     "sortablejs": "1.5.1",
     "tmp": "0.0.31",
+    "walk-sync": "^0.3.2",
     "xel": "0.0.54",
     "xterm": "2.4.0"
   },

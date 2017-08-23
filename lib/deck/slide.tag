@@ -100,14 +100,14 @@
             if (last_focus !== null) {
                 const el = document.getElementById(last_focus);
                 if (el) {
-                    window.log('last focus was not null, but invalid nonetheless', last_focus);
+                    // window.log('last focus was not null, but invalid nonetheless', last_focus);
                     el.classList.remove('pane-focused');
                 }
             }
             last_focus = mount_id;
             const el = document.getElementById(mount_id);
             el.classList.add('pane-focused');
-            window.log('focusing on ' + mount_id);
+            // window.log('focusing on ' + mount_id);
 
             // Send the change focus event to the backend
             this.opts.send('change_focus', mount_id);
@@ -154,29 +154,28 @@
             last_edited = typename;
         }
 
-        function unmaximize_panes() {
+        function clear_special_classes() {
             const panes = document.querySelectorAll('.pane-fullscreen');
             for (const pane of panes) {
                 pane.classList.remove('pane-fullscreen');
+                pane.classList.remove('pane-focused');
             }
         }
 
-        function maximize_pane(typename) {
+        function maximize_pane(ev, pane_mount_id) {
             // Toggling on current focus
-            unmaximize_panes();
-            let el = document.querySelector(`[data-typename="${typename}"]`);
-            if (!el) {
-                el = document.getElementById(last_focus);
-            }
+            clear_special_classes();
+            const el = document.getElementById(pane_mount_id);
             el.classList.add('pane-fullscreen');
         }
 
         this.on('mount', () => {
             this.opts.on('maximize_pane', maximize_pane);
-            this.opts.on('unmaximize_pane', unmaximize_panes);
+            this.opts.on('unmaximize_pane', clear_special_classes);
             this.opts.on('edit_pane', edit_pane);
             this.opts.on('unedit_pane', unedit_pane);
             if (this.opts.maximized_pane) {
+                /* maximize_pane(this.opts.maximized_pane); */
                 maximize_pane(this.opts.maximized_pane);
             }
         });
