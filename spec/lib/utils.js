@@ -88,6 +88,8 @@ describe('utils module', () => {
             expect(slide.editor).toContain('outer.js');
             expect(slide.browser).not.toBeTruthy();
             expect(slide.terminal).toContain('01-First');
+            expect(slide.markdown).toBeTruthy();
+            expect(slide.markdown).toContain('i am markdown');
             slide = deckList[1];
             expect(slide.title).toEqual('Second Thing');
             expect(slide.editor).toContain('outer-second.js');

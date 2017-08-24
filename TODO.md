@@ -68,12 +68,12 @@
     - [ ] A slide-editor like interface can drop in from the right to select
       blow ups
     - [ ] They can be viewed and drawn on (1 simple marker for now)
-- [ ] Web browser (remember location)
+- [X] Web browser (remember location)
     - [X] Basic mounting of web page
     - [X] For now, just remember location between changing slides
     - (Later, try to squirrel away entire DOM state)
 - [X] Save & Save As
-- [ ] Import directory
+- [X] Import directory
 
 ```
 [blowup]
@@ -151,7 +151,7 @@ Two extremely critical bugs persist:
 - [ ] Drag-and-drop auto-creation
     - Top-level folders turn into slides
     - Recurse down and files become various panes (based on mimetype)
-- [ ] Add "import" dialog that can temporarily (or save) change default
+- [X] Add "import" dialog that can temporarily (or save) change default
   behavior (maybe combine with the Deck-level options..?)
 - Option dialog (separate window...?):
     - [ ] Deck-level options window (theme, default layout)
