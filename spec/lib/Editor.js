@@ -1,6 +1,6 @@
-'use strict';
-const {strip, mockWindowManager, deregister} = require('elmoed').testutils;
-const {ModuleBase} = require('elmoed');
+
+const { strip, mockWindowManager, deregister } = require('elmoed').testutils;
+const { ModuleBase } = require('elmoed');
 const Editor = require('../../lib/editor/Editor');
 const path = require('path');
 
@@ -13,21 +13,21 @@ describe('Editor', () => {
     let manager = null;
 
     beforeEach(() => {
-        ({manager} = mockWindowManager('editor', Editor));
+        ({ manager } = mockWindowManager('editor', Editor));
     });
 
 
     // Mostly just a stub of integrat-y unit tests for Editor
     describe('when mounting with various files', () => {
-        it('successfully defaults to dummy file when empty', done => {
-            manager.createWindow('editor', editor => {
+        it('successfully defaults to dummy file when empty', (done) => {
+            manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(1);
                 done();
             }, '');
         });
 
-        it('is successful with a comma-sep list of files', done => {
-            manager.createWindow('editor', editor => {
+        it('is successful with a comma-sep list of files', (done) => {
+            manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(2);
                 expect(path.basename(editor.tabs[0].path))
                     .toEqual('file1.js');
@@ -38,8 +38,8 @@ describe('Editor', () => {
             }, 'file1.js, file2.js');
         });
 
-        it('is successful with list of files', done => {
-            manager.createWindow('editor', editor => {
+        it('is successful with list of files', (done) => {
+            manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(2);
                 expect(path.basename(editor.tabs[0].path))
                     .toEqual('file1.js');
@@ -49,8 +49,8 @@ describe('Editor', () => {
             }, 'file1.js\n   file2.js');
         });
 
-        it('is successful with a glob', done => {
-            manager.createWindow('editor', editor => {
+        it('is successful with a glob', (done) => {
+            manager.createWindow('editor', (editor) => {
                 // Loading 4 total files
                 expect(editor.tabs.length).toEqual(4);
                 done();
@@ -79,8 +79,8 @@ describe('Editor', () => {
             text: MYFILE1,
             font_size: 18,
         };
-        it('loads a single file', done => {
-            manager.createWindow('editor', editor => {
+        it('loads a single file', (done) => {
+            manager.createWindow('editor', (editor) => {
                 // just loads 1 file
                 expect(editor.tabs.length).toEqual(1);
                 expect(editor.tabs[0].text).toEqual(MYFILE1);
@@ -101,8 +101,8 @@ describe('Editor', () => {
             }, PATH);
         });
 
-        it('loads multiple files correctly', done => {
-            manager.createWindow('editor', editor => {
+        it('loads multiple files correctly', (done) => {
+            manager.createWindow('editor', (editor) => {
                 // just loads 2 file
                 expect(editor.tabs.length).toEqual(2);
                 expect(editor.tabs[0].text).toEqual(MYFILE1);
@@ -128,8 +128,8 @@ describe('Editor', () => {
             }, `${PATH1},${PATH2}`);
         });
 
-        it('switches between files', done => {
-            manager.createWindow('editor', editor => {
+        it('switches between files', (done) => {
+            manager.createWindow('editor', (editor) => {
                 // loads 2 files
                 editor.active_file_path = PATH2;
                 expect(editor.get_active_file_text()).toEqual('');
@@ -154,11 +154,11 @@ describe('Editor', () => {
             }, `${PATH1},${PATH2}`);
         });
 
-        it('closes tabs', done => {
-            manager.createWindow('editor', editor => {
+        it('closes tabs', (done) => {
+            manager.createWindow('editor', (editor) => {
                 editor.active_file_path = PATH2;
                 expect(editor.get_active_file_text()).toEqual('');
-                editor.close_tab()
+                editor.close_tab();
                 expect(editor.getProps()).toEqual({
                     path: PATH1,
                     tabs: [
@@ -175,8 +175,8 @@ describe('Editor', () => {
             }, `${PATH1},${PATH2}`);
         });
 
-        it('closing last tab opens dummy tab', done => {
-            manager.createWindow('editor', editor => {
+        it('closing last tab opens dummy tab', (done) => {
+            manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(2);
                 // try 3 times to ensure idempotent
                 editor.close_tab();
@@ -189,8 +189,8 @@ describe('Editor', () => {
             }, `${PATH1},${PATH2}`);
         });
 
-        it('opens additional file successfully', done => {
-            manager.createWindow('editor', editor => {
+        it('opens additional file successfully', (done) => {
+            manager.createWindow('editor', (editor) => {
                 // just loads 2 file
                 expect(editor.tabs.length).toEqual(1);
                 expect(editor.get_active_file_text()).toEqual(MYFILE1);
@@ -203,8 +203,8 @@ describe('Editor', () => {
             }, PATH1);
         });
 
-        it('dummy tab gets replaced when opening files', done => {
-            manager.createWindow('editor', editor => {
+        it('dummy tab gets replaced when opening files', (done) => {
+            manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(1);
                 editor.add_tabs([PATH1, PATH2], () => {
                     expect(editor.tabs.length).toEqual(2);

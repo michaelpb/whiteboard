@@ -1,6 +1,6 @@
-'use strict';
+
 const lodash = require('lodash');
-const {spectronLaunch, waitUntilMounted, strip, waitUntilBodyText} = require('elmoed').testutils;
+const { spectronLaunch, waitUntilMounted, strip, waitUntilBodyText } = require('elmoed').testutils;
 
 function _scrub(s) {
     return s.replace(/\W+/g, ''); // scrub non word chars
@@ -11,10 +11,10 @@ describe('Kitchen Sink test slideshow example', () => {
     let app = null;
     let text = null;
     beforeEach((done) => {
-        spectronLaunch(...ARGS, application => {
+        spectronLaunch(...ARGS, (application) => {
             app = application;
             waitUntilMounted(app, () => {
-                app.client.getText('body').then(bodyText => {
+                app.client.getText('body').then((bodyText) => {
                     text = bodyText;
                     done();
                 });
@@ -22,7 +22,7 @@ describe('Kitchen Sink test slideshow example', () => {
         });
     });
 
-    it('shows a slide with a term and editor', done => {
+    it('shows a slide with a term and editor', (done) => {
         const EXPECTED_START = strip(`
             Terminal and editor
             TEST1.JS TEST2.HTML
@@ -31,13 +31,13 @@ describe('Kitchen Sink test slideshow example', () => {
 
         const checkDone = lodash.after(2, done);
 
-        waitUntilBodyText(app, 'var', bodyText => {
+        waitUntilBodyText(app, 'var', (bodyText) => {
             expect(strip(bodyText).toLowerCase())
                 .toContain(strip('var example_js_file = true'));
             checkDone();
         });
 
-        waitUntilBodyText(app, '$', bodyText => {
+        waitUntilBodyText(app, '$', (bodyText) => {
             /*
             // Can't guarantee the PS1 is configured like this
             expect(_scrub(bodyText).toLowerCase())

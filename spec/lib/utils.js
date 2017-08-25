@@ -1,14 +1,15 @@
-'use strict';
-const {strip} = require('elmoed').testutils;
+
+const { strip } = require('elmoed').testutils;
 const path = require('path');
+
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'input-dir');
 
 const {
-        autogenerate_deck_from_dir,
-        path_to_title,
-        known_code_file_extensions,
-        is_code_file,
-    } = require('../../lib/utils');
+    autogenerate_deck_from_dir,
+    path_to_title,
+    known_code_file_extensions,
+    is_code_file,
+} = require('../../lib/utils');
 
 describe('utils module', () => {
     describe('has a path_to_title function that', () => {
@@ -68,7 +69,7 @@ describe('utils module', () => {
         });
 
         it('generates an expected deck from a simple input dir', () => {
-            const deckList = autogenerate_deck_from_dir(DATA_DIR + '/simple/');
+            const deckList = autogenerate_deck_from_dir(`${DATA_DIR}/simple/`);
             expect(deckList.length).toEqual(1);
             const slide = deckList[0];
             expect(slide.editor).toContain('02-AnotherExample.html');
@@ -81,7 +82,7 @@ describe('utils module', () => {
         });
 
         it('generates an expected deck from a complex input dir', () => {
-            const deckList = autogenerate_deck_from_dir(DATA_DIR + '/complex/');
+            const deckList = autogenerate_deck_from_dir(`${DATA_DIR}/complex/`);
             expect(deckList.length).toEqual(5);
             let slide = deckList[0];
             expect(slide.title).toEqual('First');

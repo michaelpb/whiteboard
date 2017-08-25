@@ -1,7 +1,8 @@
-'use strict';
-const {strip, mockElectron, mockWindowManager} = require('elmoed').testutils;
+
+const { strip, mockElectron, mockWindowManager } = require('elmoed').testutils;
 const mockery = require('mockery');
 const path = require('path');
+
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
 const TWO_SLIDES = path.resolve(DATA_DIR, 'twoslides.whiteboard');
 // Mostly just a stub of integrat-y unit tests for Slide
@@ -19,11 +20,11 @@ describe('Deck', () => {
 
         // Now actually pull in Deck
         Deck = require('../../lib/deck/Deck');
-        //const Slide = require('../../lib/deck/Slide');
-        ({manager, modules} = mockWindowManager('whiteboard', Deck));
+        // const Slide = require('../../lib/deck/Slide');
+        ({ manager, modules } = mockWindowManager('whiteboard', Deck));
 
         // Mock up a couple editors
-        const {ModuleBase} = require('elmoed');
+        const { ModuleBase } = require('elmoed');
         modules.slide = {
             module: class TestSlide extends ModuleBase {},
             edits: ['!slide'],
@@ -36,11 +37,11 @@ describe('Deck', () => {
 
     describe('when opening an empty file', () => {
         let deck = null;
-        beforeEach(done => {
-            manager.createWindow('noexist.whiteboard', new_deck => {
+        beforeEach((done) => {
+            manager.createWindow('noexist.whiteboard', (new_deck) => {
                 deck = new_deck;
                 done();
-            }, {creating: true});
+            }, { creating: true });
         });
 
         it('sets up a menu', () => {
@@ -62,8 +63,8 @@ describe('Deck', () => {
 
     describe('when opening a typical slide deck', () => {
         let deck = null;
-        beforeEach(done => {
-            manager.createWindow(TWO_SLIDES, new_deck => {
+        beforeEach((done) => {
+            manager.createWindow(TWO_SLIDES, (new_deck) => {
                 deck = new_deck;
                 done();
             });

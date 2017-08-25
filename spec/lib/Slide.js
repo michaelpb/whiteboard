@@ -1,6 +1,6 @@
-'use strict';
-const {strip, mockWindowManager, deregister} = require('elmoed').testutils;
-const {ModuleBase} = require('elmoed');
+
+const { strip, mockWindowManager, deregister } = require('elmoed').testutils;
+const { ModuleBase } = require('elmoed');
 const Slide = require('../../lib/deck/Slide');
 
 // Mostly just a stub of integrat-y unit tests for Slide
@@ -11,7 +11,7 @@ describe('Slide', () => {
         let modules = null;
 
         beforeEach(() => {
-            ({manager, modules} = mockWindowManager('slide', Slide));
+            ({ manager, modules } = mockWindowManager('slide', Slide));
 
             modules.testpane = {
                 module: class TestPane extends ModuleBase {},
@@ -21,7 +21,7 @@ describe('Slide', () => {
 
 
         it('is successful when empty', (done) => {
-            manager.createWindow('slide', slide => {
+            manager.createWindow('slide', (slide) => {
                 expect(slide.panes.length).toEqual(0);
                 expect(slide.info).toBeTruthy();
                 done();
@@ -29,15 +29,15 @@ describe('Slide', () => {
         });
 
         it('is successfull with a test-pane', (done) => {
-            manager.createWindow('slide', slide => {
+            manager.createWindow('slide', (slide) => {
                 expect(slide.panes.length).toEqual(1);
                 expect(slide.info).toBeTruthy();
                 done();
-            }, {testpane: 'test'});
+            }, { testpane: 'test' });
         });
 
         it('can toggle maximized pane', (done) => {
-            manager.createWindow('slide', slide => {
+            manager.createWindow('slide', (slide) => {
                 expect(slide.get_maximized_pane_mount_id()).not.toBeTruthy();
                 expect(slide.getProps().maximized_pane).not.toBeTruthy();
                 slide.toggle_maximize('testpane');
@@ -47,7 +47,7 @@ describe('Slide', () => {
                 expect(slide.maximized_pane).not.toBeTruthy();
                 expect(slide.getProps().maximized_pane).not.toBeTruthy();
                 done();
-            }, {testpane: 'test'});
+            }, { testpane: 'test' });
         });
 
         afterEach(() => {
@@ -56,14 +56,14 @@ describe('Slide', () => {
     });
 
     describe('has a static function layout_rows which', () => {
-        const {layout_rows} = Slide;
+        const { layout_rows } = Slide;
         // Dummy panes to layout
-        const PANE_1 = {hint: {}, num: 1};
-        const PANE_2 = {hint: {}, num: 2};
-        const PANE_3 = {hint: {}, num: 3};
-        const PANE_4 = {hint: {}, num: 4};
-        const PANE_T1 = {hint: {prefer_top: true}, num: 5};
-        const PANE_T2 = {hint: {prefer_top: true}, num: 6};
+        const PANE_1 = { hint: {}, num: 1 };
+        const PANE_2 = { hint: {}, num: 2 };
+        const PANE_3 = { hint: {}, num: 3 };
+        const PANE_4 = { hint: {}, num: 4 };
+        const PANE_T1 = { hint: { prefer_top: true }, num: 5 };
+        const PANE_T2 = { hint: { prefer_top: true }, num: 6 };
         it('lays out an empty list', () => {
             expect(layout_rows('grid', [])).toEqual([]);
             expect(layout_rows('vertical', [])).toEqual([]);
@@ -71,24 +71,24 @@ describe('Slide', () => {
         });
 
         it('lays out a standard 3 pane vertical look', () => {
-            expect(layout_rows('vertical', [ PANE_1, PANE_2, PANE_T1, ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1], },
-                { width: 50, height: 90, row_panes: [PANE_1, PANE_2], },
+            expect(layout_rows('vertical', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, row_panes: [PANE_T1] },
+                { width: 50, height: 90, row_panes: [PANE_1, PANE_2] },
             ]);
         });
 
         it('lays out a standard 3 pane grid look', () => {
-            expect(layout_rows('grid', [ PANE_1, PANE_2, PANE_T1, ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1], },
-                { width: 50, height: 90, row_panes: [PANE_1, PANE_2], },
+            expect(layout_rows('grid', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, row_panes: [PANE_T1] },
+                { width: 50, height: 90, row_panes: [PANE_1, PANE_2] },
             ]);
         });
 
         it('lays out a standard 3 pane horizontal look', () => {
-            expect(layout_rows('horizontal', [ PANE_1, PANE_2, PANE_T1, ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1], },
-                { width: 100, height: 45, row_panes: [PANE_1], },
-                { width: 100, height: 45, row_panes: [PANE_2], },
+            expect(layout_rows('horizontal', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, row_panes: [PANE_T1] },
+                { width: 100, height: 45, row_panes: [PANE_1] },
+                { width: 100, height: 45, row_panes: [PANE_2] },
             ]);
         });
 
@@ -96,12 +96,12 @@ describe('Slide', () => {
             expect(layout_rows('horizontal', [
                 PANE_1, PANE_2, PANE_3, PANE_4, PANE_T1, PANE_T2,
             ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1], },
-                { width: 100, height: 10, row_panes: [PANE_T2], },
-                { width: 100, height: 20, row_panes: [PANE_1], },
-                { width: 100, height: 20, row_panes: [PANE_2], },
-                { width: 100, height: 20, row_panes: [PANE_3], },
-                { width: 100, height: 20, row_panes: [PANE_4], },
+                { width: 100, height: 10, row_panes: [PANE_T1] },
+                { width: 100, height: 10, row_panes: [PANE_T2] },
+                { width: 100, height: 20, row_panes: [PANE_1] },
+                { width: 100, height: 20, row_panes: [PANE_2] },
+                { width: 100, height: 20, row_panes: [PANE_3] },
+                { width: 100, height: 20, row_panes: [PANE_4] },
             ]);
         });
 
@@ -109,15 +109,15 @@ describe('Slide', () => {
             expect(layout_rows('grid', [
                 PANE_1, PANE_2, PANE_3, PANE_4, PANE_T1,
             ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1], },
-                { width: 50, height: 45, row_panes: [PANE_1, PANE_2], },
-                { width: 50, height: 45, row_panes: [PANE_3, PANE_4], },
+                { width: 100, height: 10, row_panes: [PANE_T1] },
+                { width: 50, height: 45, row_panes: [PANE_1, PANE_2] },
+                { width: 50, height: 45, row_panes: [PANE_3, PANE_4] },
             ]);
         });
 
         it('lays out a single title', () => {
             expect(layout_rows('horizontal', [PANE_T1])).toEqual([
-                { width: 100, height: 100, row_panes: [PANE_T1], },
+                { width: 100, height: 100, row_panes: [PANE_T1] },
             ]);
         });
     });
@@ -127,26 +127,26 @@ describe('Slide', () => {
             getEditorClass: typename => ({
                 title: {
                     get_iconic_preview: text => `::${text}::`,
-                    layout_hint: {prefer_top: true},
+                    layout_hint: { prefer_top: true },
                 },
-                terminal: {get_iconic_preview: text => '><'},
-                editor: {get_iconic_preview: text => '--'},
+                terminal: { get_iconic_preview: text => '><' },
+                editor: { get_iconic_preview: text => '--' },
                 html: {},
             }[typename]),
         };
 
         const pane_title = {
-            hint: {prefer_top: true},
+            hint: { prefer_top: true },
             preview: '::test-title::',
         };
-        const pane_terminal = {hint: {}, preview: '><'};
-        const pane_editor = {hint: {}, preview: '--'};
+        const pane_terminal = { hint: {}, preview: '><' };
+        const pane_editor = { hint: {}, preview: '--' };
         const pane_html = {
             hint: {},
             preview: Slide.get_default_iconic_preview('lol'),
         };
 
-        const {layout_pane_previews} = Slide;
+        const { layout_pane_previews } = Slide;
 
         it('lays out a standard 3 pane vertical look', () => {
             expect(layout_pane_previews(manager, {
@@ -155,8 +155,8 @@ describe('Slide', () => {
                 editor: 'lol.js',
                 layout: 'vertical',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [pane_title]},
-                { width: 50, height: 40, row_panes: [pane_terminal, pane_editor]},
+                { width: 100, height: 60, row_panes: [pane_title] },
+                { width: 50, height: 40, row_panes: [pane_terminal, pane_editor] },
             ]);
         });
 
@@ -166,16 +166,16 @@ describe('Slide', () => {
                 terminal: 'thing',
                 html: 'lol',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [pane_title]},
-                { width: 100, height: 20, row_panes: [pane_terminal]},
-                { width: 100, height: 20, row_panes: [pane_html]},
+                { width: 100, height: 60, row_panes: [pane_title] },
+                { width: 100, height: 20, row_panes: [pane_terminal] },
+                { width: 100, height: 20, row_panes: [pane_html] },
             ]);
         });
 
         it('lays out a single title', () => {
-            expect(layout_pane_previews(manager, {title: 'test-title'}))
+            expect(layout_pane_previews(manager, { title: 'test-title' }))
                 .toEqual([
-                    {width: 100, height: 100, row_panes: [pane_title]},
+                    { width: 100, height: 100, row_panes: [pane_title] },
                 ]);
         });
     });

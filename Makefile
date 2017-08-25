@@ -7,7 +7,7 @@ help:
 	@echo "bump-and-push - run tests, lint, bump patch, push to git, and release on npm"
 
 lint:
-	./node_modules/.bin/eslint lib spec
+	./node_modules/.bin/eslint lib spec/lib spec/endtoend
 
 test:
 	npm run test-headless
