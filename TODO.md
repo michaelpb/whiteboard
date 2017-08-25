@@ -61,6 +61,10 @@
 - [ ] Code editor (off by default)
     - [ ] Save to settings file..?
 - [ ] Elmoed: Remember window state
+- [ ] Browser
+    - [ ] Add refresh option (Ctrl+R)
+    - [ ] For file:///, do auto-refresh
+
 
 ### Packaging
 - [ ] Move to GitHub
