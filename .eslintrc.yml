@@ -25,6 +25,7 @@ rules:
     - for-in
     - with
     - do
+    camelcase: 'off'
     no-iterator: 'off'
     no-console: 'off'
     no-continue: 'off'

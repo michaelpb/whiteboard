@@ -1,6 +1,6 @@
+/* eslint-disable no-param-reassign */
 
-const { strip, mockWindowManager, deregister } = require('elmoed').testutils;
-const { ModuleBase } = require('elmoed');
+const { mockWindowManager } = require('elmoed').testutils;
 const Editor = require('../../lib/editor/Editor');
 const path = require('path');
 

@@ -1,5 +1,3 @@
-
-const { strip } = require('elmoed').testutils;
 const path = require('path');
 
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'input-dir');

@@ -1,5 +1,5 @@
-
-const { strip, mockElectron, mockWindowManager } = require('elmoed').testutils;
+/* eslint-disable global-require */
+const { mockElectron, mockWindowManager } = require('elmoed').testutils;
 const mockery = require('mockery');
 const path = require('path');
 

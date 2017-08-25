@@ -1,5 +1,5 @@
 
-const { strip, mockWindowManager, deregister } = require('elmoed').testutils;
+const { mockWindowManager } = require('elmoed').testutils;
 const { ModuleBase } = require('elmoed');
 const Slide = require('../../lib/deck/Slide');
 
@@ -129,8 +129,8 @@ describe('Slide', () => {
                     get_iconic_preview: text => `::${text}::`,
                     layout_hint: { prefer_top: true },
                 },
-                terminal: { get_iconic_preview: text => '><' },
-                editor: { get_iconic_preview: text => '--' },
+                terminal: { get_iconic_preview: () => '><' },
+                editor: { get_iconic_preview: () => '--' },
                 html: {},
             }[typename]),
         };

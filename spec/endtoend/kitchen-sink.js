@@ -2,9 +2,11 @@
 const lodash = require('lodash');
 const { spectronLaunch, waitUntilMounted, strip, waitUntilBodyText } = require('elmoed').testutils;
 
+/*
 function _scrub(s) {
     return s.replace(/\W+/g, ''); // scrub non word chars
 }
+*/
 
 describe('Kitchen Sink test slideshow example', () => {
     const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
@@ -37,7 +39,7 @@ describe('Kitchen Sink test slideshow example', () => {
             checkDone();
         });
 
-        waitUntilBodyText(app, '$', (bodyText) => {
+        waitUntilBodyText(app, '$', () => {
             /*
             // Can't guarantee the PS1 is configured like this
             expect(_scrub(bodyText).toLowerCase())
