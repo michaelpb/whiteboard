@@ -15,12 +15,13 @@
 ### Code quality
 - [X] Clean up unused packages
 - [X] Upgrade package versions
-- [ ] Get E2E testing working again (downgrade spectron...?)
-    - [ ] Add a couple more E2E tests
-    - [ ] Improve e2e tests to properly shutdown PTY
+- [X] Get E2E testing working again
 - [ ] Test coverage
 - [ ] Remove use of deprecated functions
-- [ ] Add linting rules
+- [ ] Linting
+    - [ ] Add linting rules
+    - [ ] Apply to lib
+    - [ ] Apply to spec
 - [ ] Unit tests for each module
     - [X] Deck
     - [X] Editor
@@ -221,6 +222,13 @@ Two extremely critical bugs persist:
 - Zip-based file format (elmoed feature)
 
 
+
+## Blocked
+- [ ] Add a couple more E2E tests
+    - Need to move away from system-level control key codes, to in-browser key
+      code detection, since its too hard to simulate interaction
+- [ ] Improve e2e tests to properly shutdown PTY
+    - Can't repro (?)
 
 # Drawing implementation ideas
 
