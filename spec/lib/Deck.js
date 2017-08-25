@@ -21,7 +21,8 @@ describe('Deck', () => {
         // Now actually pull in Deck
         Deck = require('../../lib/deck/Deck');
         // const Slide = require('../../lib/deck/Slide');
-        ({ manager, modules } = mockWindowManager('whiteboard', Deck));
+        ({ electron, manager, modules } = mockWindowManager('whiteboard', Deck));
+        mockery.registerMock('electron', electron);
 
         // Mock up a couple editors
         const { ModuleBase } = require('elmoed');
@@ -70,8 +71,7 @@ describe('Deck', () => {
             });
         });
 
-        // Not sure why this test is failing
-        xit('sets up a menu', () => {
+        it('sets up a menu', () => {
             const menu = electron._getMockedMenu();
             expect(menu).toBeTruthy();
         });
