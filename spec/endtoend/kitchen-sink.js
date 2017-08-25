@@ -6,11 +6,10 @@ function _scrub(s) {
     return s.replace(/\W+/g, ''); // scrub non word chars
 }
 
-fdescribe('Kitchen Sink test slideshow example', () => {
+xdescribe('Kitchen Sink test slideshow example', () => {
     const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
     let app = null;
     beforeEach(function(done) {
-        console.log('or am i here');
         spectronLaunch(...ARGS, application => {
             console.log('spectron launched');
             app = application;
