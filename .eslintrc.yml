@@ -1,0 +1,36 @@
+extends: airbnb-base
+rules:
+    indent:
+    - error
+    - 4
+    linebreak-style:
+    - error
+    - unix
+    quotes:
+    - error
+    - single
+    semi:
+    - error
+    - always
+    comma-dangle:
+    - error
+    - always-multiline
+    no-cond-assign:
+    - error
+    - always
+    max-len:
+    - error
+    no-restricted-syntax:
+    - error
+    - for-in
+    - with
+    - do
+    no-iterator: 'off'
+    no-console: 'off'
+    no-continue: 'off'
+    no-underscore-dangle: 'off'
+    class-methods-use-this: 'off'
+env:
+    jasmine: true
+    node: true
+

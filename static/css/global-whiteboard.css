@@ -14,7 +14,7 @@ body {
 */
 body,
 .pane-fullscreen {
-    background-image: url(../img/texture-1457346.jpg) !important;
+    background: url(../img/texture-1457346.jpg) center center fixed !important;
     background-size: cover !important;
 }
 

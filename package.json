@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/michaelb/whiteboard.git"
+    "url": "git+ssh://git@github.org/michaelpb/whiteboard.git"
   },
   "keywords": [
     "slideshow",
@@ -30,11 +30,11 @@
   },
   "author": "Michael Bethencourt <michaelpb@gmail.com> (http://michaelb.org/)",
   "license": "GPL-3.0",
-  "homepage": "https://bitbucket.org/michaelb/whiteboard#readme",
+  "homepage": "https://github.org/michaelpb/whiteboard#readme",
   "dependencies": {
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
-    "elmoed": "git+https://bitbucket.org/michaelb/elmoed.git",
+    "elmoed": "0.0.4",
     "glob": "7.0.3",
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
@@ -48,13 +48,16 @@
     "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
     "sortablejs": "1.5.1",
     "tmp": "0.0.31",
-    "walk-sync": "^0.3.2",
+    "walk-sync": "0.3.2",
     "xel": "0.0.54",
     "xterm": "2.4.0"
   },
   "devDependencies": {
     "electron": "1.7.5",
     "electron-rebuild": "1.6.0",
+    "eslint": "4.5.0",
+    "eslint-config-airbnb-base": "11.3.2",
+    "eslint-plugin-import": "2.7.0",
     "jasmine": "2.4.1",
     "jasmine-spec-reporter": "4.0.0",
     "mockery": "2.0.0",

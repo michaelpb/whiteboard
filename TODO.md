@@ -17,8 +17,18 @@
 - [X] Upgrade package versions
 - [ ] Get E2E testing working again (downgrade spectron...?)
     - [ ] Add a couple more E2E tests
+    - [ ] Improve e2e tests to properly shutdown PTY
+- [ ] Test coverage
 - [ ] Remove use of deprecated functions
 - [ ] Add linting rules
+- [ ] Unit tests for each module
+    - [X] Deck
+    - [X] Editor
+    - [ ] Terminal
+    - [X] Slide
+        - [ ] Panel editor
+    - [ ] Browser
+    - [ ] Markdown
 
 ### Basic apps working
 - [X] Title
@@ -47,7 +57,10 @@
 
 ### Quality of life
 - [ ] Auto-save for Whiteboard (on by default)
+    - [ ] Save to settings file..?
 - [ ] Code editor (off by default)
+    - [ ] Save to settings file..?
+- [ ] Elmoed: Remember window state
 
 ### Packaging
 - [ ] Move to GitHub
@@ -56,6 +69,8 @@
 
 
 ### High-Prio Nice to Haves
+- [ ] Add Help menu option with about window:
+  https://github.com/rhysd/electron-about-window
 - [ ] "Blow-up"
     - Simpler solution to "whiteboard" annotations: Like shutter, select an
       area of the screen to create a blowup (creates and saves a png image).
@@ -88,6 +103,10 @@ foreground = _wb_blowups/01_bg.png
     - This is probably memory leakage, and possibly some sort DOM leakage where
       slides aren't getting properly destroyed :(
 
+## Medium prio nice-to-have
+- Gobal theme options
+    - [ ] Global adjustable font-size
+    - [ ] Global color scheme (light-on-dark or dark-on-light)
 ## Code quality
 
 ### Tests
@@ -97,12 +116,6 @@ After feature-set settles down:
 - [X] Rework code of slide system: Deck.js should be less abstract, more
   practical
 - [X] Write e2e tests with spectron
-- [ ] Improve e2e tests to properly shutdown PTY
-- [X] Unit tests for each module
-    - [X] Deck
-    - [X] Editor
-    - [ ] Terminal
-    - [X] Slide
 
 ### modular-electron-editor
 - [X] Split off `modular-electron-editor` (contains everything in `lib/`)
@@ -166,9 +179,6 @@ Two extremely critical bugs persist:
 - [X] Layout engine
 - [X] Auto-fill screen real-estate
 - [X] Switch UI framework from Materialize (switched to Xel)
-- Gobal theme options
-    - [ ] Global adjustable font-size
-    - [ ] Global color scheme (light-on-dark or dark-on-light)
 
 ### Tab persistence
 - [X] Save state for editor
@@ -183,9 +193,6 @@ Two extremely critical bugs persist:
 - [X] Zero state
 - [ ] "Autosave" option
 
-## Misc
-- [ ] Add Help menu option with about window:
-  https://github.com/rhysd/electron-about-window
 
 ## New full right click menu
 
@@ -207,5 +214,16 @@ Two extremely critical bugs persist:
 - Graphs
 - Embedded media (videos, etc)
 - Finished browser that maintains state
-- Draw on top of any pane
-- Zip-based file format
+- Zip-based file format (elmoed feature)
+
+
+
+# Drawing implementation ideas
+
+- Route 1: Have "side deck" of slides
+    - alternate = true
+    - Blow-up tool automatically makes a side slide that contains 1 pane:
+        - Drawable image pane
+        - image-canvas = ./blowups/whatever.png
+- Route 2: Make all slides drawable
+
