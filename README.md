@@ -1,5 +1,7 @@
 # whiteboard
 
+![Travis CI](https://travis-ci.org/michaelpb/whiteboard.svg?branch=master)
+
 -------------------------
 
 Whiteboard is a Electron.js based slideshow app for demonstration-heavy
@@ -22,18 +24,18 @@ To get a going, follow the following steps:
 
 1. First, install a recent version of `node.js`, along with a recent version of
 npm.
-    - The supported version is: `7.8` (same as ran by test server)
+    - The supported version is: `8.x` (same as ran by test server)
     - You might consider using `nvm` to easily install a version that is
       appropriate for your OS and architecture
       https://github.com/creationix/nvm
-    - If you used `nvm`, remember to do `nvm use 7` to activate before
+    - If you used `nvm`, remember to do `nvm use 8` to activate before
       continuing
 
-2. Install dependencies by running `npm install -d`
-    - On slower connections and computers this could take a while: as long as
-      10 minutes
-3. Rebuild binary dependencies against electron by running
-`./node_modules/.bin/electron-rebuild` (or just `npm run rebuild`)
+2. Install dependencies by running `npm install -d` - On good connections this
+will take about a minute
+
+3. Rebuild binary dependencies against electron by running: `npm run rebuild`
+
 3. Optionally: double check there's nothing wrong by running the test suite
 with `npm run test`, or `npm run test-headless` (if you have `xvfb` installed)
 
