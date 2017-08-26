@@ -135,15 +135,15 @@ describe('Slide', () => {
             }[typename]),
         };
 
-        const pane_title = {
+        const paneTitle = {
             hint: { prefer_top: true },
             preview: '::test-title::',
         };
-        const pane_terminal = { hint: {}, preview: '><' };
-        const pane_editor = { hint: {}, preview: '--' };
-        const pane_html = {
+        const paneTerminal = { hint: {}, preview: '><' };
+        const paneEditor = { hint: {}, preview: '--' };
+        const paneHtml = {
             hint: {},
-            preview: Slide.get_default_iconic_preview('lol'),
+            preview: Slide.getDefaultIconicPreview('lol'),
         };
 
         const { layout_pane_previews } = Slide;
@@ -155,8 +155,8 @@ describe('Slide', () => {
                 editor: 'lol.js',
                 layout: 'vertical',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [pane_title] },
-                { width: 50, height: 40, row_panes: [pane_terminal, pane_editor] },
+                { width: 100, height: 60, row_panes: [paneTitle] },
+                { width: 50, height: 40, row_panes: [paneTerminal, paneEditor] },
             ]);
         });
 
@@ -166,16 +166,16 @@ describe('Slide', () => {
                 terminal: 'thing',
                 html: 'lol',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [pane_title] },
-                { width: 100, height: 20, row_panes: [pane_terminal] },
-                { width: 100, height: 20, row_panes: [pane_html] },
+                { width: 100, height: 60, row_panes: [paneTitle] },
+                { width: 100, height: 20, row_panes: [paneTerminal] },
+                { width: 100, height: 20, row_panes: [paneHtml] },
             ]);
         });
 
         it('lays out a single title', () => {
             expect(layout_pane_previews(manager, { title: 'test-title' }))
                 .toEqual([
-                    { width: 100, height: 100, row_panes: [pane_title] },
+                    { width: 100, height: 100, row_panes: [paneTitle] },
                 ]);
         });
     });

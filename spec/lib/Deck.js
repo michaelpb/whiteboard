@@ -51,10 +51,10 @@ describe('Deck', () => {
         });
 
         it('when opening up', () => {
-            expect(deck.slide_ids.length).toEqual(1);
-            expect(deck.active_slide_id).toBeTruthy();
-            expect(Object.keys(deck.slide_data).length).toEqual(1);
-            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+            expect(deck.slideIDs.length).toEqual(1);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(1);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
         });
 
         afterEach(() => {
@@ -77,36 +77,36 @@ describe('Deck', () => {
         });
 
         it('sets up two slides', () => {
-            expect(deck.slide_ids.length).toEqual(2);
-            expect(deck.active_slide_id).toBeTruthy();
-            expect(Object.keys(deck.slide_data).length).toEqual(2);
-            expect(Object.keys(deck.slide_editors).length).toEqual(1);
+            expect(deck.slideIDs.length).toEqual(2);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(2);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
         });
 
         it('deletes an inactive slide', () => {
-            const _fs = [deck.active_slide_id];
-            deck.set_fewer_slides(_fs);
-            expect(deck.active_slide_id).toBeTruthy();
-            expect(Object.keys(deck.slide_data).length).toEqual(1);
-            expect(Object.keys(deck.slide_editors).length).toEqual(1);
-            expect(deck.slide_ids.length).toEqual(1);
+            const _fs = [deck.activeSlideID];
+            deck.setFewerSlides(_fs);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(1);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
+            expect(deck.slideIDs.length).toEqual(1);
         });
 
         it('deletes an active slide', () => {
-            const _fs = [deck.slide_ids[1]];
-            deck.set_fewer_slides(_fs);
-            expect(deck.active_slide_id).toBeTruthy();
-            expect(Object.keys(deck.slide_data).length).toEqual(1);
-            expect(Object.keys(deck.slide_editors).length).toEqual(1);
-            expect(deck.slide_ids.length).toEqual(1);
+            const _fs = [deck.slideIDs[1]];
+            deck.setFewerSlides(_fs);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(1);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
+            expect(deck.slideIDs.length).toEqual(1);
         });
 
         it('deletes all slides and replaces with placeholder', () => {
-            deck.set_fewer_slides([]);
-            expect(deck.active_slide_id).toBeTruthy();
-            expect(Object.keys(deck.slide_data).length).toEqual(1);
-            expect(Object.keys(deck.slide_editors).length).toEqual(1);
-            expect(deck.slide_ids.length).toEqual(1);
+            deck.setFewerSlides([]);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(1);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
+            expect(deck.slideIDs.length).toEqual(1);
         });
 
 
