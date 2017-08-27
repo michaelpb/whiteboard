@@ -33,7 +33,7 @@ describe('Editor', () => {
                     .toEqual('file1.js');
                 expect(path.basename(editor.tabs[1].path))
                     .toEqual('file2.js');
-                expect(editor.active_filePath).toEqual(editor.tabs[0].path);
+                expect(editor.activeFilePath).toEqual(editor.tabs[0].path);
                 done();
             }, 'file1.js, file2.js');
         });
@@ -131,7 +131,7 @@ describe('Editor', () => {
         it('switches between files', (done) => {
             manager.createWindow('editor', (editor) => {
                 // loads 2 files
-                editor.active_filePath = PATH2;
+                editor.activeFilePath = PATH2;
                 expect(editor.getActiveFileText()).toEqual('');
                 expect(editor.getProps()).toEqual({
                     path: PATH2,
@@ -156,9 +156,9 @@ describe('Editor', () => {
 
         it('closes tabs', (done) => {
             manager.createWindow('editor', (editor) => {
-                editor.active_filePath = PATH2;
+                editor.activeFilePath = PATH2;
                 expect(editor.getActiveFileText()).toEqual('');
-                editor.close_tab();
+                editor.closeTab();
                 expect(editor.getProps()).toEqual({
                     path: PATH1,
                     tabs: [
@@ -179,11 +179,11 @@ describe('Editor', () => {
             manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(2);
                 // try 3 times to ensure idempotent
-                editor.close_tab();
+                editor.closeTab();
                 expect(editor.tabs.length).toEqual(1);
-                editor.close_tab();
+                editor.closeTab();
                 expect(editor.tabs.length).toEqual(1);
-                editor.close_tab();
+                editor.closeTab();
                 expect(editor.tabs.length).toEqual(1);
                 done();
             }, `${PATH1},${PATH2}`);
@@ -194,7 +194,7 @@ describe('Editor', () => {
                 // just loads 2 file
                 expect(editor.tabs.length).toEqual(1);
                 expect(editor.getActiveFileText()).toEqual(MYFILE1);
-                editor.add_tabs([PATH2], () => {
+                editor.addTabs([PATH2], () => {
                     expect(editor.tabs.length).toEqual(2);
                     expect(editor.getActiveFileText()).toEqual(MYFILE1);
                     expect(editor.getProps()).toEqual(TWO_TABS);
@@ -206,7 +206,7 @@ describe('Editor', () => {
         it('dummy tab gets replaced when opening files', (done) => {
             manager.createWindow('editor', (editor) => {
                 expect(editor.tabs.length).toEqual(1);
-                editor.add_tabs([PATH1, PATH2], () => {
+                editor.addTabs([PATH1, PATH2], () => {
                     expect(editor.tabs.length).toEqual(2);
                     expect(editor.getActiveFileText()).toEqual(MYFILE1);
                     expect(editor.getProps()).toEqual(TWO_TABS);

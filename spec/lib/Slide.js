@@ -127,7 +127,7 @@ describe('Slide', () => {
             getEditorClass: typename => ({
                 title: {
                     getIconicPreview: text => `::${text}::`,
-                    layout_hint: { prefer_top: true },
+                    layoutHint: { prefer_top: true },
                 },
                 terminal: { getIconicPreview: () => '><' },
                 editor: { getIconicPreview: () => '--' },

@@ -48,7 +48,7 @@
 
             <hr>
 
-            <x-menuitem onclick={new_deck}>
+            <x-menuitem onclick={newDeck}>
                 <x-icon name="create-new-folder"></x-icon>
                 <x-label>New deck...</x-label>
             </x-menuitem>
@@ -111,7 +111,7 @@
             opts.send('menu_about');
         }
 
-        new_deck() {
+        newDeck() {
             opts.send('menu_new');
         }
 

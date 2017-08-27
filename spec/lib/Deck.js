@@ -39,8 +39,8 @@ describe('Deck', () => {
     describe('when opening an empty file', () => {
         let deck = null;
         beforeEach((done) => {
-            manager.createWindow('noexist.whiteboard', (new_deck) => {
-                deck = new_deck;
+            manager.createWindow('noexist.whiteboard', (newDeck) => {
+                deck = newDeck;
                 done();
             }, { creating: true });
         });
@@ -65,8 +65,8 @@ describe('Deck', () => {
     describe('when opening a typical slide deck', () => {
         let deck = null;
         beforeEach((done) => {
-            manager.createWindow(TWO_SLIDES, (new_deck) => {
-                deck = new_deck;
+            manager.createWindow(TWO_SLIDES, (newDeck) => {
+                deck = newDeck;
                 done();
             });
         });
