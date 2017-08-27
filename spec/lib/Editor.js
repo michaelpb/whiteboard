@@ -84,7 +84,7 @@ describe('Editor', () => {
                 // just loads 1 file
                 expect(editor.tabs.length).toEqual(1);
                 expect(editor.tabs[0].text).toEqual(MYFILE1);
-                expect(editor.get_active_file_text()).toEqual(MYFILE1);
+                expect(editor.getActiveFileText()).toEqual(MYFILE1);
                 expect(editor.getProps()).toEqual({
                     path: PATH,
                     tabs: [
@@ -106,7 +106,7 @@ describe('Editor', () => {
                 // just loads 2 file
                 expect(editor.tabs.length).toEqual(2);
                 expect(editor.tabs[0].text).toEqual(MYFILE1);
-                expect(editor.get_active_file_text()).toEqual(MYFILE1);
+                expect(editor.getActiveFileText()).toEqual(MYFILE1);
                 expect(editor.getProps()).toEqual({
                     path: PATH1,
                     tabs: [
@@ -132,7 +132,7 @@ describe('Editor', () => {
             manager.createWindow('editor', (editor) => {
                 // loads 2 files
                 editor.active_filePath = PATH2;
-                expect(editor.get_active_file_text()).toEqual('');
+                expect(editor.getActiveFileText()).toEqual('');
                 expect(editor.getProps()).toEqual({
                     path: PATH2,
                     tabs: [
@@ -157,7 +157,7 @@ describe('Editor', () => {
         it('closes tabs', (done) => {
             manager.createWindow('editor', (editor) => {
                 editor.active_filePath = PATH2;
-                expect(editor.get_active_file_text()).toEqual('');
+                expect(editor.getActiveFileText()).toEqual('');
                 editor.close_tab();
                 expect(editor.getProps()).toEqual({
                     path: PATH1,
@@ -193,10 +193,10 @@ describe('Editor', () => {
             manager.createWindow('editor', (editor) => {
                 // just loads 2 file
                 expect(editor.tabs.length).toEqual(1);
-                expect(editor.get_active_file_text()).toEqual(MYFILE1);
+                expect(editor.getActiveFileText()).toEqual(MYFILE1);
                 editor.add_tabs([PATH2], () => {
                     expect(editor.tabs.length).toEqual(2);
-                    expect(editor.get_active_file_text()).toEqual(MYFILE1);
+                    expect(editor.getActiveFileText()).toEqual(MYFILE1);
                     expect(editor.getProps()).toEqual(TWO_TABS);
                     done();
                 });
@@ -208,7 +208,7 @@ describe('Editor', () => {
                 expect(editor.tabs.length).toEqual(1);
                 editor.add_tabs([PATH1, PATH2], () => {
                     expect(editor.tabs.length).toEqual(2);
-                    expect(editor.get_active_file_text()).toEqual(MYFILE1);
+                    expect(editor.getActiveFileText()).toEqual(MYFILE1);
                     expect(editor.getProps()).toEqual(TWO_TABS);
                     done();
                 });

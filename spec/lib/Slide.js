@@ -126,11 +126,11 @@ describe('Slide', () => {
         const manager = {
             getEditorClass: typename => ({
                 title: {
-                    get_iconic_preview: text => `::${text}::`,
+                    getIconicPreview: text => `::${text}::`,
                     layout_hint: { prefer_top: true },
                 },
-                terminal: { get_iconic_preview: () => '><' },
-                editor: { get_iconic_preview: () => '--' },
+                terminal: { getIconicPreview: () => '><' },
+                editor: { getIconicPreview: () => '--' },
                 html: {},
             }[typename]),
         };
