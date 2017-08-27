@@ -38,12 +38,12 @@ describe('Slide', () => {
 
         it('can toggle maximized pane', (done) => {
             manager.createWindow('slide', (slide) => {
-                expect(slide.get_maximized_pane_mount_id()).not.toBeTruthy();
+                expect(slide.getMaximizedPaneID()).not.toBeTruthy();
                 expect(slide.getProps().maximized_pane).not.toBeTruthy();
-                slide.toggle_maximize('testpane');
+                slide.toggleMaximize('testpane');
                 expect(slide.getProps().maximized_pane).toBeTruthy();
                 expect(slide.getProps().maximized_pane).toEqual('pane_2');
-                slide.toggle_maximize('testpane');
+                slide.toggleMaximize('testpane');
                 expect(slide.maximized_pane).not.toBeTruthy();
                 expect(slide.getProps().maximized_pane).not.toBeTruthy();
                 done();
