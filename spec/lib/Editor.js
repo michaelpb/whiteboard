@@ -33,7 +33,7 @@ describe('Editor', () => {
                     .toEqual('file1.js');
                 expect(path.basename(editor.tabs[1].path))
                     .toEqual('file2.js');
-                expect(editor.active_file_path).toEqual(editor.tabs[0].path);
+                expect(editor.active_filePath).toEqual(editor.tabs[0].path);
                 done();
             }, 'file1.js, file2.js');
         });
@@ -131,7 +131,7 @@ describe('Editor', () => {
         it('switches between files', (done) => {
             manager.createWindow('editor', (editor) => {
                 // loads 2 files
-                editor.active_file_path = PATH2;
+                editor.active_filePath = PATH2;
                 expect(editor.get_active_file_text()).toEqual('');
                 expect(editor.getProps()).toEqual({
                     path: PATH2,
@@ -156,7 +156,7 @@ describe('Editor', () => {
 
         it('closes tabs', (done) => {
             manager.createWindow('editor', (editor) => {
-                editor.active_file_path = PATH2;
+                editor.active_filePath = PATH2;
                 expect(editor.get_active_file_text()).toEqual('');
                 editor.close_tab();
                 expect(editor.getProps()).toEqual({

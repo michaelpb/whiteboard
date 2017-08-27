@@ -39,13 +39,13 @@ describe('Slide', () => {
         it('can toggle maximized pane', (done) => {
             manager.createWindow('slide', (slide) => {
                 expect(slide.getMaximizedPaneID()).not.toBeTruthy();
-                expect(slide.getProps().maximized_pane).not.toBeTruthy();
+                expect(slide.getProps().maximizedPane).not.toBeTruthy();
                 slide.toggleMaximize('testpane');
-                expect(slide.getProps().maximized_pane).toBeTruthy();
-                expect(slide.getProps().maximized_pane).toEqual('pane_2');
+                expect(slide.getProps().maximizedPane).toBeTruthy();
+                expect(slide.getProps().maximizedPane).toEqual('pane_2');
                 slide.toggleMaximize('testpane');
-                expect(slide.maximized_pane).not.toBeTruthy();
-                expect(slide.getProps().maximized_pane).not.toBeTruthy();
+                expect(slide.maximizedPane).not.toBeTruthy();
+                expect(slide.getProps().maximizedPane).not.toBeTruthy();
                 done();
             }, { testpane: 'test' });
         });
@@ -55,8 +55,8 @@ describe('Slide', () => {
         });
     });
 
-    describe('has a static function layout_rows which', () => {
-        const { layout_rows } = Slide;
+    describe('has a static function layoutRows which', () => {
+        const { layoutRows } = Slide;
         // Dummy panes to layout
         const PANE_1 = { hint: {}, num: 1 };
         const PANE_2 = { hint: {}, num: 2 };
@@ -65,64 +65,64 @@ describe('Slide', () => {
         const PANE_T1 = { hint: { prefer_top: true }, num: 5 };
         const PANE_T2 = { hint: { prefer_top: true }, num: 6 };
         it('lays out an empty list', () => {
-            expect(layout_rows('grid', [])).toEqual([]);
-            expect(layout_rows('vertical', [])).toEqual([]);
-            expect(layout_rows('horizontal', [])).toEqual([]);
+            expect(layoutRows('grid', [])).toEqual([]);
+            expect(layoutRows('vertical', [])).toEqual([]);
+            expect(layoutRows('horizontal', [])).toEqual([]);
         });
 
         it('lays out a standard 3 pane vertical look', () => {
-            expect(layout_rows('vertical', [PANE_1, PANE_2, PANE_T1])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1] },
-                { width: 50, height: 90, row_panes: [PANE_1, PANE_2] },
+            expect(layoutRows('vertical', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, rowPanes: [PANE_T1] },
+                { width: 50, height: 90, rowPanes: [PANE_1, PANE_2] },
             ]);
         });
 
         it('lays out a standard 3 pane grid look', () => {
-            expect(layout_rows('grid', [PANE_1, PANE_2, PANE_T1])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1] },
-                { width: 50, height: 90, row_panes: [PANE_1, PANE_2] },
+            expect(layoutRows('grid', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, rowPanes: [PANE_T1] },
+                { width: 50, height: 90, rowPanes: [PANE_1, PANE_2] },
             ]);
         });
 
         it('lays out a standard 3 pane horizontal look', () => {
-            expect(layout_rows('horizontal', [PANE_1, PANE_2, PANE_T1])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1] },
-                { width: 100, height: 45, row_panes: [PANE_1] },
-                { width: 100, height: 45, row_panes: [PANE_2] },
+            expect(layoutRows('horizontal', [PANE_1, PANE_2, PANE_T1])).toEqual([
+                { width: 100, height: 10, rowPanes: [PANE_T1] },
+                { width: 100, height: 45, rowPanes: [PANE_1] },
+                { width: 100, height: 45, rowPanes: [PANE_2] },
             ]);
         });
 
         it('lays out a 6 pane horizontal look', () => {
-            expect(layout_rows('horizontal', [
+            expect(layoutRows('horizontal', [
                 PANE_1, PANE_2, PANE_3, PANE_4, PANE_T1, PANE_T2,
             ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1] },
-                { width: 100, height: 10, row_panes: [PANE_T2] },
-                { width: 100, height: 20, row_panes: [PANE_1] },
-                { width: 100, height: 20, row_panes: [PANE_2] },
-                { width: 100, height: 20, row_panes: [PANE_3] },
-                { width: 100, height: 20, row_panes: [PANE_4] },
+                { width: 100, height: 10, rowPanes: [PANE_T1] },
+                { width: 100, height: 10, rowPanes: [PANE_T2] },
+                { width: 100, height: 20, rowPanes: [PANE_1] },
+                { width: 100, height: 20, rowPanes: [PANE_2] },
+                { width: 100, height: 20, rowPanes: [PANE_3] },
+                { width: 100, height: 20, rowPanes: [PANE_4] },
             ]);
         });
 
         it('lays out a 5 pane grid', () => {
-            expect(layout_rows('grid', [
+            expect(layoutRows('grid', [
                 PANE_1, PANE_2, PANE_3, PANE_4, PANE_T1,
             ])).toEqual([
-                { width: 100, height: 10, row_panes: [PANE_T1] },
-                { width: 50, height: 45, row_panes: [PANE_1, PANE_2] },
-                { width: 50, height: 45, row_panes: [PANE_3, PANE_4] },
+                { width: 100, height: 10, rowPanes: [PANE_T1] },
+                { width: 50, height: 45, rowPanes: [PANE_1, PANE_2] },
+                { width: 50, height: 45, rowPanes: [PANE_3, PANE_4] },
             ]);
         });
 
         it('lays out a single title', () => {
-            expect(layout_rows('horizontal', [PANE_T1])).toEqual([
-                { width: 100, height: 100, row_panes: [PANE_T1] },
+            expect(layoutRows('horizontal', [PANE_T1])).toEqual([
+                { width: 100, height: 100, rowPanes: [PANE_T1] },
             ]);
         });
     });
 
-    describe('has a static function layout_pane_previews which', () => {
+    describe('has a static function layoutPanePreviews which', () => {
         const manager = {
             getEditorClass: typename => ({
                 title: {
@@ -146,36 +146,36 @@ describe('Slide', () => {
             preview: Slide.getDefaultIconicPreview('lol'),
         };
 
-        const { layout_pane_previews } = Slide;
+        const { layoutPanePreviews } = Slide;
 
         it('lays out a standard 3 pane vertical look', () => {
-            expect(layout_pane_previews(manager, {
+            expect(layoutPanePreviews(manager, {
                 title: 'test-title',
                 terminal: 'thing',
                 editor: 'lol.js',
                 layout: 'vertical',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [paneTitle] },
-                { width: 50, height: 40, row_panes: [paneTerminal, paneEditor] },
+                { width: 100, height: 60, rowPanes: [paneTitle] },
+                { width: 50, height: 40, rowPanes: [paneTerminal, paneEditor] },
             ]);
         });
 
         it('lays out a standard 3 pane horizontal (default) look', () => {
-            expect(layout_pane_previews(manager, {
+            expect(layoutPanePreviews(manager, {
                 title: 'test-title',
                 terminal: 'thing',
                 html: 'lol',
             })).toEqual([
-                { width: 100, height: 60, row_panes: [paneTitle] },
-                { width: 100, height: 20, row_panes: [paneTerminal] },
-                { width: 100, height: 20, row_panes: [paneHtml] },
+                { width: 100, height: 60, rowPanes: [paneTitle] },
+                { width: 100, height: 20, rowPanes: [paneTerminal] },
+                { width: 100, height: 20, rowPanes: [paneHtml] },
             ]);
         });
 
         it('lays out a single title', () => {
-            expect(layout_pane_previews(manager, { title: 'test-title' }))
+            expect(layoutPanePreviews(manager, { title: 'test-title' }))
                 .toEqual([
-                    { width: 100, height: 100, row_panes: [paneTitle] },
+                    { width: 100, height: 100, rowPanes: [paneTitle] },
                 ]);
         });
     });

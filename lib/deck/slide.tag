@@ -51,9 +51,9 @@
     </style>
 
     <div each={opts.pane_rows} style="height: {height}vh;" class="slide-row">
-        <div each={row_panes} style="width: {width}vw;" class="slide-outer-pane">
+        <div each={rowPanes} style="width: {width}vw;" class="slide-outer-pane">
             <!-- Generate mount points for each pane contents -->
-            <div id="{mount_id}"
+            <div id="{mountID}"
                     data-typename="{typename}"
                     onmouseenter={trigger_gain_focus}
                     onkeyup={trigger_gain_focus}
@@ -90,8 +90,8 @@
         trigger_gain_focus(ev) {
             ev.preventUpdate = true;
 
-            const mount_id = ev.item.mount_id;
-            if (last_focus === mount_id) {
+            const mountID = ev.item.mountID;
+            if (last_focus === mountID) {
                 // Skip triggering excess focus events
                 return;
             }
@@ -104,13 +104,13 @@
                     el.classList.remove('pane-focused');
                 }
             }
-            last_focus = mount_id;
-            const el = document.getElementById(mount_id);
+            last_focus = mountID;
+            const el = document.getElementById(mountID);
             el.classList.add('pane-focused');
-            // window.log('focusing on ' + mount_id);
+            // window.log('focusing on ' + mountID);
 
             // Send the change focus event to the backend
-            this.opts.send('change_focus', mount_id);
+            this.opts.send('change_focus', mountID);
         }
 
         trigger_pane_editor_enable_save() {
@@ -162,10 +162,10 @@
             }
         }
 
-        function maximize_pane(ev, pane_mount_id) {
+        function maximize_pane(ev, pane_mountID) {
             // Toggling on current focus
             clear_special_classes();
-            const el = document.getElementById(pane_mount_id);
+            const el = document.getElementById(pane_mountID);
             el.classList.add('pane-fullscreen');
         }
 
@@ -174,9 +174,9 @@
             this.opts.on('unmaximize_pane', clear_special_classes);
             this.opts.on('edit_pane', edit_pane);
             this.opts.on('unedit_pane', unedit_pane);
-            if (this.opts.maximized_pane) {
-                /* maximize_pane(this.opts.maximized_pane); */
-                maximize_pane(this.opts.maximized_pane);
+            if (this.opts.maximizedPane) {
+                /* maximize_pane(this.opts.maximizedPane); */
+                maximize_pane(this.opts.maximizedPane);
             }
         });
 
@@ -186,8 +186,8 @@
             if (this.opts._needs_remount) {
                 this.opts.send('remount_editors');
             }
-            if (this.opts.maximized_pane) {
-                maximize_pane(this.opts.maximized_pane);
+            if (this.opts.maximizedPane) {
+                maximize_pane(this.opts.maximizedPane);
             }
         });
     </script>
@@ -233,7 +233,7 @@
         }
     </style>
     <div each={opts.panerows} style="height: {height}%;"  class="slide-preview-row">
-        <div each={row_panes} style="width: {width}%;" class="slide-preview-pane">
+        <div each={rowPanes} style="width: {width}%;" class="slide-preview-pane">
             <!-- Generate mount points for each pane contents -->
             <raw html={preview}></raw>
         </div>
