@@ -23,11 +23,12 @@ rules:
     no-restricted-syntax:
     - error
     - for-in
+    - for
     - with
     - do
     no-iterator: 'off'
-    no-console: 'off'
     no-continue: 'off'
+    no-console: 'off'
     no-underscore-dangle: 'off'
     class-methods-use-this: 'off'
 env:
