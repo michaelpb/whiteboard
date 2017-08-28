@@ -18,10 +18,10 @@
 - [X] Get E2E testing working again
 - [ ] Test coverage
 - [ ] Remove use of deprecated functions
-- [ ] Linting
-    - [ ] Add linting rules
-    - [ ] Apply to lib
-    - [ ] Apply to spec
+- [X] Linting
+    - [X] Add linting rules
+    - [X] Apply to lib
+    - [X] Apply to spec
 - [ ] Unit tests for each module
     - [X] Deck
     - [X] Editor
@@ -68,7 +68,7 @@
 
 
 ### Packaging
-- [ ] Move to GitHub
+- [X] Move to GitHub
 - [ ] Win/Lin/Mac
 - [ ] Filetype associations
 
@@ -196,7 +196,6 @@ Two extremely critical bugs persist:
 - [X] Open new tabs
 - [X] Close tabs
 - [X] Zero state
-- [ ] "Autosave" option
 
 
 ## New full right click menu
