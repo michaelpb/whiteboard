@@ -2,6 +2,9 @@
 
 ## Top Priority
 
+### Critical regressions
+- [ ] BUG: Completely broke re-arranging slides
+
 ### Critical bugs
 - [X] BUG: Rare bug: Maximize stops working after switching slides
 - [X] BUG: Rare bug: Code editor stops working somehow (possibly fixed?)

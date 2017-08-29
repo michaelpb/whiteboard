@@ -16,5 +16,6 @@ docs/_build/*
 
 node_modules/*
 tmp/*
+dist/*
 static/index.html.templated
 

@@ -32,9 +32,9 @@
   "author": "Michael Bethencourt <michaelpb@gmail.com> (http://michaelb.org/)",
   "license": "GPL-3.0",
   "homepage": "https://github.org/michaelpb/whiteboard#readme",
+  "postinstall": "electron-builder install-app-deps",
   "build": {
     "appId": "org.michaelb.Whiteboard",
-    "category": "public.app-category.education",
     "files": [
       "build/",
       "node_modules/",
@@ -43,27 +43,19 @@
       "LICENSE",
       "package.json"
     ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
       ]
     },
-    "win": {
-      "target": "nsis"
-    },
     "linux": {
+      "synopsis": "Create activity-based presentations that combine coding and demonstrations.",
       "target": [
         "AppImage",
-        "deb"
+        "deb",
+        "tar.gz",
+        "rpm"
       ]
     }
   },
@@ -92,6 +84,7 @@
   "devDependencies": {
     "electron": "1.7.5",
     "electron-builder": "19.26.3",
+    "electron-icon-maker": "0.0.3",
     "electron-rebuild": "1.6.0",
     "eslint": "4.5.0",
     "eslint-config-airbnb-base": "11.3.2",
