@@ -32,7 +32,6 @@
   "author": "Michael Bethencourt <michaelpb@gmail.com> (http://michaelb.org/)",
   "license": "GPL-3.0",
   "homepage": "https://github.org/michaelpb/whiteboard#readme",
-  "postinstall": "electron-builder install-app-deps",
   "build": {
     "appId": "org.michaelb.Whiteboard",
     "files": [
@@ -51,11 +50,11 @@
     },
     "linux": {
       "synopsis": "Create activity-based presentations that combine coding and demonstrations.",
+      "category": "Office",
       "target": [
         "AppImage",
         "deb",
-        "tar.gz",
-        "rpm"
+        "tar.gz"
       ]
     }
   },

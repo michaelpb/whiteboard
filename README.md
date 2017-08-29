@@ -89,3 +89,19 @@ markdown : '''
 '''
 ```
 
+
+# Building
+
+
+## Troubleshooting
+
+Building on Ubuntu:
+> libreadline.so.6 cannot open shared object file
+
+https://github.com/electron-userland/electron-builder/issues/993
+
+```
+sudo apt-get install -y xorriso
+export USE_SYSTEM_XORRISO=true
+```
+
