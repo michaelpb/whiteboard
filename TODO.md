@@ -60,8 +60,7 @@
 ### Quality of life
 - [ ] New menu system
     - [X] Lower level utilities to set this up
-    - [ ] Mousetrap to register all key combos
-        - Required for proper E2E tests
+    - [ ] Mousetrack (Blocked on Elmoed): Blocking: full E2E tests
     - [ ] Separate right click menu
     - [ ] More fleshed out global menu
 - [ ] Auto-save for Whiteboard (on by default)
@@ -95,6 +94,14 @@ New right click menu structure:
         Insert Pane...
         Pane arrangement
 ```
+
+Alternative idea (semi-radial menu, that if you move while releasing it selects
+for "gestures"):
+
+    ^
+<-    ->
+
+
 
 ### Packaging
 - [X] Move to GitHub
