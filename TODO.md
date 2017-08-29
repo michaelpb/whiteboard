@@ -12,15 +12,13 @@
 
 ### Appearance
 - [X] Upgrade to latest Xel
-- [ ] Debug Xel Vanilla/Galaxy theme issues
-    - [ ] Change form material to Vanilla
 
 ### Code quality
 - [X] Clean up unused packages
 - [X] Upgrade package versions
 - [X] Get E2E testing working again
 - [ ] Test coverage
-- [ ] Remove use of deprecated functions
+- [ ] Remove use of deprecated dependencies
 - [X] Linting
     - [X] Add linting rules
     - [X] Apply to lib
@@ -60,6 +58,12 @@
     - [X] Terminal
 
 ### Quality of life
+- [ ] New menu system
+    - [X] Lower level utilities to set this up
+    - [ ] Mousetrap to register all key combos
+        - Required for proper E2E tests
+    - [ ] Separate right click menu
+    - [ ] More fleshed out global menu
 - [ ] Auto-save for Whiteboard (on by default)
     - [ ] Save to settings file..?
 - [ ] Code editor (off by default)
@@ -69,6 +73,28 @@
     - [ ] Add refresh option (Ctrl+R)
     - [ ] For file:///, do auto-refresh
 
+New right click menu structure:
+
+```
+-> Next 
+<- Previous
+=  All slides
+[] Fullscreen
+[] Maximize Editor
+   Editor...
+      [X] Autosave
+          Save
+          Save as
+          ----
+          Open
+          Close tabs
+          ----
+          Modify
+          Delete pane
+   Slide...
+        Insert Pane...
+        Pane arrangement
+```
 
 ### Packaging
 - [X] Move to GitHub
@@ -79,6 +105,23 @@
 ### High-Prio Nice to Haves
 - [ ] Add Help menu option with about window:
   https://github.com/rhysd/electron-about-window
+- [X] Web browser (remember location)
+    - [X] Basic mounting of web page
+    - [X] For now, just remember location between changing slides
+    - (Later, try to squirrel away entire DOM state)
+- [X] Save & Save As
+- [X] Import directory
+
+## High prio bugs
+- [ ] Elmoed (?) bug: Editors are getting created EVERY TIME we swap slides (at
+  least for browser)
+    - This is probably memory leakage, and possibly some sort DOM leakage where
+      slides aren't getting properly destroyed :(
+
+## Medium prio nice-to-have
+- Gobal theme options
+    - [ ] Global adjustable font-size
+    - [ ] Global color scheme (light-on-dark or dark-on-light)
 - [ ] "Blow-up"
     - Simpler solution to "whiteboard" annotations: Like shutter, select an
       area of the screen to create a blowup (creates and saves a png image).
@@ -91,30 +134,14 @@
     - [ ] A slide-editor like interface can drop in from the right to select
       blow ups
     - [ ] They can be viewed and drawn on (1 simple marker for now)
-- [X] Web browser (remember location)
-    - [X] Basic mounting of web page
-    - [X] For now, just remember location between changing slides
-    - (Later, try to squirrel away entire DOM state)
-- [X] Save & Save As
-- [X] Import directory
+        ```
+        [blowup]
+        background = _wb_blowups/01_fg.png
+        foreground = _wb_blowups/01_bg.png
+        ```
+- [ ] Debug Xel Vanilla/Galaxy theme issues
+    - [ ] Change form material to Vanilla
 
-```
-[blowup]
-background = _wb_blowups/01_fg.png
-foreground = _wb_blowups/01_bg.png
-
-```
-
-## High prio bugs
-- [ ] Elmoed (?) bug: Editors are getting created EVERY TIME we swap slides (at
-  least for browser)
-    - This is probably memory leakage, and possibly some sort DOM leakage where
-      slides aren't getting properly destroyed :(
-
-## Medium prio nice-to-have
-- Gobal theme options
-    - [ ] Global adjustable font-size
-    - [ ] Global color scheme (light-on-dark or dark-on-light)
 ## Code quality
 
 ### Tests

@@ -1,4 +1,5 @@
 const path = require('path');
+const { mockObject, mockMethod } = require('magicmock');
 
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'input-dir');
 
@@ -7,9 +8,106 @@ const {
     pathToTitle,
     knownCodeFileExtensions,
     isCodeFile,
+    menuTemplateToShortcutArray,
+    bindShortcuts,
 } = require('../../lib/utils');
 
 describe('utils module', () => {
+    describe('has a menuTemplateToShortcutArray function that', () => {
+        function save() {}
+        function open() {}
+        function help() {}
+
+        const simpleMenu = [
+            {
+                label: 'Save',
+                accelerator: 'CommandOrControl+S',
+                click: save,
+            },
+            {
+                label: 'Help',
+                accelerator: 'F1',
+                click: help,
+            },
+            { type: 'seperator' },
+            {
+                label: 'Open...',
+                accelerator: 'CommandOrControl+O',
+                click: open,
+            },
+        ];
+
+        const subMenu = [
+            {
+                label: 'File...',
+                accelerator: 'CommandOrControl+F',
+                submenu: simpleMenu,
+            },
+        ];
+
+        const expected = [
+            ['ctrl+s', save],
+            ['f1', help],
+            ['ctrl+o', open],
+        ];
+
+        it('exists', () => {
+            expect(menuTemplateToShortcutArray).toBeTruthy();
+        });
+
+        it('works with empty case', () => {
+            expect(menuTemplateToShortcutArray([])).toEqual([]);
+        });
+
+        it('extracts accelerators from a simple menu template ', () => {
+            expect(menuTemplateToShortcutArray(simpleMenu)).toEqual(expected);
+        });
+
+        it('extracts accelerators from a sub menu template ', () => {
+            expect(menuTemplateToShortcutArray(subMenu)).toEqual(expected);
+        });
+    });
+
+    describe('has a bindShortcuts function that', () => {
+        function mockEditorAndMousetrap() {
+            const mousetrap = mockObject();
+            const editor = mockObject();
+            editor.manager = mockObject();
+            editor.manager.electron = mockObject();
+            editor.manager.electron.globalShortcut = mockObject();
+            return { mousetrap, editor };
+        }
+
+        it('exists', () => {
+            expect(bindShortcuts).toBeTruthy();
+        });
+
+        it('binds empty shortcuts as expected using mousetrap', () => {
+            const { mousetrap, editor } = mockEditorAndMousetrap();
+            bindShortcuts([], editor, mousetrap);
+            expect(mousetrap.reset.called()).toBeTruthy();
+            const { globalShortcut } = editor.manager.electron;
+            expect(globalShortcut.unregisterAll.called()).toBeTruthy();
+            expect(mousetrap.bind.called()).not.toBeTruthy();
+        });
+
+        it('binds a list of shortcuts', () => {
+            const { mousetrap, editor } = mockEditorAndMousetrap();
+            bindShortcuts([
+                ['ctrl+i', mockMethod()],
+                ['f2', mockMethod()],
+            ], editor, mousetrap);
+            expect(mousetrap.reset.called()).toBeTruthy();
+            const { globalShortcut } = editor.manager.electron;
+            expect(globalShortcut.unregisterAll.called()).toBeTruthy();
+            expect(mousetrap.bind.callCount()).toEqual(2);
+            expect(mousetrap.bind.getInvocationHistory()[0][0])
+                .toEqual(['ctrl+i', 'command+i']);
+            expect(mousetrap.bind.getInvocationHistory()[1][0])
+                .toEqual(['f2']);
+        });
+    });
+
     describe('has a pathToTitle function that', () => {
         it('exists', () => {
             expect(pathToTitle).toBeTruthy();

@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 const { mockElectron, mockWindowManager } = require('elmoed').testutils;
 const mockery = require('mockery');
+const { mockObject } = require('magicmock');
 const path = require('path');
 
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
@@ -16,6 +17,7 @@ describe('Deck', () => {
         electron = mockElectron();
         mockery.enable();
         mockery.registerMock('electron', electron);
+        mockery.registerMock('mousetrap', mockObject());
         mockery.warnOnUnregistered(false);
 
         // Now actually pull in Deck

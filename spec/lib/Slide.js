@@ -1,4 +1,3 @@
-
 const { mockWindowManager } = require('elmoed').testutils;
 const { ModuleBase } = require('elmoed');
 const Slide = require('../../lib/deck/Slide');
@@ -18,7 +17,6 @@ describe('Slide', () => {
                 edits: ['!testpane'],
             };
         });
-
 
         it('is successful when empty', (done) => {
             manager.createWindow('slide', (slide) => {
