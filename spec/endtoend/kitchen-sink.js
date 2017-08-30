@@ -2,34 +2,62 @@
 const lodash = require('lodash');
 const { spectronLaunch, waitUntilMounted, strip, waitUntilBodyText } = require('elmoed').testutils;
 
-/*
-function _scrub(s) {
-    return s.replace(/\W+/g, ''); // scrub non word chars
-}
-*/
-
-describe('Kitchen Sink test slideshow example', () => {
-    const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
-    let app = null;
-    let text = null;
-    beforeEach((done) => {
-        spectronLaunch(...ARGS, (application) => {
-            app = application;
-            waitUntilMounted(app, () => {
-                app.client.getText('body').then((bodyText) => {
-                    text = bodyText;
-                    done();
-                });
-            });
+function openDrawer(app, done) {
+    // Click on title to make sure nothing is focused
+    app.client.leftClick('wb-title').then(() => {
+        app.client.keys('Control').keys('Enter').keys('NULL').then(() => {
+            done();
         });
     });
+}
 
-    it('shows a slide with a term and editor', (done) => {
+function nextSlide(app, done) {
+    // Click on title to make sure nothing is focused
+    app.client.leftClick('wb-title').then(() => {
+        app.client.keys('Control').keys('Space').keys('NULL').then(() => {
+            done();
+        });
+    });
+}
+
+function previousSlide(app, done) {
+    // Click on title to make sure nothing is focused
+    app.client.leftClick('wb-title').then(() => {
+        app.client.keys('Control').keys('Shift').keys('Space').keys('NULL').then(() => {
+            done();
+        });
+    });
+}
+
+function clickAddSlideButton(app, done) {
+    app.client.click('#slides_drawer .Deck--add-slide-button').then(drawerText => {
+        app.client.getText('#slides_drawer').then(drawerText => {
+            done(drawerText);
+        });
+    });
+}
+
+function getBodyText(app, done) {
+    app.client.getText('body').then(done);
+}
+
+function runTerm(app, commands, done) {
+    app.client.leftClick('.xterm').then(() => {
+        let client = app.client;
+        for (const command of commands) {
+            client = client.keys(command).keys('Enter');
+        }
+        client.keys('NULL').then(done);
+    });
+}
+
+function checkFirstSlide(app, done) {
+    getBodyText(app, bodyText => {
         const EXPECTED_START = strip(`
             Terminal and editor
             TEST1.JS TEST2.HTML
         `).toLowerCase();
-        expect(strip(text).toLowerCase()).toContain(EXPECTED_START);
+        expect(strip(bodyText).toLowerCase()).toContain(EXPECTED_START);
 
         const checkDone = lodash.after(2, done);
 
@@ -40,77 +68,102 @@ describe('Kitchen Sink test slideshow example', () => {
         });
 
         waitUntilBodyText(app, '$', () => {
-            /*
-            // Can't guarantee the PS1 is configured like this
-            expect(_scrub(bodyText).toLowerCase())
-                .toContain(_scrub('spec/support/data/kitchen-sink'));
-            */
-            checkDone();
+            // Lets try running some bash commands
+            runTerm(app, ['cd /', 'ls'], () => {
+                checkDone();
+                /*
+                // For some reason, these don't work :/
+                app.client.getText('.xterm').then(bodyText2 => {
+                    expect(scrub(bodyText2).toLowerCase())
+                        .toContain(scrub('bin'));
+                    expect(scrub(bodyText2).toLowerCase())
+                        .toContain(scrub('lib'));
+                    checkDone();
+                });
+                */
+            });
+        });
+    });
+}
+
+describe('Kitchen Sink test slideshow example', () => {
+    const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
+    let app = null;
+    beforeEach((done) => {
+        spectronLaunch(...ARGS, (application) => {
+            app = application;
+            waitUntilMounted(app, done);
         });
     });
 
-    /*
-    // Have to disable, shadow dom too hard for now
-    xit('has a side-bar that appears with F2 and shows slides', done => {
-        app.client.getText('#slides_drawer /deep/').then(drawerText => {
-            // Should be closed by default
-            expect(strip(drawerText)).toEqual('');
+    it('shows a slide with a term and editor', (done) => {
+        checkFirstSlide(app, done);
+    });
 
-            // Lets now open it by sending an F2 keystroke
-            app.client.keys('F2').then(() => {
-                app.client.getText('#slides_drawer ::shadow').then(drawerText => {
-                    // Show first slide
-                    expect(strip(drawerText)).toContain(strip(`
+    it('has a side-bar that appears with Ctrl+Enter and shows slides', done => {
+        openDrawer(app, () => {
+            app.client.getText('#slides_drawer').then(drawerText => {
+                // Show both slides
+                expect(strip(drawerText)).toContain(strip(`
+                    Terminal and editor
+                    Second Slide With Markdown
+                    Dabat decurrit memini
+                `));
+                done();
+            });
+        });
+    });
+
+    it('clicking on add slide button creates new slides with appropriate names', done => {
+        openDrawer(app, () => {
+            clickAddSlideButton(app, (drawerText) => {
+                // Show new slide
+                expect(strip(drawerText)).toContain(strip(`
+                    New Slide 1
+                    Terminal and editor
+                    Second Slide With Markdown
+                    Dabat decurrit memini
+                `));
+
+                clickAddSlideButton(app, (drawerText2) => {
+                    // Show new slide
+                    expect(strip(drawerText2)).toContain(strip(`
+                        New Slide 2
+                        New Slide 1
                         Terminal and editor
-                    `));
-
-                    // Show second slide
-                    expect(strip(drawerText)).toContain(strip(`
                         Second Slide With Markdown
                         Dabat decurrit memini
                     `));
-
-                    done();
-                });
-            });
-
-        });
-    });
-
-    // grrr webdriver.io is terrible code, they deprecate functions WITHOUT
-    // replacements, and the reply is "don't take the warning seriously"...
-    // wtf?
-    // fit('can go to markdown slide with Ctrl+Right', done => {
-    fit('can go to markdown slide with Right Click and Down', done => {
-        // Ensure it is first slide
-        expect(strip(text)).toContain('Terminal and editor');
-        app.client.rightClick().then(() => {
-            setTimeout(() => {
-                app.client.keys('ArrowDown').keys('Enter').then(() => {
-                    app.client.getText('body').then(bText => {
-                        expect(strip(bText)).toContain('Second Slide With Markdown');
-                        expect(strip(bText)).toContain('Dabat decurrit memini');
-                        done();
-                    });
-                });
-            }, 1000);
-        });
-    });
-    */
-
-    /*
-    fit('can go to markdown slide with Ctrl+Right', done => {
-        expect(strip(text)).toContain('Terminal and editor');
-        app.client.leftClick('wb-title').then(() => {
-            app.client.keys('Control').keys('ArrowRight').keys('NULL').then(() => {
-                app.client.getText('body').then(bText => {
-                    expect(strip(bText)).toContain('Second Slide With Markdown');
-                    expect(strip(bText)).toContain('Dabat decurrit memini');
                     done();
                 });
             });
         });
     });
-    */
+
+    it('ctrl+space goes to next slide and ctrl+shift+space goes to previous', done => {
+        function checkPrevious() {
+            // goes back and checks previous slide to make sure it behaves as
+            // before
+            previousSlide(app, () => {
+                checkFirstSlide(app, () => {
+                    done();
+                });
+            });
+        }
+
+        nextSlide(app, () => {
+            getBodyText(app, bodyText => {
+                expect(strip(bodyText)).toContain(strip(`
+                    Second Slide With Markdown
+                `));
+                expect(strip(bodyText)).toContain(strip(`
+                    Fervida Minos tractoque adeundi et tenuere seque nostro.
+                    Agri forte petitos est cum tangit virtute furtiva, prensis
+                    et luce fovi. *Auras oscula* suberant et illuc.
+                `));
+                checkPrevious();
+            });
+        });
+    });
 });
 

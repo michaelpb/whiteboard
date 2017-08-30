@@ -3,7 +3,7 @@
 ## Top Priority
 
 ### Critical regressions
-- [ ] BUG: Completely broke re-arranging slides
+- [X] BUG: Completely broke re-arranging slides
 
 ### Critical bugs
 - [X] BUG: Rare bug: Maximize stops working after switching slides
@@ -18,6 +18,7 @@
 - [X] Upgrade package versions
 - [X] Get E2E testing working again
     - [X] Get travis E2E working
+- [X] More E2E tests
 - [ ] Test coverage
 - [ ] Remove use of deprecated dependencies
 - [X] Linting
@@ -60,6 +61,7 @@
 ### Quality of life
 - [ ] New menu system
     - [X] Lower level utilities to set this up
+    - [X] Hardcoded mousetrap alternative cmds to unblock full E2E tests
     - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
     - [ ] Separate right click menu
     - [ ] More fleshed out global menu

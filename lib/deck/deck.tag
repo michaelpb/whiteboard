@@ -49,7 +49,7 @@
             <img src="img/icon.png" class="deck-logo" />
         </x-button>
 
-        <x-button onclick={add_slide}>
+        <x-button onclick={add_slide} class="Deck--add-slide-button">
             <x-box>
                 <img src="svg/si-glyph-plus.svg" class="deck-svg" />
                 <x-label>Slide</x-label>
@@ -71,6 +71,37 @@
     <script>
         'use strict';
         const Sortable = require("sortablejs/Sortable");
+
+        bind_shortcuts(shortcuts) {
+            Mousetrap.reset();
+            for (let [combos, func] of shortcuts) {
+                if (!Array.isArray(combos)) {
+                    combos = [combos];
+                }
+
+                for (const combo of combos) {
+                    // Make mac friendly
+                    if (combo.startsWith('ctrl')) {
+                        combos.push(combo.replace('ctrl', 'command'));
+                    }
+                }
+                Mousetrap.bind(combos, func);
+            }
+        }
+
+        setup_shortcuts() {
+            this.bind_shortcuts([
+                ['ctrl+space', () => opts.send('next_slide')],
+                ['ctrl+shift+space', () => opts.send('previous_slide')],
+                ['ctrl+enter', () => this.toggle_drawer()],
+            ]);
+        }
+
+        toggle_drawer() {
+            const drawer = document.getElementById('slides_drawer');
+            drawer.opened = !drawer.opened;
+        }
+
         activate(ev) {
             ev.preventUpdate = true;
             opts.send('activate', ev.item.id);
@@ -146,9 +177,10 @@
             }, false);
 
             this.setup_sortable();
-            const drawer = document.getElementById('slides_drawer');
+            this.setup_shortcuts();
+
             opts.on('toggle_deck', () => {
-                drawer.opened = !drawer.opened;
+                this.toggle_drawer();
             });
         });
     </script>
