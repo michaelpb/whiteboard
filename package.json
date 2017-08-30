@@ -1,5 +1,6 @@
 {
   "name": "whiteboard",
+  "productName": "Whiteboard",
   "version": "0.0.1",
   "description": "Whiteboard - a slide-based activity presentation system",
   "bin": {
@@ -59,7 +60,6 @@
     }
   },
   "dependencies": {
-    "about-window": "^1.7.1",
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
     "electron-store": "1.2.0",
