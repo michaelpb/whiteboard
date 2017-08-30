@@ -17,6 +17,7 @@
 - [X] Clean up unused packages
 - [X] Upgrade package versions
 - [X] Get E2E testing working again
+    - [X] Get travis E2E working
 - [ ] Test coverage
 - [ ] Remove use of deprecated dependencies
 - [X] Linting
@@ -43,7 +44,6 @@
 ### Saving/loading features
 - [X] Blank state
     - should work if running without any arguments
-    - half-assed solution: default to "new file" in tmp directory, maybe..?
 - [X] Add/remove panel
 - [X] Edit panel
     - [X] Edit title (can even be "prompt")
@@ -60,14 +60,14 @@
 ### Quality of life
 - [ ] New menu system
     - [X] Lower level utilities to set this up
-    - [ ] Mousetrack (Blocked on Elmoed): Blocking: full E2E tests
+    - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
     - [ ] Separate right click menu
     - [ ] More fleshed out global menu
 - [ ] Auto-save for Whiteboard (on by default)
     - [ ] Save to settings file..?
 - [ ] Code editor (off by default)
     - [ ] Save to settings file..?
-- [ ] Elmoed: Remember window state
+- [X] Elmoed: Remember window state
 - [ ] Browser
     - [ ] Add refresh option (Ctrl+R)
     - [ ] For file:///, do auto-refresh
@@ -110,8 +110,10 @@ for "gestures"):
 
 
 ### High-Prio Nice to Haves
-- [ ] Add Help menu option with about window:
+- [X] Add Help menu option with about window:
   https://github.com/rhysd/electron-about-window
+- [ ] Add key combo help overlay (can just be a modal)
+  that contains all actions listed out
 - [X] Web browser (remember location)
     - [X] Basic mounting of web page
     - [X] For now, just remember location between changing slides

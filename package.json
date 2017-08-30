@@ -59,9 +59,11 @@
     }
   },
   "dependencies": {
+    "about-window": "^1.7.1",
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
     "electron-store": "1.2.0",
+    "elmoed": "0.0.13",
     "glob": "7.0.3",
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
@@ -77,7 +79,6 @@
     "tmp": "0.0.31",
     "walk-sync": "0.3.2",
     "xel": "0.0.54",
-    "elmoed": "0.0.13",
     "xterm": "2.4.0"
   },
   "devDependencies": {
