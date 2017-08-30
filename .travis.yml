@@ -24,4 +24,4 @@ cache:
     - node_modules
 
 script:
-  - npm run test
+  - npm run test-v-headless
