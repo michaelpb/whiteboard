@@ -22,8 +22,8 @@ describe('Start screen e2e', () => {
             Open deck...
             New deck...
             Import from directory...
-            About
         `).toLowerCase();
+        // About
         expect(strip(text).toLowerCase()).toContain(EXPECTED_START);
         done();
     });
