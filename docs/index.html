@@ -7,6 +7,7 @@
 <meta name="description" content="Mostly stateless microservice framework for generating on-the-fly thumbs and previews of a wide variety of file types."/>
 <meta name="HandheldFriendly" content="True"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -28,6 +29,22 @@
             </h2>
 
             <div class="block">
+                <a href="#all_download_links" class="button is-large is-primary">
+                    Download
+                </a>
+            </div>
+            <!--
+            <script>
+                var OSName="Unknown OS";
+                if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+                if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+                if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+                if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+                document.write('Your OS: '+OSName);
+            </script>
+            -->
+
+            <div class="block">
                 <p>Whiteboard is slideshow application for demonstration-heavy
                 presentations. It eliminates the need to be switching between
                 code, browser, terminals, and descriptive text during live
@@ -37,15 +54,109 @@
             </div>
 
             <div class="block">
-                <img src="https://travis-ci.org/michaelpb/whiteboard.svg?branch=master" />
-            </div>
-            <div class="block">
-                <iframe src="https://ghbtns.com/github-btn.html?user=michaelpb&repo=whiteboard&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-                <!--
-                    <iframe src="https://ghbtns.com/github-btn.html?user=micahelpb&repo=whiteboard&type=fork&count=false&size=large" frameborder="0" scrolling="0" width="80px" height="30px"></iframe>
-                -->
             </div>
         </div>
+    </div>
+</section>
+
+<section class="hero is-warning">
+    <div class="hero-body">
+        <div class="container">
+        <nav class="columns">
+            <a class="column has-text-centered" href="">
+            <span class="icon is-large" style="margin-right: -15px;">
+                <i class="fa fa-linux"></i>
+            </span>
+            <span class="icon is-large">
+                <i class="fa fa-apple"></i>
+            </span>
+            <span class="icon is-large" style="margin-right: 10px;">
+                <i class="fa fa-windows"></i>
+            </span>
+            <p class="title is-4"><strong>Cross Platform</strong></p>
+            <p class="subtitle">Designed for <strong>all</strong> desktops</p>
+            </a>
+            <a class="column has-text-centered" href="">
+            <span class="icon is-large">
+                <i class="fa fa-podcast"></i>
+            </span>
+            <p class="title is-4"><strong>Webcasts</strong></p>
+            <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
+            </a>
+            <a class="column has-text-centered" href="">
+            <span class="icon is-large">
+                <i class="fa fa-code"></i>
+            </span>
+            <p class="title is-4"><strong>Bootcamps</strong></p>
+            <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
+            </a>
+            <a class="column has-text-centered" href="">
+            <span class="icon is-large">
+                <i class="fa fa-code-fork"></i>
+            </span>
+            <p class="title is-4"><strong>Free</strong></p>
+            <p class="subtitle">Free as in freedom (GPL 3.0)</p>
+            </a>
+        </nav>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-medium has-text-centered">
+    <h2 class="title" id="all_download_links">
+        All Download Links
+    </h2>
+    <div class="columns">
+        <div class="column">
+            <h4 class="subtitle">
+                <i class="fa fa-linux"></i>
+                Linux
+            </h4>
+            <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.4/whiteboard-app-0.0.4-x86_64.AppImage" class="button is-link">
+                <span>Cross-platform (AppImage)</span>
+            </a>
+            <p><a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.4/whiteboard-app_0.0.4_amd64.deb" class="button is-link">
+                <span>Debian, Ubuntu (deb)</span>
+            </a></p>
+            <p>
+                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.4/whiteboard-app-0.0.4.x86_64.rpm" class="button is-link">
+                    <span>Fedora, Red Hat (rpm)</span>
+                </a>
+            </p>
+            <p>
+                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.4/whiteboard-app-0.0.4.pacman" class="button is-link">
+                    <span>Arch (pacman)</span>
+                </a>
+            </p>
+            <p>
+                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.4/whiteboard-app-0.0.4.tar.gz" class="button is-link">
+                    <span>Archive (tar.gz)</span>
+                </a>
+            </p>
+        </div>
+        <div class="column">
+            <h4>
+                <i class="fa fa-apple"></i>
+                macOS
+            </h4>
+            <p><em>Coming soon!</em></p>
+        </div>
+        <div class="column">
+            <h4>
+                <i class="fa fa-windows"></i>
+                Windows
+            </h4>
+            <p><em>Coming soon!</em></p>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2 class="title">Contribute</h2>
+        <img src="https://travis-ci.org/michaelpb/whiteboard.svg?branch=master" />
+        <iframe src="https://ghbtns.com/github-btn.html?user=michaelpb&repo=whiteboard&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+        <!--
+            <iframe src="https://ghbtns.com/github-btn.html?user=micahelpb&repo=whiteboard&type=fork&count=false&size=large" frameborder="0" scrolling="0" width="80px" height="30px"></iframe>
+        -->
     </div>
 </section>
 
