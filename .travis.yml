@@ -30,15 +30,6 @@ env:
     - TESTS_EXTRA_DELAY=true
     - TESTS_SKIP_UNRELIABLE=true
 
-deploy:
-  provider: releases
-    api_key: "GITHUB OAUTH TOKEN"
-    file: "FILE TO UPLOAD"
-    skip_cleanup: true
-    on:
-      tags: true
-
-
 before_script:
   - npm run rebuild
 
