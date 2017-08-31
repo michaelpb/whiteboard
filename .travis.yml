@@ -10,6 +10,7 @@ matrix:
     - os: linux
       env:
         - TEST_TARGET=test-v-headless
+        - BUILD_TARGET=linux
 #    - os: osx
 #      env:
 #        - BUILD_TARGET=build-macos
@@ -27,10 +28,11 @@ addons:
       - bsdtar
 
 env:
-  - ELECTRON_ENABLE_LOGGING=1
-  - USE_SYSTEM_XORRISO=true
-  - TESTS_EXTRA_DELAY=true
-  - TESTS_SKIP_UNRELIABLE=true
+  global:
+    - ELECTRON_ENABLE_LOGGING=1
+    - USE_SYSTEM_XORRISO=true
+    - TESTS_EXTRA_DELAY=true
+    - TESTS_SKIP_UNRELIABLE=true
 #  - BUILD_TARGET=build-linux
 #  - TEST_TARGET=test-v-headless
 
