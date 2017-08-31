@@ -3,6 +3,10 @@
 If you just want to use Whiteboard, then download a
 [pre-built binary (once available)](README.md).
 
+* [Whiteboard development Code of Conduct](CONDUCT.md)
+
+# Setting up
+
 If you want to contribute to Whiteboard, then follow the following steps:
 
 0. Check out this repo somewhere

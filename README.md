@@ -10,13 +10,11 @@ Whiteboard is a Electron.js based slideshow app for demonstration-heavy
 presentations. It's great for guiding code-heavy classroom lectures, tutorials,
 workshops, or presentations.
 
-**Whiteboard is very WIP and not ready for public usage. If you really, really want
-to dig in keep on reading.**
-
 
 ## Pre-built packages
 
-- Since Whiteboard is a WIP, there are no pre-built packages at this time!
+**Whiteboard is a WIP and not quite ready for public usage. Check back very
+soon for pre-built packages to begin using it in your own demonstrations!**
 
 # Development
 
