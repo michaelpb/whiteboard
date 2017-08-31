@@ -1,58 +1,66 @@
-
 const lodash = require('lodash');
 const { spectronLaunch, waitUntilMounted, strip, waitUntilBodyText } = require('elmoed').testutils;
 
+function delay(callback) {
+    // Used to add pauses in e2e tests in certain steps for CI, to ensure
+    // consistently successful e2e tests....
+    // For testing locally, it's less important.
+    let timeout = 10;
+    if (process.env.TESTS_EXTRA_DELAY) {
+        timeout = 5000; // five seconds
+    }
+    return (...args) => {
+        setTimeout(() => callback(...args), timeout);
+    };
+}
+
 function openDrawer(app, done) {
     // Click on title to make sure nothing is focused
-    app.client.leftClick('wb-title').then(() => {
-        app.client.keys('Control').keys('Enter').keys('NULL').then(() => {
-            done();
-        });
-    });
+    app.client.leftClick('wb-title').then(delay(() => {
+        app.client.keys('Control').keys('Enter').keys('NULL')
+            .then(delay(done));
+    }));
 }
 
 function nextSlide(app, done) {
     // Click on title to make sure nothing is focused
-    app.client.leftClick('wb-title').then(() => {
-        app.client.keys('Control').keys('Space').keys('NULL').then(() => {
-            done();
-        });
-    });
+    app.client.leftClick('wb-title').then(delay(() => {
+        app.client.keys('Control').keys('Space').keys('NULL')
+            .then(delay(done));
+    }));
 }
 
 function previousSlide(app, done) {
     // Click on title to make sure nothing is focused
-    app.client.leftClick('wb-title').then(() => {
-        app.client.keys('Control').keys('Shift').keys('Space').keys('NULL').then(() => {
-            done();
-        });
-    });
+    app.client.leftClick('wb-title').then(delay(() => {
+        app.client.keys('Control').keys('Shift').keys('Space')
+            .then(delay(done));
+    }));
 }
 
 function clickAddSlideButton(app, done) {
     app.client.click('#slides_drawer .Deck--add-slide-button').then(drawerText => {
-        app.client.getText('#slides_drawer').then(drawerText => {
-            done(drawerText);
-        });
+        app.client.getText('#slides_drawer')
+            .then(delay(done));
     });
 }
 
 function getBodyText(app, done) {
-    app.client.getText('body').then(done);
+    app.client.getText('body').then(delay(done));
 }
 
 function runTerm(app, commands, done) {
-    app.client.leftClick('.xterm').then(() => {
+    app.client.leftClick('.xterm').then(delay(() => {
         let client = app.client;
         for (const command of commands) {
             client = client.keys(command).keys('Enter');
         }
-        client.keys('NULL').then(done);
-    });
+        client.keys('NULL').then(delay(done));
+    }));
 }
 
 function checkFirstSlide(app, done) {
-    getBodyText(app, bodyText => {
+    getBodyText(app, delay(bodyText => {
         const EXPECTED_START = strip(`
             Terminal and editor
             TEST1.JS TEST2.HTML
@@ -83,7 +91,7 @@ function checkFirstSlide(app, done) {
                 */
             });
         });
-    });
+    }));
 }
 
 describe('Kitchen Sink test slideshow example', () => {

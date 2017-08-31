@@ -27,6 +27,7 @@ env:
   global:
     - ELECTRON_ENABLE_LOGGING=1
     - USE_SYSTEM_XORRISO=true
+    - TESTS_EXTRA_DELAY=true
 
 before_script:
   - npm run rebuild
