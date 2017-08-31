@@ -10,7 +10,7 @@ matrix:
     - os: linux
       env:
         - TEST_TARGET=test-v-headless
-        - BUILD_TARGET=linux
+        - BUILD_TARGET=build-linux
 #    - os: osx
 #      env:
 #        - BUILD_TARGET=build-macos
