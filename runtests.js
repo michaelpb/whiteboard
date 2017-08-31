@@ -15,7 +15,7 @@ if (process.argv.indexOf('--verbose') !== -1) {
 jasmine.getEnv().addReporter(new SpecReporter());   // add jasmine-spec-reporter
 
 if (process.env.TESTS_EXTRA_DELAY) {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 30 * 1000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 45 * 1000;
 } else {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 15 * 1000;
 }
