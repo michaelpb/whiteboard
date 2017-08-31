@@ -30,3 +30,9 @@ bump-and-push: test lint
 
 release:
 	npm publish
+
+build-linux:
+	./node_modules/.bin/electron-builder --linux --x64
+
+build-mac:
+	./node_modules/.bin/electron-builder --macos

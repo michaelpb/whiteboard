@@ -1,17 +1,33 @@
 language: node_js
 
 node_js:
-- '8'
+  - '8'
+
+matrix:
+  allow_failures:
+    - os: osx
+  include:
+    - os: linux
+      env: SKIP_E2E=false
+    - os: osx
+      env: SKIP_E2E=true
 
 addons:
   apt:
     packages:
       - xvfb
+      - xorriso
+      - icnsutils
+      - graphicsmagick
+      - xz-utils
+      - rpm
+      - bsdtar
+      - snapcraft
 
 env:
-    global:
-        - ELECTRON_ENABLE_LOGGING=1
-        - USE_SYSTEM_XORRISO=true
+  global:
+    - ELECTRON_ENABLE_LOGGING=1
+    - USE_SYSTEM_XORRISO=true
 
 before_script:
   - npm run rebuild
@@ -22,4 +38,5 @@ cache:
 
 script:
   - npm run test-v-headless
-  - ./node_modules/.bin/electron-builder --linux
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make build-macos ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make build-linux ; fi
