@@ -32,7 +32,7 @@ release:
 	npm publish
 
 build-linux:
-	./node_modules/.bin/electron-builder --linux --x64
+	./node_modules/.bin/electron-builder --linux --x64 --publish onTagOrDraft
 
 build-macos:
-	./node_modules/.bin/electron-builder --macos
+	./node_modules/.bin/electron-builder --macos --publish onTagOrDraft

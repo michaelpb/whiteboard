@@ -47,13 +47,3 @@ script:
   - npm run $TEST_TARGET
   - make $BUILD_TARGET
 
-deploy:
-  provider: releases
-  api_key:
-      env: "GH_TOKEN"
-  file_glob: true
-  file: dist/*
-  skip_cleanup: true
-  on:
-    tags: true
-
