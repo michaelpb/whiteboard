@@ -3,14 +3,14 @@ language: node_js
 node_js:
   - '8'
 
+#  allow_failures:
+#    - os: osx
 matrix:
-  allow_failures:
-    - os: osx
   include:
     - os: linux
       env: SKIP_E2E=false
-    - os: osx
-      env: SKIP_E2E=true
+#    - os: osx
+#      env: SKIP_E2E=true
 
 addons:
   apt:

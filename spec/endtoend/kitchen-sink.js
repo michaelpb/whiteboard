@@ -1,13 +1,15 @@
 const lodash = require('lodash');
 const { spectronLaunch, waitUntilMounted, strip, waitUntilBodyText } = require('elmoed').testutils;
 
+const CI_E2E_DELAY = 1000; // one second
+
 function delay(callback) {
     // Used to add pauses in e2e tests in certain steps for CI, to ensure
     // consistently successful e2e tests....
     // For testing locally, it's less important.
     let timeout = 10;
     if (process.env.TESTS_EXTRA_DELAY) {
-        timeout = 5000; // five seconds
+        timeout = CI_E2E_DELAY;
     }
     return (...args) => {
         setTimeout(() => callback(...args), timeout);

@@ -12,9 +12,10 @@
     "dist": "npm run rebuild && build --publish onTagOrDraft",
     "start": "electron lib/main.js",
     "test-v-headless": "xvfb-run node ./runtests.js --verbose",
-    "test-v": "node ./runtests.js --verbose",
+    "test-v": "node ./runtests.js --verbose --skip-e2e",
     "test-headless": "xvfb-run node ./runtests.js",
-    "test": "node ./runtests.js"
+    "test-e2e": "xvfb-run node ./runtests.js",
+    "test": "node ./runtests.js --skip-e2e"
   },
   "repository": {
     "type": "git",
