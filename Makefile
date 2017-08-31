@@ -34,5 +34,5 @@ release:
 build-linux:
 	./node_modules/.bin/electron-builder --linux --x64
 
-build-mac:
+build-macos:
 	./node_modules/.bin/electron-builder --macos

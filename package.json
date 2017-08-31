@@ -1,5 +1,5 @@
 {
-  "name": "whiteboard",
+  "name": "whiteboard-app",
   "productName": "Whiteboard",
   "version": "0.0.2",
   "description": "Whiteboard - a slide-based activity presentation system",
@@ -33,7 +33,7 @@
   },
   "author": "Michael Bethencourt <michaelpb@gmail.com> (http://michaelb.org/)",
   "license": "GPL-3.0",
-  "homepage": "https://github.org/michaelpb/whiteboard#readme",
+  "homepage": "http://whiteboard.michaelb.org",
   "build": {
     "appId": "org.michaelb.Whiteboard",
     "files": [
