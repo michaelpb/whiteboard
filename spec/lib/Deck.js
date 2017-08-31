@@ -73,12 +73,16 @@ describe('Deck', () => {
             });
         });
 
+        afterEach(() => {
+            deck = null;
+        });
+
         it('sets up a menu', () => {
             const menu = electron._getMockedMenu();
             expect(menu).toBeTruthy();
         });
 
-        it('sets up two slides', () => {
+        xit('sets up two slides', () => {
             expect(deck.slideIDs.length).toEqual(2);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(2);
@@ -109,11 +113,6 @@ describe('Deck', () => {
             expect(Object.keys(deck.slideData).length).toEqual(1);
             expect(Object.keys(deck.slideEditors).length).toEqual(1);
             expect(deck.slideIDs.length).toEqual(1);
-        });
-
-
-        afterEach(() => {
-            deck = null;
         });
     });
 
