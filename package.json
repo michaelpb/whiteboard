@@ -65,7 +65,6 @@
         "rpm",
         "deb",
         "pacman",
-        "freebsd",
         "tar.gz"
       ]
     }
