@@ -22,7 +22,6 @@ addons:
       - xz-utils
       - rpm
       - bsdtar
-      - snapcraft
 
 env:
   global:
