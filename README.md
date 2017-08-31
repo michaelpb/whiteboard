@@ -2,7 +2,7 @@
 
 ![Travis CI](https://travis-ci.org/michaelpb/whiteboard.svg?branch=master)
 
-![Build status](https://ci.appveyor.com/api/projects/status/kecjxg5h613ivbwd?svg=true)](https://ci.appveyor.com/project/michaelpb/whiteboard)
+![Build status](https://ci.appveyor.com/api/projects/status/kecjxg5h613ivbwd?svg=true)
 
 -------------------------
 

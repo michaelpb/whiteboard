@@ -29,6 +29,8 @@ env:
     - USE_SYSTEM_XORRISO=true
     - TESTS_EXTRA_DELAY=true
     - TESTS_SKIP_UNRELIABLE=true
+    - BUILD_TARGET=build-linux
+    - TEST_TARGET=test-v-headless
 
 before_script:
   - npm run rebuild
@@ -38,6 +40,5 @@ cache:
     - node_modules
 
 script:
-  - npm run test-v-headless
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make build-macos ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make build-linux ; fi
+  - npm run $TEST_TARGET
+  - make $BUILD_TARGET
