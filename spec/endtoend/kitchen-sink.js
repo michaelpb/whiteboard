@@ -96,7 +96,10 @@ function checkFirstSlide(app, done) {
     }));
 }
 
-describe('Kitchen Sink test slideshow example', () => {
+const optionalDescribe = process.env.TESTS_SKIP_UNRELIABLE ?
+    xdescribe : describe;
+
+describe('KitchenSink E2E smoke tests', () => {
     const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
     let app = null;
     beforeEach((done) => {
@@ -105,6 +108,7 @@ describe('Kitchen Sink test slideshow example', () => {
             waitUntilMounted(app, done);
         });
     });
+
 
     it('shows a slide with a term and editor', (done) => {
         checkFirstSlide(app, done);
@@ -121,6 +125,17 @@ describe('Kitchen Sink test slideshow example', () => {
                 `));
                 done();
             });
+        });
+    });
+});
+
+optionalDescribe('Kitchen Sink E2E rigorous tests', () => {
+    const ARGS = ['lib/main.js', 'spec/support/data/kitchen-sink/ks.whiteboard'];
+    let app = null;
+    beforeEach((done) => {
+        spectronLaunch(...ARGS, (application) => {
+            app = application;
+            waitUntilMounted(app, done);
         });
     });
 

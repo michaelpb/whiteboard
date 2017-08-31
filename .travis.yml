@@ -28,6 +28,16 @@ env:
     - ELECTRON_ENABLE_LOGGING=1
     - USE_SYSTEM_XORRISO=true
     - TESTS_EXTRA_DELAY=true
+    - TESTS_SKIP_UNRELIABLE=true
+
+deploy:
+  provider: releases
+    api_key: "GITHUB OAUTH TOKEN"
+    file: "FILE TO UPLOAD"
+    skip_cleanup: true
+    on:
+      tags: true
+
 
 before_script:
   - npm run rebuild
