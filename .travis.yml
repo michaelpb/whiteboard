@@ -3,12 +3,12 @@ language: node_js
 node_js:
   - '8'
 
+#matrix:
 #  allow_failures:
 #    - os: osx
-matrix:
-  include:
-    - os: linux
-      env: SKIP_E2E=false
+#  include:
+#    - os: linux
+#      env: SKIP_E2E=false
 #    - os: osx
 #      env: SKIP_E2E=true
 
