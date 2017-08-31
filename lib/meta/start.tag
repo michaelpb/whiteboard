@@ -60,10 +60,12 @@
 
             <hr>
 
+            <!--
             <x-menuitem onclick={about}>
                 <x-icon name="help"></x-icon>
                 <x-label>About</x-label>
             </x-menuitem>
+            -->
         </x-menu>
 
         <x-box vertical id="recent">
