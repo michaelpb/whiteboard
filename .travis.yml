@@ -3,14 +3,17 @@ language: node_js
 node_js:
   - '8'
 
-#matrix:
-#  allow_failures:
+matrix:
+  allow_failures:
+    - os: osx
+  include:
+    - os: linux
+      env:
+        - TEST_TARGET=test-v-headless
 #    - os: osx
-#  include:
-#    - os: linux
-#      env: SKIP_E2E=false
-#    - os: osx
-#      env: SKIP_E2E=true
+#      env:
+#        - BUILD_TARGET=build-macos
+#        - TEST_TARGET=test-v
 
 addons:
   apt:
@@ -24,13 +27,12 @@ addons:
       - bsdtar
 
 env:
-  global:
-    - ELECTRON_ENABLE_LOGGING=1
-    - USE_SYSTEM_XORRISO=true
-    - TESTS_EXTRA_DELAY=true
-    - TESTS_SKIP_UNRELIABLE=true
-    - BUILD_TARGET=build-linux
-    - TEST_TARGET=test-v-headless
+  - ELECTRON_ENABLE_LOGGING=1
+  - USE_SYSTEM_XORRISO=true
+  - TESTS_EXTRA_DELAY=true
+  - TESTS_SKIP_UNRELIABLE=true
+#  - BUILD_TARGET=build-linux
+#  - TEST_TARGET=test-v-headless
 
 before_script:
   - npm run rebuild
@@ -42,3 +44,14 @@ cache:
 script:
   - npm run $TEST_TARGET
   - make $BUILD_TARGET
+
+deploy:
+  provider: releases
+  api_key:
+      env: "GH_TOKEN"
+  file_glob: true
+  file: dist/*
+  skip_cleanup: true
+  on:
+    tags: true
+
