@@ -17,10 +17,7 @@
     "test-e2e": "xvfb-run node ./runtests.js",
     "test": "node ./runtests.js --skip-e2e"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.org/michaelpb/whiteboard.git"
-  },
+  "repository": "michaelpb/whiteboard",
   "keywords": [
     "slideshow",
     "tutorial",
@@ -82,9 +79,8 @@
     "mousetrap": "1.6.1",
     "node-pty": "0.7.0",
     "node-uuid": "1.4.7",
-    "opn": "4.0.2",
     "riot": "3.4.3",
-    "schemaconf": "git+https://bitbucket.org/michaelb/schemaconf.git#3095ac4",
+    "schemaconf": "0.1.1",
     "sortablejs": "1.5.1",
     "tmp": "0.0.31",
     "walk-sync": "0.3.2",
