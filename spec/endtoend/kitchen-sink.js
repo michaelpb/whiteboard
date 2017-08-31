@@ -41,7 +41,7 @@ function previousSlide(app, done) {
 }
 
 function clickAddSlideButton(app, done) {
-    app.client.click('#slides_drawer .Deck--add-slide-button').then(drawerText => {
+    app.client.click('#slides_drawer .Deck--add-slide-button').then(() => {
         app.client.getText('#slides_drawer')
             .then(delay(done));
     });
@@ -62,7 +62,7 @@ function runTerm(app, commands, done) {
 }
 
 function checkFirstSlide(app, done) {
-    getBodyText(app, delay(bodyText => {
+    getBodyText(app, delay((bodyText) => {
         const EXPECTED_START = strip(`
             Terminal and editor
             TEST1.JS TEST2.HTML
@@ -71,8 +71,8 @@ function checkFirstSlide(app, done) {
 
         const checkDone = lodash.after(2, done);
 
-        waitUntilBodyText(app, 'var', (bodyText) => {
-            expect(strip(bodyText).toLowerCase())
+        waitUntilBodyText(app, 'var', (bodyText2) => {
+            expect(strip(bodyText2).toLowerCase())
                 .toContain(strip('var example_js_file = true'));
             checkDone();
         });
@@ -114,9 +114,9 @@ describe('KitchenSink E2E smoke tests', () => {
         checkFirstSlide(app, done);
     });
 
-    it('has a side-bar that appears with Ctrl+Enter and shows slides', done => {
+    it('has a side-bar that appears with Ctrl+Enter and shows slides', (done) => {
         openDrawer(app, () => {
-            app.client.getText('#slides_drawer').then(drawerText => {
+            app.client.getText('#slides_drawer').then((drawerText) => {
                 // Show both slides
                 expect(strip(drawerText)).toContain(strip(`
                     Terminal and editor
@@ -139,7 +139,7 @@ optionalDescribe('Kitchen Sink E2E rigorous tests', () => {
         });
     });
 
-    it('clicking on add slide button creates new slides with appropriate names', done => {
+    it('clicking on add slide button creates new slides with appropriate names', (done) => {
         openDrawer(app, () => {
             clickAddSlideButton(app, (drawerText) => {
                 // Show new slide
@@ -165,7 +165,7 @@ optionalDescribe('Kitchen Sink E2E rigorous tests', () => {
         });
     });
 
-    it('ctrl+space goes to next slide and ctrl+shift+space goes to previous', done => {
+    it('ctrl+space goes to next slide and ctrl+shift+space goes to previous', (done) => {
         function checkPrevious() {
             // goes back and checks previous slide to make sure it behaves as
             // before
@@ -177,7 +177,7 @@ optionalDescribe('Kitchen Sink E2E rigorous tests', () => {
         }
 
         nextSlide(app, () => {
-            getBodyText(app, bodyText => {
+            getBodyText(app, (bodyText) => {
                 expect(strip(bodyText)).toContain(strip(`
                     Second Slide With Markdown
                 `));
