@@ -31,7 +31,7 @@
     - [ ] Terminal
     - [X] Slide
         - [ ] Panel editor
-    - [ ] Browser
+    - [X] Browser
     - [X] Markdown
     - [X] Title
 
