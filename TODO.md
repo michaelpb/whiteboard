@@ -63,7 +63,7 @@
     - [X] Lower level utilities to set this up
     - [X] Hardcoded mousetrap alternative cmds to unblock full E2E tests
     - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
-    - [ ] Separate right click menu
+    - [X] Separate right click menu
     - [ ] More fleshed out global menu
 - [ ] Auto-save for Whiteboard (on by default)
     - [ ] Save to settings file..?
