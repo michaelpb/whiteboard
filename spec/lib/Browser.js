@@ -4,9 +4,8 @@ Very basic smoke test for browser module
 
 /* eslint-disable no-param-reassign */
 
-const { mockWindowManager, strip } = require('elmoed').testutils;
+const { mockWindowManager } = require('elmoed').testutils;
 const Browser = require('../../lib/browser/Browser');
-const path = require('path');
 
 // Integrat-y unit tests for Browser viewer
 describe('Browser', () => {
@@ -23,7 +22,7 @@ describe('Browser', () => {
     it('successfully loads a blank URL', (done) => {
         manager.createWindow('browser', (browser) => {
             expect(Object.keys(browser.getProps())).toEqual(['url']);
-            const {url} = browser.getProps();
+            const { url } = browser.getProps();
             expect(url).toEqual('');
             done();
         }, '');
@@ -32,10 +31,9 @@ describe('Browser', () => {
     it('successfully loads a populated URL', (done) => {
         manager.createWindow('browser', (browser) => {
             expect(Object.keys(browser.getProps())).toEqual(['url']);
-            const {url} = browser.getProps();
+            const { url } = browser.getProps();
             expect(url).toEqual('http://lol.com/');
             done();
         }, 'http://lol.com/');
     });
-
 });
