@@ -28,7 +28,7 @@
 - [ ] Unit tests for each module
     - [X] Deck
     - [X] Editor
-    - [ ] Terminal
+    - [X] Terminal
     - [X] Slide
         - [ ] Panel editor
     - [X] Browser
@@ -265,7 +265,7 @@ Two extremely critical bugs persist:
 
 
 ## Blocked
-- [ ] Add a couple more E2E tests
+- [X] Add a couple more E2E tests
     - Need to move away from system-level control key codes, to in-browser key
       code detection, since its too hard to simulate interaction
 - [ ] Improve e2e tests to properly shutdown PTY
