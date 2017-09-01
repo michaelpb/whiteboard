@@ -32,7 +32,8 @@
     - [X] Slide
         - [ ] Panel editor
     - [ ] Browser
-    - [ ] Markdown
+    - [X] Markdown
+    - [X] Title
 
 ### Basic apps working
 - [X] Title

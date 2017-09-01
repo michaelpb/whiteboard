@@ -17,7 +17,7 @@ describe('Editor', () => {
     });
 
 
-    // Mostly just a stub of integrat-y unit tests for Editor
+    // Integrat-y unit tests for Editor
     describe('when mounting with various files', () => {
         it('successfully defaults to dummy file when empty', (done) => {
             manager.createWindow('editor', (editor) => {
