@@ -70,7 +70,7 @@
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
     "electron-store": "1.2.0",
-    "elmoed": "0.0.13",
+    "elmoed": "0.0.14",
     "glob": "7.0.3",
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
@@ -89,7 +89,7 @@
   },
   "devDependencies": {
     "electron": "1.7.5",
-    "electron-builder": "19.26.3",
+    "electron-builder": "19.27.3",
     "electron-icon-maker": "0.0.3",
     "electron-rebuild": "1.6.0",
     "eslint": "4.5.0",
