@@ -75,6 +75,20 @@
                         <h1>Whiteboard</h1>
                         <p>An activity-based slideshow application for coding
                         webinars, classrooms, or presentations.</p>
+
+                        <p><strong>Hint:</strong> Get going by either starting
+                        from scratch by clicking <strong>&ldquo;New
+                        deck&rdquo;</strong>, OR importing a directory
+                        containing a series of subdirectories, which will be
+                        interpreted as a series of activities by clicking
+                        <strong>&ldquo;Import from
+                        directory&rdquo;</strong>.</p>
+
+                        <p>Once created, all controls will be available via
+                        context menu (<em>Right click</em> or
+                        <em>Command + Click</em>)
+
+
                     </div>
                 </main>
             </x-card>

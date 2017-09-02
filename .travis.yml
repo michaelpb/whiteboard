@@ -11,10 +11,10 @@ matrix:
       env:
         - TEST_TARGET=test-v-headless
         - BUILD_TARGET=build-linux
-#    - os: osx
-#      env:
-#        - BUILD_TARGET=build-macos
-#        - TEST_TARGET=test-v
+    - os: osx
+      env:
+        - BUILD_TARGET=build-macos
+        - TEST_TARGET=test-v
 
 addons:
   apt:
