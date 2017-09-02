@@ -3,7 +3,7 @@
 ## Top Priority
 
 ### Critical regressions
-- [ ] BUG: Editing Markdown pane does not work (shows no modal)
+- [X] BUG: Editing Markdown pane does not work (shows no modal)
 - [X] BUG: Completely broke re-arranging slides
 
 ### Critical bugs
