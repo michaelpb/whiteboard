@@ -54,6 +54,8 @@
                         var href = "#all_download_links";
                         var v = navigator.appVersion;
                         if (v.indexOf("Win") !== -1) {
+                            icon = '&nbsp; <i class="fa fa-windows"></i>';
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.13/whiteboard-app-setup-0.0.13.exe";
                         } else if (v.indexOf("Mac") !== -1) {
                             icon = '&nbsp; <i class="fa fa-apple"></i>';
                             href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.13/Whiteboard-0.0.13.dmg";
@@ -174,6 +176,7 @@
                         </a>
                     </p>
                 </div>
+
                 <div class="column">
                     <h4 class="subtitle">
                         <i class="fa fa-apple"></i>
@@ -190,12 +193,23 @@
                         </a>
                     </p>
                 </div>
+
                 <div class="column">
                     <h4 class="subtitle">
                         <i class="fa fa-windows"></i>
                         Windows
                     </h4>
-                    <p><em>Coming soon!</em></p>
+
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.13/whiteboard-app-setup-0.0.13.exe" class="button is-link">
+                            <span>Installer (exe)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.13/whiteboard-app-0.0.13-win.zip" class="button is-link">
+                            <span>Archive (zip)</span>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
