@@ -100,5 +100,8 @@
     "magicmock": "1.4.0",
     "mockery": "2.0.0",
     "spectron": "3.7.2"
+  },
+  "optionalDependencies": {
+    "7zip-bin-mac": "1.0.1"
   }
 }
