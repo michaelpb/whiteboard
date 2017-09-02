@@ -66,7 +66,12 @@
     - [X] Hardcoded mousetrap alternative cmds to unblock full E2E tests
     - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
     - [X] Separate right click menu
+    - [X] Add icons to right click menu
     - [ ] More fleshed out global menu
+        - [ ] All panes should show up (but with some accelerators stripped)
+        - [ ] Open, New, and Quit in File menu
+- [ ] "You have unsaved changes" reminder for Deck
+- [ ] Unsaved changes dot for Editor
 - [ ] Auto-save for Whiteboard (on by default)
     - [ ] Save to settings file..?
 - [ ] Code editor (off by default)

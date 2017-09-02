@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const { mockElectron, mockWindowManager } = require('elmoed').testutils;
 const mockery = require('mockery');
-const { mockObject } = require('magicmock');
+const { mockObject, mockMethod } = require('magicmock');
 const path = require('path');
 
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
@@ -99,12 +99,15 @@ describe('Deck', () => {
         });
 
         it('deletes an active slide', () => {
+            const editor = deck.slideEditors[deck.slideIDs[0]];
+            editor.onWindowClosed = mockMethod();
             const _fs = [deck.slideIDs[1]];
             deck.setFewerSlides(_fs);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(1);
             expect(Object.keys(deck.slideEditors).length).toEqual(1);
             expect(deck.slideIDs.length).toEqual(1);
+            expect(editor.onWindowClosed.called()).toEqual(true);
         });
 
         it('deletes all slides and replaces with placeholder', () => {
@@ -114,7 +117,19 @@ describe('Deck', () => {
             expect(Object.keys(deck.slideEditors).length).toEqual(1);
             expect(deck.slideIDs.length).toEqual(1);
         });
+
+        it('correctly calls onWindowClosed of subeditors', () => {
+            const editors = Object.values(deck.slideEditors);
+            for (const editor of editors) {
+                editor.onWindowClosed = mockMethod();
+            }
+            deck.onWindowClosed();
+            for (const editor of editors) {
+                expect(editor.onWindowClosed.called()).toEqual(true);
+            }
+        });
     });
+
 
 
     afterEach(() => {
