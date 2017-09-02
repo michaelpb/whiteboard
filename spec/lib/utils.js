@@ -10,6 +10,7 @@ const {
     isCodeFile,
     menuTemplateToShortcutArray,
     bindShortcuts,
+    stripMenuTemplate,
 } = require('../../lib/utils');
 
 describe('utils module', () => {
@@ -158,6 +159,47 @@ describe('utils module', () => {
             expect(isCodeFile('some/path/to/makefile')).toBeTruthy();
         });
     });
+
+    describe('has a function for stripping items from menu templates', () => {
+        it('exists', () => {
+            expect(stripMenuTemplate).toBeTruthy();
+        });
+
+        it('works with empty array', () => {
+            expect(stripMenuTemplate([])).toEqual([]);
+        });
+
+        it('works with un-nested array', () => {
+            expect(stripMenuTemplate([
+                    { key: 'a', accelerator: 'thing' },
+                    { key: 'b', accelerator: 'thing2' },
+                ], 'accelerator'))
+                .toEqual([ { key: 'a' }, { key: 'b' } ]);
+        });
+
+        it('works with nested array', () => {
+            expect(stripMenuTemplate([
+                    {
+                        key: 'a',
+                        submenu: [ { key: 'lol', accelerator: 'lol' } ],
+                    },
+                    {
+                        key: 'b',
+                        accelerator: 'thing2',
+                    },
+                ], 'accelerator'))
+                .toEqual([
+                    {
+                        key: 'a',
+                        submenu: [
+                            { key: 'lol' },
+                        ],
+                    },
+                    { key: 'b' },
+                ]);
+        });
+    });
+
 
     describe('has a function for generating decks from a dir that', () => {
         it('exists', () => {

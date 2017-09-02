@@ -67,9 +67,9 @@
     - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
     - [X] Separate right click menu
     - [X] Add icons to right click menu
-    - [ ] More fleshed out global menu
-        - [ ] All panes should show up (but with some accelerators stripped)
-        - [ ] Open, New, and Quit in File menu
+    - [X] More fleshed out global menu
+        - [X] All panes should show up (but with some accelerators stripped)
+        - [X] Open, New, and Quit in File menu
 - [ ] "You have unsaved changes" reminder for Deck
 - [ ] Unsaved changes dot for Editor
 - [ ] Auto-save for Whiteboard (on by default)
@@ -203,10 +203,10 @@ Two extremely critical bugs persist:
 ### Terminal
 - [ ] BUG: Error when bash exits (e.g. `Ctrl+D`). Should detect and offer to
   restart.
-- [ ] BUG: When window is closed, bash still keeps on running in background.
+- [X] BUG: When window is closed, bash still keeps on running in background.
     - Solution: Add feature to elmoed that keeps track of all editors per
       window, then trigger cleanup for all editors on window close, and kill
-      child processes.
+      child processes. (TODO: still should move this to be entirely in elmoed)
 
 ### Editor
 - [X] BUG: Too many tabs becomes unusable
