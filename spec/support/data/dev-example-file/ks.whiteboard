@@ -4,13 +4,14 @@ editor=/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new
 layout=grid
 browser=new browser
 [slide]
-title=Terminal and editor
+title=Requests Example
 editor:"""
 /home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/testdir/test1.js
 /home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/testdir/test2.html
 """
 
-terminal=/home/michaelb/projects/whiteboard/lib
+terminal=/home/michaelb/projects/whiteboard
+layout=vertical
 [slide]
 title=Another thing
 markdown:"""

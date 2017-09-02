@@ -1,4 +1,10 @@
-var example_js_file = true;
+const http = require('http');
 
-
-var another_thing = false;
+http.get({
+  hostname: 'localhost',
+  port: 80,
+  path: '/',
+  agent: false  // create a new agent just for this one request
+}, (res) => {
+  // Do stuff with response
+});

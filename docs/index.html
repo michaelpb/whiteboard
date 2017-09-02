@@ -8,15 +8,34 @@
 <meta name="HandheldFriendly" content="True"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+#background_container {
+    background: url('images/example_slide.jpg') #fff no-repeat;
+    background-size: 100%;
+
+    filter:blur(1px);
+    -o-filter:blur(1px);
+    -ms-filter:blur(1px);
+    -moz-filter:blur(1px);
+    -webkit-filter:blur(1px);
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+</style>
 </head>
 <body>
 
-<section class="hero is-medium has-text-centered">
+<div id="background_container">
+</div>
+<section class="hero has-text-centered is-medium" >
     <div class="hero-body">
         <div class="container">
-            <a href="http://github.com/michaelpb/whiteboard">
-                <img src="images/icon_256.png" />
-            </a>
+            <img src="images/icon_256.png" />
             <h1 class="title">
                 Whiteboard
             </h1>
@@ -29,136 +48,193 @@
             </h2>
 
             <div class="block">
-                <a href="#all_download_links" class="button is-large is-primary">
-                    Download
+                <script>
+                    (function () {
+                        var icon = '';
+                        var href = "#all_download_links";
+                        var v = navigator.appVersion;
+                        if (v.indexOf("Win") !== -1) {
+                        } else if (v.indexOf("Mac") !== -1) {
+                            icon = '&nbsp; <i class="fa fa-apple"></i>';
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/Whiteboard-0.0.11.dmg";
+                        } else if (v.indexOf("X11") !== -1 || v.indexOf("Linux") !== -1) {
+                            icon = '&nbsp; <i class="fa fa-linux"></i>';
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11-x86_64.AppImage";
+                        }
+
+                        var code = [
+                            '<a href="',
+                                href,
+                                '"',
+                                'class="button is-large is-primary">',
+                                'Download',
+                                icon,
+                            '</a>'].join('');
+                        document.write(code);
+                    })();
+                </script>
+
+                <br />
+                <a href="#all_download_links" class="button is-link">
+                    All download links for v0.0.11
                 </a>
-            </div>
-            <!--
-            <script>
-                var OSName="Unknown OS";
-                if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
-                if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-                if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
-                if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
-                document.write('Your OS: '+OSName);
-            </script>
-            -->
 
-            <div class="block">
-                <p>Whiteboard is slideshow application for demonstration-heavy
-                presentations. It eliminates the need to be switching between
-                code, browser, terminals, and descriptive text during live
-                demonstrations, and enables more content to be prepared ahead
-                of time. It's great for guiding code-heavy classroom lectures,
-                tutorials, or workshops, or webinars.</p>
-            </div>
-
-            <div class="block">
+                <div class="block">
+                    <p>Whiteboard is slideshow application for demonstration-heavy
+                    presentations. It eliminates the need to be switching between
+                    code, browser, terminals, and descriptive text during live
+                    demonstrations, and enables more content to be prepared ahead
+                    of time. It's great for guiding code-heavy classroom lectures,
+                    tutorials, or workshops, or webinars.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="hero is-warning">
+<section class="hero is-dark is-bold">
     <div class="hero-body">
         <div class="container">
-        <nav class="columns">
-            <a class="column has-text-centered" href="">
-            <span class="icon is-large" style="margin-right: -15px;">
-                <i class="fa fa-linux"></i>
-            </span>
-            <span class="icon is-large">
-                <i class="fa fa-apple"></i>
-            </span>
-            <span class="icon is-large" style="margin-right: 10px;">
-                <i class="fa fa-windows"></i>
-            </span>
-            <p class="title is-4"><strong>Cross Platform</strong></p>
-            <p class="subtitle">Designed for <strong>all</strong> desktops</p>
-            </a>
-            <a class="column has-text-centered" href="">
-            <span class="icon is-large">
-                <i class="fa fa-podcast"></i>
-            </span>
-            <p class="title is-4"><strong>Webcasts</strong></p>
-            <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
-            </a>
-            <a class="column has-text-centered" href="">
-            <span class="icon is-large">
-                <i class="fa fa-code"></i>
-            </span>
-            <p class="title is-4"><strong>Bootcamps</strong></p>
-            <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
-            </a>
-            <a class="column has-text-centered" href="">
-            <span class="icon is-large">
-                <i class="fa fa-code-fork"></i>
-            </span>
-            <p class="title is-4"><strong>Free</strong></p>
-            <p class="subtitle">Free as in freedom (GPL 3.0)</p>
-            </a>
-        </nav>
+            <nav class="columns">
+                <div class="column has-text-centered">
+                    <span class="icon is-large" style="margin-right: -15px;">
+                        <i class="fa fa-linux"></i>
+                    </span>
+                    <span class="icon is-large">
+                        <i class="fa fa-apple"></i>
+                    </span>
+                    <span class="icon is-large" style="margin-right: 10px;">
+                        <i class="fa fa-windows"></i>
+                    </span>
+                    <p class="title is-4"><strong>Cross Platform</strong></p>
+                    <p class="subtitle">Designed for <strong>all</strong> desktops</p>
+                </div>
+
+                <div class="column has-text-centered">
+                    <span class="icon is-large">
+                        <i class="fa fa-code-fork"></i>
+                    </span>
+                    <p class="title is-4"><strong>Free</strong></p>
+                    <p class="subtitle">Free/libre forever (GPL 3.0)</p>
+                </div>
+
+                <div class="column has-text-centered">
+                    <span class="icon is-large">
+                        <i class="fa fa-podcast"></i>
+                    </span>
+                    <p class="title is-4"><strong>Webcasts</strong></p>
+                    <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
+                </div>
+
+                <div class="column has-text-centered">
+                <span class="icon is-large">
+                    <i class="fa fa-code"></i>
+                </span>
+                <p class="title is-4"><strong>Bootcamps</strong></p>
+                <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
+                </div>
+            </nav>
         </div>
     </div>
 </section>
 
-<section class="hero is-medium has-text-centered">
-    <h2 class="title" id="all_download_links">
-        All Download Links
-    </h2>
-    <div class="columns">
-        <div class="column">
-            <h4 class="subtitle">
-                <i class="fa fa-linux"></i>
-                Linux
-            </h4>
-            <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11-x86_64.AppImage" class="button is-link">
-                <span>Cross-platform (AppImage)</span>
-            </a>
-            <p><a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app_0.0.11_amd64.deb" class="button is-link">
-                <span>Debian, Ubuntu (deb)</span>
-            </a></p>
-            <p>
-                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.x86_64.rpm" class="button is-link">
-                    <span>Fedora, Red Hat (rpm)</span>
-                </a>
-            </p>
-            <p>
-                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.pacman" class="button is-link">
-                    <span>Arch (pacman)</span>
-                </a>
-            </p>
-            <p>
-                <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.tar.gz" class="button is-link">
-                    <span>Archive (tar.gz)</span>
-                </a>
-            </p>
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <h2 class="title" id="all_download_links">
+                All Download Links
+            </h2>
+            <div class="columns">
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-linux"></i>
+                        Linux
+                    </h4>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11-x86_64.AppImage" class="button is-link">
+                            <span>Cross-platform (AppImage)</span>
+                        </a>
+                    </p>
+                    <p><a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app_0.0.11_amd64.deb" class="button is-link">
+                        <span>Debian, Ubuntu (deb)</span>
+                    </a></p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.x86_64.rpm" class="button is-link">
+                            <span>Fedora, Red Hat (rpm)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.pacman" class="button is-link">
+                            <span>Arch (pacman)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11.tar.gz" class="button is-link">
+                            <span>Archive (tar.gz)</span>
+                        </a>
+                    </p>
+                </div>
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-apple"></i>
+                        macOS
+                    </h4>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/Whiteboard-0.0.11.dmg" class="button is-link">
+                            <span>Apple Disk Image (dmg)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.11/whiteboard-app-0.0.11-mac.zip" class="button is-link">
+                            <span>Archive (zip)</span>
+                        </a>
+                    </p>
+                </div>
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-windows"></i>
+                        Windows
+                    </h4>
+                    <p><em>Coming soon!</em></p>
+                </div>
+            </div>
         </div>
-        <div class="column">
-            <h4>
-                <i class="fa fa-apple"></i>
-                macOS
-            </h4>
-            <p><em>Coming soon!</em></p>
-        </div>
-        <div class="column">
-            <h4>
-                <i class="fa fa-windows"></i>
-                Windows
-            </h4>
-            <p><em>Coming soon!</em></p>
-        </div>
-    </div>
-
-    <div class="block">
-        <h2 class="title">Contribute</h2>
-        <img src="https://travis-ci.org/michaelpb/whiteboard.svg?branch=master" />
-        <iframe src="https://ghbtns.com/github-btn.html?user=michaelpb&repo=whiteboard&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-        <!--
-            <iframe src="https://ghbtns.com/github-btn.html?user=micahelpb&repo=whiteboard&type=fork&count=false&size=large" frameborder="0" scrolling="0" width="80px" height="30px"></iframe>
-        -->
     </div>
 </section>
 
+
+<div class="container">
+    <nav class="columns">
+
+        <div class="column">
+            <h3 class="title ">Contribute</h3>
+            <p>
+                <a class="button btn-outline" href="http://github.com/michaelpb/whiteboard">
+                    Source
+                </a>
+
+                <a class="button btn-outline" href="https://github.com/michaelpb/whiteboard/issues/new">File an issue</a>
+                &nbsp;
+                <img src="https://travis-ci.org/michaelpb/whiteboard.svg?branch=master" />
+            <iframe src="https://ghbtns.com/github-btn.html?user=michaelpb&repo=whiteboard&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+            </p>
+            <br />
+            <br />
+        </div>
+
+    </nav>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                © Michael Bethencourt 2017
+                <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL 3.0</a>
+            </p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

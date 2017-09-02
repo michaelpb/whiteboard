@@ -110,7 +110,8 @@ for "gestures"):
 ### Packaging
 - [X] Move to GitHub
 - [X] Lin
-- [ ] Win/Lin/Mac
+- [X] Mac
+- [ ] Win
 - [ ] Filetype associations
 
 
