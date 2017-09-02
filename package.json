@@ -102,6 +102,7 @@
     "spectron": "3.7.2"
   },
   "optionalDependencies": {
+    "7zip-bin-win": "2.1.0",
     "7zip-bin-mac": "1.0.1"
   }
 }

@@ -19,4 +19,5 @@ version: '0.0.11-{build}'
 shallow_clone: true
 clone_depth: 1
 test_script:
-  - npm run dist
+  - npm run test-v
+  - ./node_modules/.bin/electron-builder --win --x64 --publish onTagOrDraft
