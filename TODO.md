@@ -111,7 +111,7 @@ for "gestures"):
 - [X] Move to GitHub
 - [X] Lin
 - [X] Mac
-- [ ] Win
+- [X] Win
 - [ ] Filetype associations
 
 ### high-prio system-specific bugs
