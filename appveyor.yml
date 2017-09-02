@@ -1,6 +1,4 @@
 os: unstable
-cache:
-  - node_modules
 environment:
   GH_TOKEN:
     secure: LKhaInBDHQndUD6byBcUSXTC9uTMy2IMycazh/d7u5G8QcrX21E+C2SwMdWXVA2k
@@ -21,4 +19,4 @@ clone_depth: 1
 
 #  - npm run test-v
 test_script:
-  - ./node_modules/.bin/electron-builder --win --x64 --publish onTagOrDraft
+  - ./node_modules/.bin/electron-builder --win --x64
