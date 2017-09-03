@@ -131,7 +131,6 @@ describe('Deck', () => {
     });
 
 
-
     afterEach(() => {
         manager = null;
         electron = null;

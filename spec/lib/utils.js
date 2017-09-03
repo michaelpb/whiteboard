@@ -11,7 +11,7 @@ const {
     menuTemplateToShortcutArray,
     bindShortcuts,
     stripMenuTemplate,
-    flattenMenuTemplate
+    flattenMenuTemplate,
 } = require('../../lib/utils');
 
 describe('utils module', () => {
@@ -172,23 +172,23 @@ describe('utils module', () => {
 
         it('works with un-nested array', () => {
             expect(stripMenuTemplate([
-                    { key: 'a', accelerator: 'thing' },
-                    { key: 'b', accelerator: 'thing2' },
-                ], 'accelerator'))
-                .toEqual([ { key: 'a' }, { key: 'b' } ]);
+                { key: 'a', accelerator: 'thing' },
+                { key: 'b', accelerator: 'thing2' },
+            ], 'accelerator'))
+                .toEqual([{ key: 'a' }, { key: 'b' }]);
         });
 
         it('works with nested array', () => {
             expect(stripMenuTemplate([
-                    {
-                        key: 'a',
-                        submenu: [ { key: 'lol', accelerator: 'lol' } ],
-                    },
-                    {
-                        key: 'b',
-                        accelerator: 'thing2',
-                    },
-                ], 'accelerator'))
+                {
+                    key: 'a',
+                    submenu: [{ key: 'lol', accelerator: 'lol' }],
+                },
+                {
+                    key: 'b',
+                    accelerator: 'thing2',
+                },
+            ], 'accelerator'))
                 .toEqual([
                     {
                         key: 'a',
@@ -220,8 +220,8 @@ describe('utils module', () => {
         ];
 
         const output = Object.assign({}, input);
-        delete output['otherStuff']
-        delete output['accelerator']
+        delete output.otherStuff;
+        delete output.accelerator;
         const outputArray = [
             Object.assign({}, output),
             Object.assign({}, output),
