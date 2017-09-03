@@ -58,13 +58,15 @@
     </style>
 
     <x-drawer id="slides_drawer" position="left" class="deck-drawer">
+        <!--
         <x-button onclick={show_settings} skin="textured">
             <img src="img/icon.png" class="deck-logo" />
         </x-button>
+        -->
 
         <x-button onclick={add_slide} class="Deck--add-slide-button">
             <x-box>
-                <img src="svg/si-glyph-plus.svg" class="deck-svg" />
+                <img src="png/si-glyph-plus.png" />
                 <x-label>Slide</x-label>
             </x-box>
         </x-button>

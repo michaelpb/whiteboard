@@ -68,6 +68,7 @@
     - [X] Lower level utilities to set this up
     - [X] Hardcoded mousetrap alternative cmds to unblock full E2E tests
     - [ ] Mousetrap (Blocked on Elmoed): Blocking: full E2E tests
+    - [X] Show app level menu except in presentation mode
     - [X] Separate right click menu
     - [X] Add icons to right click menu
     - [X] More fleshed out global menu
