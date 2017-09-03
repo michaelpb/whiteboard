@@ -30,7 +30,7 @@
     </style>
 
     <div class="browser-wrapper">
-        <webview ref="webview" src="{opts.url}"></webview>
+        <webview ref="webview" src="{opts.url}" id="browser_webview"></webview>
 
         <x-card  ref="error404" class="browser-404" style="display: none">
             <main>
@@ -46,7 +46,6 @@
         <x-card  ref="browserloading" class="browser-loading" style="display: none">
             <main>
                 Loading...
-                <x-throbber></x-throbber>
             </main>
         </x-card>
 
@@ -97,11 +96,36 @@
             addressbar.value = url;
         }
 
+        function getWebView() {
+            // for some reason, refs does not work
+            // const { webview } = this.refs;
+            return document.getElementById('browser_webview');
+        }
+
+        trigger_back() {
+            const webview = getWebView();
+            webview.goBack();
+        }
+
+        trigger_forward() {
+            const webview = getWebView();
+            webview.goForward();
+        }
+
+        trigger_refresh() {
+            const webview = getWebView();
+            webview.reloadIgnoringCache();
+        }
+
         this.on('mount', () => {
-            const {webview} = this.refs;
+            const { webview } = this.refs;
 			webview.addEventListener('load-commit', load_commit.bind(this));
 			webview.addEventListener('did-start-loading', load_start.bind(this))
 			webview.addEventListener('did-fail-load', load_fail.bind(this));
+
+            this.opts.on('trigger_back', () => this.trigger_back());
+            this.opts.on('trigger_forward', () => this.trigger_forward());
+            this.opts.on('trigger_refresh', () => this.trigger_refresh());
         });
 
     </script>

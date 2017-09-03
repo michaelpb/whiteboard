@@ -82,7 +82,9 @@
     - [ ] Save to settings file..?
 - [X] Elmoed: Remember window state
 - [ ] Browser
-    - [ ] Add refresh option (Ctrl+R)
+    - [X] Add refresh option (Ctrl+R)
+    - [X] Forward
+    - [X] Back
     - [ ] For file:///, do auto-refresh
 
 New right click menu structure:
