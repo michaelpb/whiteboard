@@ -13,7 +13,7 @@ install:
 matrix:
   fast_finish: true
 build: off
-version: '0.0.13-{build}'
+version: '0.0.14-{build}'
 shallow_clone: true
 clone_depth: 1
 
