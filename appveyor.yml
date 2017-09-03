@@ -10,6 +10,7 @@ install:
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
+  - npm run test-v && exit 0 # Have it continue building even on non-zero
 matrix:
   fast_finish: true
 build: off
@@ -17,7 +18,5 @@ version: '0.0.14-{build}'
 shallow_clone: true
 clone_depth: 1
 
-#  - npm run test-v
 test_script:
-  - npm run test-v && exit 0 # Have it continue building even on non-zero
   - ./node_modules/.bin/electron-builder --win --x64
