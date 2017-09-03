@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Whiteboard</title>
+    <style>
+        
+        body {
+            background: white;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    
+        <link rel="import" href="../node_modules/xel/xel.min.html" />
+    
+    
+        <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+    
+        <link rel="stylesheet" type="text/css" href="../node_modules/xel/stylesheets/material.theme.css" />
+    
+        <link rel="stylesheet" type="text/css" href="./css/xterm.css" />
+    
+        <link rel="stylesheet" type="text/css" href="./css/global-whiteboard.css" />
+    
+        <link rel="stylesheet" type="text/css" href="./css/markdown-prefixed.css" />
+    
+        <link rel="stylesheet" type="text/css" href="./fonts/font.css" />
+    
+    
+  </head>
+  <body>
+    
+    <div id='main' style='display: none'>
+    </div>
+
+    
+        <script src="../node_modules/xterm/dist/xterm.js"></script>
+    
+        <script src="../node_modules/xterm/dist/addons/fit/fit.js"></script>
+    
+        <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
+    
+        <script src="../node_modules/mousetrap/mousetrap.js"></script>
+    
+        <script src="../node_modules/ace-builds/src-noconflict/ace.js"></script>
+    
+        <script src="../node_modules/ace-builds/src-noconflict/ext-modelist.js"></script>
+    
+
+    <script>
+        'use strict';
+
+        
+            
+                // Single word requires get attached to window object
+                // automatically
+                window.riot = require("../node_modules/riot");
+            
+        
+            
+                require("../lib/components/base.tag");
+            
+        
+            
+                require("../node_modules/javascript-detect-element-resize/detect-element-resize");
+            
+        
+            
+                require("../lib/meta/start.tag");
+            
+        
+            
+                require("../lib/deck/deck.tag");
+            
+        
+            
+                require("../lib/deck/slide.tag");
+            
+        
+            
+                require("../lib/text/title.tag");
+            
+        
+            
+                require("../lib/editor/editor.tag");
+            
+        
+            
+                require("../lib/terminal/terminal.tag");
+            
+        
+            
+                require("../lib/text/markdown.tag");
+            
+        
+            
+                require("../lib/browser/browser.tag");
+            
+        
+
+        function launch() {
+            // Set up console logging:
+            const ipc = require('electron').ipcRenderer;
+            window.log = (...args) => ipc.send('_log', args.map(JSON.stringify).join(' '));
+            const Mounter = require("../node_modules/elmoed/static/Mounter.js");
+            const adapter = require("../node_modules/elmoed/lib/adaptors/riotjs.js");
+            const mounter = new Mounter(ipc, adapter);
+            mounter.ready();
+        }
+
+        function wrappedLaunch() {
+            try {
+                launch();
+            } catch (e) {
+                window.log('!!!LAUNCH ERROR!!!', e.toString(), e.stack);
+                console.error('LAUNCH ERROR', e.toString(), e.stack);
+            }
+        }
+        setTimeout(wrappedLaunch, 0);
+    </script>
+  </body>
+</html>

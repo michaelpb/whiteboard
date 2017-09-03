@@ -17,5 +17,7 @@ docs/_build/*
 node_modules/*
 tmp/*
 dist/*
-static/index.html.templated
+
+# actually lets check the templated index in!
+DISABLED/static/index.html.templated
 
