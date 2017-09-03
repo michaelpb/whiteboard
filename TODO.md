@@ -123,9 +123,9 @@ for "gestures"):
 - [X] Win
 - [ ] Filetype associations
 
-### high-prio system-specific bugs
-- [ ] auto-generation on windows is broken
-- [ ] terminal on windows is broken
+### High-prio system-specific bugs
+- [ ] Auto-generation on windows is broken (see unit tests)
+- [ ] Terminal on windows might be broken
 
 ### High-Prio Nice to Haves
 - [X] Add Help menu option with about window:
