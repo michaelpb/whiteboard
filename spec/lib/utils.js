@@ -11,6 +11,7 @@ const {
     menuTemplateToShortcutArray,
     bindShortcuts,
     stripMenuTemplate,
+    flattenMenuTemplate
 } = require('../../lib/utils');
 
 describe('utils module', () => {
@@ -200,6 +201,47 @@ describe('utils module', () => {
         });
     });
 
+    describe('has a function flattenMenuTemplate which', () => {
+        const input = {
+            label: 'Next',
+            accelerator: 'CommandOrControl+Right',
+            icon: 'test/icon.png',
+            otherStuff: 'lol',
+        };
+        const inputArray = [
+            Object.assign({}, input),
+            Object.assign({}, input),
+            Object.assign({
+                submenu: [
+                    Object.assign({}, input),
+                    Object.assign({}, input),
+                ],
+            }, input),
+        ];
+
+        const output = Object.assign({}, input);
+        delete output['otherStuff']
+        delete output['accelerator']
+        const outputArray = [
+            Object.assign({}, output),
+            Object.assign({}, output),
+            Object.assign({}, output),
+            Object.assign({}, output),
+        ];
+
+        it('exists', () => {
+            expect(flattenMenuTemplate).toBeTruthy();
+        });
+
+        it('can handle an empty array', () => {
+            expect(flattenMenuTemplate([])).toEqual([]);
+        });
+
+        it('can handle a nested array while plucking values', () => {
+            const flat = flattenMenuTemplate(inputArray, 'label', 'icon');
+            expect(flat).toEqual(outputArray);
+        });
+    });
 
     describe('has a function for generating decks from a dir that', () => {
         it('exists', () => {

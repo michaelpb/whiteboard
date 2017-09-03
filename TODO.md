@@ -61,6 +61,9 @@
     - [X] Terminal
 
 ### Quality of life
+- [ ] Pane editor glitchiness
+    - [ ] Remove use of IDs in lieu of refs (might be causing bugs)
+    - [X] Prevent update while editing
 - [ ] New menu system
     - [X] Lower level utilities to set this up
     - [X] Hardcoded mousetrap alternative cmds to unblock full E2E tests
@@ -126,7 +129,7 @@ for "gestures"):
 ### High-Prio Nice to Haves
 - [X] Add Help menu option with about window:
   https://github.com/rhysd/electron-about-window
-- [ ] Add key combo help overlay (can just be a modal)
+- [X] Add key combo help overlay (can just be a modal)
   that contains all actions listed out
 - [X] Web browser (remember location)
     - [X] Basic mounting of web page

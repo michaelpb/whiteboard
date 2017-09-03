@@ -113,17 +113,20 @@
             this.opts.send('change_focus', mountID);
         }
 
-        trigger_pane_editor_enable_save() {
+        trigger_pane_editor_enable_save(ev) {
+            ev.preventUpdate = true;
             const editor_modal = document.querySelector('#pane_editor');
             editor_modal.querySelector('.save_button').disabled = false;
         }
 
-        trigger_pane_editor_cancel() {
+        trigger_pane_editor_cancel(ev) {
+            ev.preventUpdate = true;
             const editor_modal = document.querySelector('#pane_editor');
             editor_modal.opened = false;
         }
 
-        trigger_pane_editor_save() {
+        trigger_pane_editor_save(ev) {
+            ev.preventUpdate = true;
             const editor_modal = document.querySelector('#pane_editor');
             var value = editor_modal.querySelector('x-textarea').value;
             // send the save event to the backend

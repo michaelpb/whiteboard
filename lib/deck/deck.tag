@@ -42,6 +42,19 @@
             height: 64px;
             width: 64px;
         }
+
+        #help_modal .help-keystroke {
+            font-weight: bold;
+            min-width: 150px;
+        }
+
+        #help_modal .help-info {
+            opacity: 0.7;
+        }
+
+        #help_modal .help-info img {
+            margin: 5px;
+        }
     </style>
 
     <x-drawer id="slides_drawer" position="left" class="deck-drawer">
@@ -65,6 +78,20 @@
     <x-drawer id="slides_trash" position="right" class="deck-drawer">
         <img src="svg/si-glyph-trash.svg" class="deck-drawer-trash-icon" />
     </x-drawer>
+
+    <!-- TODO: This help modal is a giant mess! Needs to be generalized 
+    and made into an actual component -->
+    <x-dialog id="help_modal">
+        <main>
+            <h4>Help</h4>
+            <div id="help_contents"></div>
+        </main>
+        <footer>
+            <x-button skin="flat" onclick={toggle_help}>
+                <x-label>Ok</x-label>
+            </x-button>
+        </footer>
+    </x-dialog>
 
     <div id="current_slide"></div>
 
@@ -95,6 +122,36 @@
                 ['ctrl+shift+space', () => opts.send('previous_slide')],
                 ['ctrl+enter', () => this.toggle_drawer()],
             ]);
+        }
+
+        toggle_help(ev, helpInfo) {
+            ev.preventUpdate = true;
+            const help = document.getElementById('help_modal');
+
+            // Update the contents of the modal as necessary
+            if (!help.opened && helpInfo && Array.isArray(helpInfo)) {
+                const contents = [];
+                for (const info of helpInfo) {
+                    const key = info.accelerator
+                        .replace('Or', ' or ')
+                        .replace('Command', '\u2318')
+                        .replace('Control', 'Ctrl')
+                        .replace(/\+/g, ' + ');
+                    contents.push(`
+                        <x-box>
+                            <x-label class="help-keystroke">${key}</x-label>
+                            <x-box class="help-info">
+                                <img src="${info.icon}" />
+                                <x-label>${info.label}</x-label>
+                            </x-box>
+                        </x-box>
+                    `);
+                }
+                help.querySelector('#help_contents').innerHTML = contents.join('');
+            }
+
+            // Actually toggle it
+            help.opened = !help.opened;
         }
 
         toggle_drawer() {
@@ -181,6 +238,10 @@
 
             opts.on('toggle_deck', () => {
                 this.toggle_drawer();
+            });
+
+            opts.on('toggle_help', (ev, helpInfo) => {
+                this.toggle_help(ev, helpInfo);
             });
         });
     </script>
