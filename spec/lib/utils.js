@@ -12,6 +12,7 @@ const {
     bindShortcuts,
     stripMenuTemplate,
     flattenMenuTemplate,
+    makeGlobalMenuTemplate,
 } = require('../../lib/utils');
 
 describe('utils module', () => {
@@ -198,6 +199,23 @@ describe('utils module', () => {
                     },
                     { key: 'b' },
                 ]);
+        });
+    });
+
+    describe('has a function makeGlobalMenuTemplate which', () => {
+        it('exists', () => {
+            expect(makeGlobalMenuTemplate).toBeTruthy();
+        });
+
+        it('can generate a menu template with expected properties', () => {
+            const results = makeGlobalMenuTemplate(
+                mockObject(), mockObject(), 'default/path',
+                ['TOP LEVEL'], ['FILE MENU'], ['HELP']);
+            expect(results).toContain('TOP LEVEL');
+            expect(results[0].label).toEqual('File');
+            expect(results[0].submenu).toContain('FILE MENU');
+            expect(results[2].label).toEqual('Help');
+            expect(results[2].submenu).toContain('HELP');
         });
     });
 

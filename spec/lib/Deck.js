@@ -52,7 +52,34 @@ describe('Deck', () => {
             expect(menu).toBeTruthy();
         });
 
-        it('when opening up', () => {
+        it('generates reasonable top-level menu template', () => {
+            expect(deck.makeTopLevelMenu([])).toBeTruthy();
+            expect(deck.makeTopLevelMenu([]).map(item => item.label))
+                .toContain('Slide');
+            expect(deck.makeTopLevelMenu([]).map(item => item.label))
+                .toContain('Navigation');
+            expect(deck.makeTopLevelMenu([]).map(item => item.label))
+                .toContain('Zoom');
+        });
+
+        it('generates reasonable navigation menu template', () => {
+            const navItems = deck.makeTopLevelMenu([])
+                .filter(item => item.label === 'Navigation');
+            expect(navItems.length).toEqual(1);
+            const nav = navItems[0].submenu;
+            expect(nav.map(item => item.label)).toContain('Next');
+            expect(nav.map(item => item.label)).toContain('Previous');
+            expect(nav.map(item => item.label)).toContain('All slides');
+            expect(nav.map(item => item.label)).toContain('Fullscreen Presentation');
+        });
+
+        it('generates reasonable file menu templates', () => {
+            expect(deck.makeFileMenu()).toBeTruthy();
+            expect(deck.makeFileMenu().map(item => item.label))
+                .toContain('Save');
+        });
+
+        it('opens up expected slides', () => {
             expect(deck.slideIDs.length).toEqual(1);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(1);
