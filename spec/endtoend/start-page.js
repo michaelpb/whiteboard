@@ -17,14 +17,9 @@ describe('Start screen e2e', () => {
     });
 
     it('shows a start menu', (done) => {
-        const EXPECTED_START = strip(`
-            Whiteboard
-            Open deck...
-            New deck...
-            Import from directory...
-        `).toLowerCase();
-        // About
-        expect(strip(text).toLowerCase()).toContain(EXPECTED_START);
+        expect(strip(text).toLowerCase()).toContain('open deck');
+        expect(strip(text).toLowerCase()).toContain('new deck');
+        expect(strip(text).toLowerCase()).toContain('import from');
         done();
     });
 });

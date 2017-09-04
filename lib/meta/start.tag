@@ -24,49 +24,35 @@
         }
 
         .starting-button {
-            margin-top: 30px;
-            min-width: 275px;
+            min-width: 200px;
+            margin-right: 30px;
+            margin-top: 2px;
+            margin-left: 2px;
         }
 
         x-box#recent {
             overflow-y: auto !important;
+            max-height: 90vh;
         }
     </style>
 
-    <x-box id="main-box">
-        <x-menu opened refs="main_menu">
-            <x-menuitem>
-                <img src="img/icon.png" class="deck-logo" />
-                <x-label>Whiteboard</x-label>
-            </x-menuitem>
-            <hr>
-
-            <x-menuitem onclick={open_deck}>
+    <div>
+        <x-box>
+            <x-button class="starting-button" onclick={open_deck}>
                 <x-icon name="folder-open"></x-icon>
                 <x-label>Open deck...</x-label>
-            </x-menuitem>
+            </x-button>
 
-            <hr>
-
-            <x-menuitem onclick={newDeck}>
+            <x-button class="starting-button" onclick={newDeck}>
                 <x-icon name="create-new-folder"></x-icon>
                 <x-label>New deck...</x-label>
-            </x-menuitem>
+            </x-button>
 
-            <x-menuitem onclick={import_deck}>
+            <x-button class="starting-button" onclick={import_deck}>
                 <x-icon name="folder-special"></x-icon>
                 <x-label>Import from directory...</x-label>
-            </x-menuitem>
-
-            <hr>
-
-            <!--
-            <x-menuitem onclick={about}>
-                <x-icon name="help"></x-icon>
-                <x-label>About</x-label>
-            </x-menuitem>
-            -->
-        </x-menu>
+            </x-button>
+        </x-box>
 
         <x-box vertical id="recent">
             <x-card if="{ opts.recentDecks.length < 1 }" id="getting_started">
@@ -88,7 +74,6 @@
                         context menu (<em>Right click</em> or
                         <em>Command + Click</em>)
 
-
                     </div>
                 </main>
             </x-card>
@@ -101,9 +86,9 @@
             </x-card>
 
             <div if="{ opts.recentDecks.length > 0 }">
-                <x-card each={ opts.recentDecks } onclick={open_recent} >
+                <x-card each={ opts.recentDecks } onclick={open_recent} title="{ path }">
                     <main>
-                        <strong>{ path }</strong>
+                        <strong>{ filename }</strong>
                         <x-box>
                             <div each={slides}>
                                 <wb-slide-preview panerows={panerows}>
@@ -114,7 +99,7 @@
                 </x-card>
             </div>
         </x-box>
-    <x-box>
+    </div>
 
     <script>
         'use strict';
