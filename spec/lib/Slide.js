@@ -9,12 +9,36 @@ describe('Slide', () => {
         let manager = null;
         let modules = null;
 
+        function isCustomContext(item) {
+            return item.label === 'TEXTTEST';
+        }
+
+        function withLabel(label) {
+            return item => item.label === label;
+        }
+
         beforeEach(() => {
             ({ manager, modules } = mockWindowManager('slide', Slide));
 
             modules.testpane = {
                 module: class TestPane extends ModuleBase {},
                 edits: ['!testpane'],
+            };
+
+            modules.title = {
+                module: class TitleTest extends ModuleBase {},
+                edits: ['!title'],
+            };
+
+            class TextTest extends ModuleBase {
+                getContextMenu() {
+                    return [{ label: 'TEXTTEST' }];
+                }
+            }
+
+            modules.text = {
+                module: TextTest,
+                edits: ['!text'],
             };
         });
 
@@ -40,12 +64,106 @@ describe('Slide', () => {
                 expect(slide.getProps().maximizedPane).not.toBeTruthy();
                 slide.toggleMaximize('testpane');
                 expect(slide.getProps().maximizedPane).toBeTruthy();
-                expect(slide.getProps().maximizedPane).toEqual('pane_2');
+                expect(slide.getProps().maximizedPane).toEqual('pane_testpane');
                 slide.toggleMaximize('testpane');
                 expect(slide.maximizedPane).not.toBeTruthy();
                 expect(slide.getProps().maximizedPane).not.toBeTruthy();
                 done();
             }, { testpane: 'test' });
+        });
+
+        it('can add a pane to an existing slide with expected default value', (done) => {
+            manager.createWindow('slide', (slide) => {
+                slide.addPane('title');
+                expect(slide.panes.length).toEqual(2);
+                expect(slide.slideData.title).toBeTruthy();
+                expect(slide.slideData.title).toEqual('new title');
+                done();
+            }, { testpane: 'test' });
+        });
+
+        describe('after adding a set of panes', () => {
+            let slide = null;
+            beforeEach((done) => {
+                manager.createWindow('slide', (newSlide) => {
+                    slide = newSlide;
+                    slide.addPane('text');
+                    slide.mountPanes(); // this should not be an issue
+                    slide.addPane('title');
+                    slide.mountPanes();
+                    done();
+                }, { testpane: 'test' });
+            });
+
+            it('generates expected number of panes', () => {
+                // ensure works multiple times
+                expect(slide.panes.length).toEqual(3);
+                expect(slide.slideData.text).toBeTruthy();
+                expect(slide.slideData.text).toEqual('new text');
+            });
+
+            it('mounts expected number of editors with expected IDs', () => {
+                // ensure works multiple times
+                expect(Object.keys(slide.paneEditors).length).toEqual(3);
+                expect(new Set(Object.keys(slide.paneEditors)))
+                    .toEqual(new Set([
+                        'pane_testpane',
+                        'pane_title',
+                        'pane_text',
+                    ]));
+            });
+
+            it('uses makePaneMenu to make focused menu of pane', () => {
+                // ensure works multiple times
+                const editor = slide.paneEditors.pane_title;
+                let menu = slide.makePaneMenu(editor, true);
+                expect(menu.length).toEqual(3);
+
+                // unfocused
+                menu = slide.makePaneMenu(editor, false);
+                expect(menu.length).toEqual(2);
+            });
+
+            it('uses makePaneMenu to make custom menu of pane', () => {
+                // ensure works multiple times
+                const editor = slide.paneEditors.pane_text;
+                const menu = slide.makePaneMenu(editor, false);
+                expect(menu.length).toEqual(3);
+
+                // check it includes the custom thing
+                expect(menu.filter(withLabel('TEXTTEST')))
+                    .toEqual([{ label: 'TEXTTEST' }]);
+            });
+
+            it('uses makeMenu to create full menus', () => {
+                // ensure works multiple times
+                const editor = slide.paneEditors.pane_text;
+                const {
+                    globalMenuTemplate,
+                    contextMenuTemplate,
+                } = slide.makeMenu(editor);
+
+                // check it includes the custom thing
+                expect(contextMenuTemplate.filter(isCustomContext))
+                    .toEqual([{ label: 'TEXTTEST' }]);
+                expect(globalMenuTemplate.filter(isCustomContext))
+                    .toEqual([{ label: 'TEXTTEST' }]);
+                expect(globalMenuTemplate.filter(withLabel('Layout')).length)
+                    .toEqual(1);
+                expect(globalMenuTemplate.filter(withLabel('Slide')).length)
+                    .toEqual(1);
+                expect(globalMenuTemplate.filter(withLabel('Text')).length)
+                    .toEqual(1);
+                expect(globalMenuTemplate.filter(withLabel('Testpane')).length)
+                    .toEqual(1);
+                expect(globalMenuTemplate.filter(withLabel('Add pane')).length)
+                    .toEqual(1);
+                expect(contextMenuTemplate.filter(withLabel('Testpane')).length)
+                    .toEqual(0);
+                expect(contextMenuTemplate.filter(withLabel('Text')).length)
+                    .toEqual(1);
+                expect(globalMenuTemplate.length).toBeGreaterThan(13);
+            });
         });
 
         afterEach(() => {

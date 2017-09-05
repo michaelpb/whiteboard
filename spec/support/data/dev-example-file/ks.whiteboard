@@ -6,7 +6,7 @@ editor:"""
 """
 
 layout=grid
-browser=https://www.youtube.com/user/whatever
+terminal=/home/michaelb/projects/whiteboard
 [slide]
 title=Requests Example
 editor:"""
