@@ -216,6 +216,9 @@ describe('utils module', () => {
             expect(results[0].submenu).toContain('FILE MENU');
             expect(results[2].label).toEqual('Help');
             expect(results[2].submenu).toContain('HELP');
+
+            expect(results[0].submenu.map(item => item.label))
+                .toContain('Import from directory...');
         });
     });
 
