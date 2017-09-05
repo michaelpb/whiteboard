@@ -18,6 +18,10 @@ describe('Deck', () => {
         mockery.enable();
         mockery.registerMock('electron', electron);
         mockery.registerMock('mousetrap', mockObject());
+        mockery.registerMock('electron-store', function FauxStore() {
+            this.get = () => [{ path: 'recent/Example.whiteboard' }];
+            this.set = () => {};
+        });
         mockery.warnOnUnregistered(false);
 
         // Now actually pull in Deck
@@ -50,6 +54,19 @@ describe('Deck', () => {
         it('sets up a menu', () => {
             const menu = electron._getMockedMenu();
             expect(menu).toBeTruthy();
+        });
+
+        it('sets up a menu with recent deck list', () => {
+            const menu = electron._getMockedMenu();
+            expect(menu).toBeTruthy();
+            const fileMenu = menu.filter(i => i.label === 'File')[0];
+            expect(fileMenu).toBeTruthy();
+            const recentMenu = fileMenu.submenu.filter(i => i.label === 'Recent')[0];
+            expect(recentMenu).toBeTruthy();
+            const { submenu } = recentMenu;
+            expect(submenu).toBeTruthy();
+            expect(submenu.length).toEqual(1);
+            expect(submenu[0].label).toEqual('Example');
         });
 
         it('generates reasonable top-level menu template', () => {
