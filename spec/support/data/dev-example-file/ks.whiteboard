@@ -1,8 +1,12 @@
 [slide]
 title=This is just a test
-editor=/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new editor
+editor:"""
+/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new editor
+/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/test.whiteboard
+"""
+
 layout=grid
-browser=new browser
+browser=https://www.youtube.com/user/whatever
 [slide]
 title=Requests Example
 editor:"""
