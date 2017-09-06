@@ -65,7 +65,7 @@
 
     <!-- TODO: The pane editor is a giant mess! Should be in its own tag. Also
     should be much more user friendly. -->
-    <x-dialog id="pane_editor">
+    <x-dialog id="slide_pane_editor">
         <main>
             <h4></h4>
             <x-textarea value="" onkeyup={trigger_pane_editor_enable_save}></x-textarea>
@@ -115,19 +115,19 @@
 
         trigger_pane_editor_enable_save(ev) {
             ev.preventUpdate = true;
-            const editor_modal = document.querySelector('#pane_editor');
+            const editor_modal = document.querySelector('#slide_pane_editor');
             editor_modal.querySelector('.save_button').disabled = false;
         }
 
         trigger_pane_editor_cancel(ev) {
             ev.preventUpdate = true;
-            const editor_modal = document.querySelector('#pane_editor');
+            const editor_modal = document.querySelector('#slide_pane_editor');
             editor_modal.opened = false;
         }
 
         trigger_pane_editor_save(ev) {
             ev.preventUpdate = true;
-            const editor_modal = document.querySelector('#pane_editor');
+            const editor_modal = document.querySelector('#slide_pane_editor');
             var value = editor_modal.querySelector('x-textarea').value;
             // send the save event to the backend
             const typename = last_edited;
@@ -139,14 +139,14 @@
         }
 
         function unedit_pane() {
-            const editor_modal = document.querySelector('#pane_editor');
+            const editor_modal = document.querySelector('#slide_pane_editor');
             editor_modal.opened = false;
         }
 
         function edit_pane(ev, opts) {
             // Toggling on current focus
             const {value, typename} = opts;
-            const editor_modal = document.querySelector('#pane_editor');
+            const editor_modal = document.querySelector('#slide_pane_editor');
             editor_modal.querySelector('h4').textContent = typename;
             editor_modal.querySelector('x-textarea').value = value;
             editor_modal.querySelector('.save_button').disabled = "disabled";
@@ -169,6 +169,10 @@
             // Toggling on current focus
             clear_special_classes();
             const el = document.getElementById(pane_mountID);
+            if (!el) {
+                console.error('Could not find "' + pane_mountID + '"');
+                return;
+            }
             el.classList.add('pane-fullscreen');
         }
 
@@ -178,8 +182,7 @@
             this.opts.on('edit_pane', edit_pane);
             this.opts.on('unedit_pane', unedit_pane);
             if (this.opts.maximizedPane) {
-                /* maximize_pane(this.opts.maximizedPane); */
-                maximize_pane(this.opts.maximizedPane);
+                maximize_pane({}, this.opts.maximizedPane);
             }
         });
 
@@ -190,7 +193,7 @@
                 this.opts.send('remount_editors');
             }
             if (this.opts.maximizedPane) {
-                maximize_pane(this.opts.maximizedPane);
+                maximize_pane({}, this.opts.maximizedPane);
             }
         });
     </script>

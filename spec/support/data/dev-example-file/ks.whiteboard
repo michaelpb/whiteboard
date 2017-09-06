@@ -6,7 +6,8 @@ editor:"""
 """
 
 layout=grid
-terminal=/home/michaelb/projects/whiteboard
+terminal=/
+maximizedPane=title
 [slide]
 title=Requests Example
 editor:"""
@@ -14,7 +15,7 @@ editor:"""
 /home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/testdir/test2.html
 """
 
-terminal=/home/michaelb/projects/whiteboard
+terminal=/
 layout=vertical
 [slide]
 title=Another thing

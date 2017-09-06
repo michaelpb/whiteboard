@@ -5,6 +5,10 @@ const Slide = require('../../lib/deck/Slide');
 // Mostly just a stub of integrat-y unit tests for Slide
 
 describe('Slide', () => {
+
+    // Patch to always make slides with internal ID of 1
+    Slide.getNextSlideID = () => 'slide-1';
+
     describe('when mounted', () => {
         let manager = null;
         let modules = null;
@@ -64,7 +68,7 @@ describe('Slide', () => {
                 expect(slide.getProps().maximizedPane).not.toBeTruthy();
                 slide.toggleMaximize('testpane');
                 expect(slide.getProps().maximizedPane).toBeTruthy();
-                expect(slide.getProps().maximizedPane).toEqual('pane_testpane');
+                expect(slide.getProps().maximizedPane).toEqual('slide-1_pane_testpane');
                 slide.toggleMaximize('testpane');
                 expect(slide.maximizedPane).not.toBeTruthy();
                 expect(slide.getProps().maximizedPane).not.toBeTruthy();
@@ -107,15 +111,15 @@ describe('Slide', () => {
                 expect(Object.keys(slide.paneEditors).length).toEqual(3);
                 expect(new Set(Object.keys(slide.paneEditors)))
                     .toEqual(new Set([
-                        'pane_testpane',
-                        'pane_title',
-                        'pane_text',
+                        'slide-1_pane_testpane',
+                        'slide-1_pane_title',
+                        'slide-1_pane_text',
                     ]));
             });
 
             it('uses makePaneMenu to make focused menu of pane', () => {
                 // ensure works multiple times
-                const editor = slide.paneEditors.pane_title;
+                const editor = slide.paneEditors['slide-1_pane_title'];
                 let menu = slide.makePaneMenu(editor, true);
                 expect(menu.length).toEqual(3);
 
@@ -126,7 +130,7 @@ describe('Slide', () => {
 
             it('uses makePaneMenu to make custom menu of pane', () => {
                 // ensure works multiple times
-                const editor = slide.paneEditors.pane_text;
+                const editor = slide.paneEditors['slide-1_pane_text'];
                 const menu = slide.makePaneMenu(editor, false);
                 expect(menu.length).toEqual(3);
 
@@ -137,7 +141,7 @@ describe('Slide', () => {
 
             it('uses makeMenu to create full menus', () => {
                 // ensure works multiple times
-                const editor = slide.paneEditors.pane_text;
+                const editor = slide.paneEditors['slide-1_pane_text'];
                 const {
                     globalMenuTemplate,
                     contextMenuTemplate,
@@ -174,12 +178,12 @@ describe('Slide', () => {
     describe('has a static function layoutRows which', () => {
         const { layoutRows } = Slide;
         // Dummy panes to layout
-        const PANE_1 = { hint: {}, num: 1 };
-        const PANE_2 = { hint: {}, num: 2 };
-        const PANE_3 = { hint: {}, num: 3 };
-        const PANE_4 = { hint: {}, num: 4 };
-        const PANE_T1 = { hint: { prefer_top: true }, num: 5 };
-        const PANE_T2 = { hint: { prefer_top: true }, num: 6 };
+        const PANE_1 = { hint: {}, num: 1, typename: 'a' };
+        const PANE_2 = { hint: {}, num: 2, typename: 'b' };
+        const PANE_3 = { hint: {}, num: 3, typename: 'c' };
+        const PANE_4 = { hint: {}, num: 4, typename: 'd' };
+        const PANE_T1 = { hint: { prefer_top: true }, num: 5, typename: 'e' };
+        const PANE_T2 = { hint: { prefer_top: true }, num: 6, typename: 'f' };
         it('lays out an empty list', () => {
             expect(layoutRows('grid', [])).toEqual([]);
             expect(layoutRows('vertical', [])).toEqual([]);
@@ -228,6 +232,13 @@ describe('Slide', () => {
                 { width: 100, height: 10, rowPanes: [PANE_T1] },
                 { width: 50, height: 45, rowPanes: [PANE_1, PANE_2] },
                 { width: 50, height: 45, rowPanes: [PANE_3, PANE_4] },
+            ]);
+        });
+
+        it('ignores fake panes', () => {
+            const MAX_SIZE = { hint: {}, num: 99, typename: 'maximizedPane' };
+            expect(layoutRows('horizontal', [PANE_T1, MAX_SIZE])).toEqual([
+                { width: 100, height: 100, rowPanes: [PANE_T1] },
             ]);
         });
 
