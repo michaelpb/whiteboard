@@ -5,7 +5,6 @@ const Slide = require('../../lib/deck/Slide');
 // Mostly just a stub of integrat-y unit tests for Slide
 
 describe('Slide', () => {
-
     // Patch to always make slides with internal ID of 1
     Slide.getNextSlideID = () => 'slide-1';
 
