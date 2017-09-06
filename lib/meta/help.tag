@@ -1,206 +1,91 @@
-<wb-start>
+<wb-help>
     <style scoped>
-        x-box {
-            align-items: flex-start !important;
+        div#scroller {
+            padding: 10vh;
+            min-height: 100vh;
+            min-width: 100vw;
+            height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
+            overflow-y: scroll;
         }
-
-        /*
-        x-box#recent {
-            padding-left: 30px;
-        }
-        */
 
         h1 {
-            font-size: 16pt;
+            font-size: 18pt;
         }
+
+        h2 {
+            font-size: 14pt;
+            font-weight: 400;
+        }
+
         strong {
             font-weight: bold;
         }
 
-        .info {
-            font-size: 10.5pt;
-            margin-left: 30px;
-            margin-right: 30px;
-            margin-top: 30px;
-            color: #aaa;
+        p {
+            margin-top: 10px;
         }
 
-        .starting-button {
-            margin-top: 30px;
-            min-width: 275px;
+        p em {
+            font-variant: italic;
         }
 
-        x-box#recent {
-            overflow-y: auto !important;
+        x-button {
+            display: inline-block;
+            max-height: 1em !important;
         }
     </style>
 
-    <x-box id="main-box">
-        <!--
-        <x-menu opened>
-            <x-menuitem>
-                <img src="img/icon.png" class="deck-logo" />
-                <x-label>Whiteboard</x-label>
-            </x-menuitem>
-            <hr>
+    <div id="scroller">
+        <h1>Getting started</h1>
+        <p>Each presentation is called a <em>deck</em>. Get
+        going by clicking
+                <x-button onclick={newDeck}>
+                    <x-label>New Deck</x-label>
+                </x-button>.
+        From here you must choose a
+        location and name for your new deck.</p>
 
-            <x-menuitem>
-                <x-icon name="folder-open"></x-icon>
-                <x-label>Open deck...</x-label>
-            </x-menuitem>
+        <p>Whiteboard is only controlled by the application
+        menu, and additionally the context menu (<em>Right
+        click</em> or <em>&#8984; + Click</em>).</p>
 
-            <hr>
+        <p>Using the menu, or <code>F2</code>, you can create, edit, delete,
+        and re-arrange slides. Create a slide for each activity you want to
+        demo, and add an editor, terminal, markdown text, or browser as
+        appropriate for each slide. When you are done, be sure to save from the
+        <code>File</code> menu.</p>
 
-            <x-menuitem>
-                <x-icon name="create-new-folder"></x-icon>
-                <x-label>New deck</x-label>
-            </x-menuitem>
+        <h1>The Whiteboard file format</h1>
+        <p>The decks are stored in a plaintext format that
+        resembles INI files, with the extension `.whiteboard`.
+        The format is simple and convenient enough to edit by
+        hand. Example file:</p>
 
-            <x-menuitem>
-                <x-icon name="folder-special"></x-icon>
-                <x-label>Import from directory</x-label>
-            </x-menuitem>
+<pre>
+[slide]
+title=POST request demonstration
+terminal=./POST_python/
+editor=./POST_python/*.py
 
-            <hr>
+[slide]
+title=Demo of final app
+browser = ./POST_challenge/index.html
+markdown : '''
+# Recreate the browser
+- Try to recreate this app using Flask
+- Hint: You'll have to use a POST endpoint
+'''
+</pre>
+    </div>
 
-            <x-menuitem>
-                <x-icon name="help"></x-icon>
-                <x-label>About</x-label>
-            </x-menuitem>
-        </x-menu>
-        -->
-
-        <x-box vertical id="recent">
-
-            <!--<x-card if="{ opts.recentDecks.length < 1 }" id="getting_started">-->
-            <x-card id="getting_started">
-                <main>
-                    <div if="{ opts.recentDecks.length < 1 }">
-                        <h1>Whiteboard</h1>
-                        <p>An activity-based slideshow application for coding
-                        webinars, classrooms, or presentations.</p>
-                    </div>
-
-                    <x-box vertical>
-
-                        <x-box>
-                            <x-button class="starting-button" skin="textured">
-                                <x-icon name="create-new-folder"></x-icon>
-                                <x-label>
-                                    New blank deck
-                                </x-label>
-                            </x-button>
-
-                            <x-label>
-                                <p class="info">
-                                Choose a directory in which to start from
-                                scratch with an empty deck.  From here you can
-                                manually add slides.
-                                </p>
-                            </x-label>
-                        </x-box>
-
-
-                        <x-box>
-                            <x-button class="starting-button" skin="textured">
-                                <x-icon name="folder-special"></x-icon>
-                                <x-label>
-                                    Import from directory
-                                </x-label>
-                            </x-button>
-
-
-                            <x-label>
-                                <p class="info">
-                                Start from a directory containing many other
-                                directories, each representing one slide in
-                                your presentation. Code files will be
-                                automatically opened in appropriate panes, and
-                                the directory names themselves will serve as
-                                titles.
-                                </p>
-                            </x-label>
-                        </x-box>
-
-                        <hr />
-
-                        <x-box>
-                            <x-button class="starting-button" skin="textured">
-                                <x-icon name="folder-special"></x-icon>
-                                <x-label>
-                                    Open...
-                                </x-label>
-                            </x-button>
-
-
-                            <x-label>
-                                <p class="info">
-                                Open a previously saved slide show.
-                                </p>
-                            </x-label>
-                        </x-box>
-
-                        <x-box>
-                            <x-button class="starting-button" skin="textured">
-                                <x-icon name="help"></x-icon>
-                                <x-label>
-                                    About
-                                </x-label>
-                            </x-button>
-
-                            <x-label>
-                                <p class="info">
-                                    .
-                                </p>
-                            </x-label>
-                        </x-box>
-
-                    </x-box>
-                </main>
-            </x-card>
-
-            <x-card if="{ opts.recentDecks.length < 1 }">
-                <main>
-                    <h1>Recent decks</h1>
-                    <p><em>No decks yet!</em></p>
-                </main>
-            </x-card>
-
-
-            <x-card if="{ opts.recentDecks.length > 0 }">
-                <main>
-                    <h1>Recent decks</h1>
-
-                    <x-button skin="textured" each={ opts.recentDecks }>
-                        <x-icon name="view-carousel"></x-icon>
-                        <x-label>{ path }</x-label>
-                    </x-button>
-                </main>
-            </x-card>
-
-
-        </x-box>
-    <x-box>
 
     <script>
         'use strict';
-        this.on('mount', function () {
-            document.body.style.background = 'white'; // Hack to fix
 
-            // show main element
-            document.getElementById('main').style.display = "block";
-
-            // Set up main crap
-            document.body.addEventListener('contextmenu', function(ev) {
-                ev.preventDefault();
-                opts.send('show_context_menu', ev.pageX, ev.pageY);
-                return false;
-            }, false);
-
-            const drawer = document.getElementById('slides_drawer');
-            opts.on('toggle_deck', () => {
-                drawer.opened = !drawer.opened;
-            });
-        });
+        newDeck() {
+            opts.send('menu_new');
+        }
     </script>
-</wb-start>
+</wb-help>

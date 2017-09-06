@@ -71,6 +71,10 @@
             
         
             
+                require("../lib/meta/help.tag");
+            
+        
+            
                 require("../lib/deck/deck.tag");
             
         
