@@ -15,7 +15,7 @@
             margin: auto;
             max-width: 42em;
             */
-            background: #fefefe;
+            /*background: #fefefe;*/
         }
 
         @media only screen and (min-width: 480px) {

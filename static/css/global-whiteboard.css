@@ -16,7 +16,6 @@ body,
     background: url(../img/texture-1457346.jpg) center center fixed !important;
     background-size: cover !important;
 }
-*/
 body,
 .pane-fullscreen {
     background:
@@ -26,6 +25,7 @@ body,
         linear-gradient(315deg, hsla(13, 98%, 80%, 1) 100%, hsla(13, 98%, 80%, 0) 70%)
         !important;
 }
+*/
 
 
 :not(input):not(textarea),
