@@ -214,8 +214,9 @@ describe('utils module', () => {
             expect(results).toContain('TOP LEVEL');
             expect(results[0].label).toEqual('File');
             expect(results[0].submenu).toContain('FILE MENU');
-            expect(results[2].label).toEqual('Help');
-            expect(results[2].submenu).toContain('HELP');
+            expect(results.map(({ label }) => label)).toContain('View');
+            expect(results[3].label).toEqual('Help');
+            expect(results[3].submenu).toContain('HELP');
 
             expect(results[0].submenu.map(item => item.label))
                 .toContain('Import from directory...');

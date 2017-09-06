@@ -19,7 +19,14 @@ describe('Deck', () => {
         mockery.registerMock('electron', electron);
         mockery.registerMock('mousetrap', mockObject());
         mockery.registerMock('electron-store', function FauxStore() {
-            this.get = () => [{ path: 'recent/Example.whiteboard' }];
+            this.get = (key) => {
+                if (key === 'recent') {
+                    return [{ path: 'recent/Example.whiteboard' }];
+                } else if (key === 'background') {
+                    return 'Dark';
+                }
+                return null;
+            };
             this.set = () => {};
         });
         mockery.warnOnUnregistered(false);
@@ -75,8 +82,6 @@ describe('Deck', () => {
                 .toContain('Slide');
             expect(deck.makeTopLevelMenu([]).map(item => item.label))
                 .toContain('Navigation');
-            expect(deck.makeTopLevelMenu([]).map(item => item.label))
-                .toContain('Zoom');
         });
 
         it('generates reasonable navigation menu template', () => {
