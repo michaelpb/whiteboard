@@ -1,4 +1,4 @@
-.PHONY: help list lint test release rebuild-icons
+.PHONY: help list lint test release rebuild-icons docs
 
 help:
 	@echo "lint - check style with eslint"
@@ -27,6 +27,11 @@ bump-and-push: test lint
 	git push
 	git push --tags
 	make release
+
+docs:
+	cat docs/src/header.html docs/src/index.html docs/src/footer.html > docs/index.html
+	cat docs/src/header.html docs/src/tutorial.html docs/src/footer.html > docs/tutorial.html
+	cat docs/src/header.html docs/src/downloads.html docs/src/footer.html > docs/downloads.html
 
 release:
 	npm publish

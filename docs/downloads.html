@@ -78,113 +78,84 @@
   </div>
 </nav>
 
-<div id="background_container">
-</div>
-
-<section class="hero has-text-centered is-medium" >
+<section class="hero is-medium">
     <div class="hero-body">
         <div class="container">
-            <img src="images/icon_256.png" />
-            <h1 class="title">
-                Whiteboard
+            <h1 class="title" id="all_download_links">
+                All Download Links
             </h1>
-            <h2 class="subtitle">
-                v0.0.20
-            </h2>
-            <h2 class="subtitle">
-                Create activity-based presentations that combine coding and
-                demonstrations.
-            </h2>
+            <div class="columns">
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-linux"></i>
+                        GNU/Linux
+                    </h4>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-x86_64.AppImage" class="button is-link">
+                            <span>Cross-platform (AppImage)</span>
+                        </a>
+                    </p>
+                    <p><a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app_0.0.20_amd64.deb" class="button is-link">
+                        <span>Debian, Ubuntu (deb)</span>
+                    </a></p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20.x86_64.rpm" class="button is-link">
+                            <span>Fedora, Red Hat (rpm)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20.pacman" class="button is-link">
+                            <span>Arch (pacman)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20.tar.gz" class="button is-link">
+                            <span>Archive (tar.gz)</span>
+                        </a>
+                    </p>
+                </div>
 
-            <div class="block">
-                <script>
-                    (function () {
-                        var icon = '';
-                        var href = "#all_download_links";
-                        var v = navigator.appVersion;
-                        if (v.indexOf("Win") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-windows"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-setup-0.0.20.exe";
-                        } else if (v.indexOf("Mac") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-apple"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/Whiteboard-0.0.20.dmg";
-                        } else if (v.indexOf("X11") !== -1 || v.indexOf("Linux") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-linux"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-x86_64.AppImage";
-                        }
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-apple"></i>
+                        macOS
+                    </h4>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/Whiteboard-0.0.20.dmg" class="button is-link">
+                            <span>Apple Disk Image (dmg)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-mac.zip" class="button is-link">
+                            <span>Archive (zip)</span>
+                        </a>
+                    </p>
+                </div>
 
-                        var code = [
-                            '<a href="',
-                                href,
-                                '"',
-                                'class="button is-large is-primary">',
-                                'Download',
-                                icon,
-                            '</a>'].join('');
-                        document.write(code);
-                    })();
-                </script>
+                <div class="column">
+                    <h4 class="subtitle">
+                        <i class="fa fa-windows"></i>
+                        Windows
+                    </h4>
 
-                <br />
-                <a href="downloads.html" class="button is-link">
-                    All download links for v0.0.20
-                </a>
-
-                <div class="block">
-                    <p>Whiteboard is slideshow application for demonstration-heavy
-                    presentations. It eliminates the need to be switching between
-                    code, browser, terminals, and descriptive text during live
-                    demonstrations, and enables more content to be prepared ahead
-                    of time. It's great for guiding code-heavy classroom lectures,
-                    tutorials, or workshops, or webinars.</p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-setup-0.0.20.exe" class="button is-link">
+                            <span>Installer (exe)</span>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-win.zip" class="button is-link">
+                            <span>Archive (zip)</span>
+                        </a>
+                    </p>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<section class="hero is-dark is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <nav class="columns">
-                <div class="column has-text-centered">
-                    <span class="icon is-large" style="margin-right: -15px;">
-                        <i class="fa fa-linux"></i>
-                    </span>
-                    <span class="icon is-large">
-                        <i class="fa fa-apple"></i>
-                    </span>
-                    <span class="icon is-large" style="margin-right: 10px;">
-                        <i class="fa fa-windows"></i>
-                    </span>
-                    <p class="title is-4"><strong>Cross Platform</strong></p>
-                    <p class="subtitle">Designed for <strong>all</strong> desktops</p>
-                </div>
+            <hr />
 
-                <div class="column has-text-centered">
-                    <span class="icon is-large">
-                        <i class="fa fa-code-fork"></i>
-                    </span>
-                    <p class="title is-4"><strong>Free</strong></p>
-                    <p class="subtitle">Free/libre forever (GPL 3.0)</p>
-                </div>
-
-                <div class="column has-text-centered">
-                    <span class="icon is-large">
-                        <i class="fa fa-podcast"></i>
-                    </span>
-                    <p class="title is-4"><strong>Webcasts</strong></p>
-                    <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
-                </div>
-
-                <div class="column has-text-centered">
-                <span class="icon is-large">
-                    <i class="fa fa-code"></i>
-                </span>
-                <p class="title is-4"><strong>Bootcamps</strong></p>
-                <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
-                </div>
-            </nav>
+            <a class="button btn-outline" href="https://github.com/michaelpb/whiteboard/releases">
+                Previous releases
+            </a>
         </div>
     </div>
 </section>

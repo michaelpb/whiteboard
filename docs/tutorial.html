@@ -78,113 +78,50 @@
   </div>
 </nav>
 
-<div id="background_container">
-</div>
-
-<section class="hero has-text-centered is-medium" >
+<section class="hero is-medium">
     <div class="hero-body">
         <div class="container">
-            <img src="images/icon_256.png" />
-            <h1 class="title">
-                Whiteboard
-            </h1>
-            <h2 class="subtitle">
-                v0.0.20
-            </h2>
-            <h2 class="subtitle">
-                Create activity-based presentations that combine coding and
-                demonstrations.
+            <h2 class="title">
+                Getting started
             </h2>
 
-            <div class="block">
-                <script>
-                    (function () {
-                        var icon = '';
-                        var href = "#all_download_links";
-                        var v = navigator.appVersion;
-                        if (v.indexOf("Win") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-windows"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-setup-0.0.20.exe";
-                        } else if (v.indexOf("Mac") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-apple"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/Whiteboard-0.0.20.dmg";
-                        } else if (v.indexOf("X11") !== -1 || v.indexOf("Linux") !== -1) {
-                            icon = '&nbsp; <i class="fa fa-linux"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-x86_64.AppImage";
-                        }
+                <h1>Getting started</h1>
+                <p>Each presentation is called a <em>deck</em>. Get going by
+                clicking New Deck.  From here you must choose a location and
+                name for your new deck.</p>
 
-                        var code = [
-                            '<a href="',
-                                href,
-                                '"',
-                                'class="button is-large is-primary">',
-                                'Download',
-                                icon,
-                            '</a>'].join('');
-                        document.write(code);
-                    })();
-                </script>
+                <p>Whiteboard is only controlled by the application menu, and
+                additionally the context menu (<em>Right click</em> or
+                <em>&#8984; + Click</em>).</p>
 
-                <br />
-                <a href="downloads.html" class="button is-link">
-                    All download links for v0.0.20
-                </a>
+                <p>Using the menu, or <code>F2</code>, you can create, edit,
+                delete, and re-arrange slides. Create a slide for each activity
+                you want to demo, and add an editor, terminal, markdown text,
+                or browser as appropriate for each slide. When you are done, be
+                sure to save from the <code>File</code> menu.</p>
 
-                <div class="block">
-                    <p>Whiteboard is slideshow application for demonstration-heavy
-                    presentations. It eliminates the need to be switching between
-                    code, browser, terminals, and descriptive text during live
-                    demonstrations, and enables more content to be prepared ahead
-                    of time. It's great for guiding code-heavy classroom lectures,
-                    tutorials, or workshops, or webinars.</p>
-                </div>
+                <h1>The Whiteboard file format</h1>
+                <p>The decks are stored in a plaintext format that
+                resembles INI files, with the extension `.whiteboard`.
+                The format is simple and convenient enough to edit by
+                hand. Example file:</p>
+
+<pre>
+[slide]
+title=POST request demonstration
+terminal=./POST_python/
+editor=./POST_python/*.py
+
+[slide]
+title=Demo of final app
+browser = ./POST_challenge/index.html
+markdown : '''
+# Recreate the browser
+- Try to recreate this app using Flask
+- Hint: You'll have to use a POST endpoint
+'''
+</pre>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="hero is-dark is-bold">
-    <div class="hero-body">
-        <div class="container">
-            <nav class="columns">
-                <div class="column has-text-centered">
-                    <span class="icon is-large" style="margin-right: -15px;">
-                        <i class="fa fa-linux"></i>
-                    </span>
-                    <span class="icon is-large">
-                        <i class="fa fa-apple"></i>
-                    </span>
-                    <span class="icon is-large" style="margin-right: 10px;">
-                        <i class="fa fa-windows"></i>
-                    </span>
-                    <p class="title is-4"><strong>Cross Platform</strong></p>
-                    <p class="subtitle">Designed for <strong>all</strong> desktops</p>
-                </div>
-
-                <div class="column has-text-centered">
-                    <span class="icon is-large">
-                        <i class="fa fa-code-fork"></i>
-                    </span>
-                    <p class="title is-4"><strong>Free</strong></p>
-                    <p class="subtitle">Free/libre forever (GPL 3.0)</p>
-                </div>
-
-                <div class="column has-text-centered">
-                    <span class="icon is-large">
-                        <i class="fa fa-podcast"></i>
-                    </span>
-                    <p class="title is-4"><strong>Webcasts</strong></p>
-                    <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
-                </div>
-
-                <div class="column has-text-centered">
-                <span class="icon is-large">
-                    <i class="fa fa-code"></i>
-                </span>
-                <p class="title is-4"><strong>Bootcamps</strong></p>
-                <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
-                </div>
-            </nav>
         </div>
     </div>
 </section>

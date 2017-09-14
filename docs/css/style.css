@@ -1,0 +1,32 @@
+#background_container {
+    background: url('../images/example_slide.jpg') #fff no-repeat;
+    background-size: 100%;
+
+    filter:blur(1px);
+    -o-filter:blur(1px);
+    -ms-filter:blur(1px);
+    -moz-filter:blur(1px);
+    -webkit-filter:blur(1px);
+    top: -9px;
+    left: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+nav {
+    z-index: 1;
+}
+
+nav .whiteboard-logo {
+    letter-spacing: 0.1em;
+    font-weight: 200;
+    font-size: 14pt;
+}
+nav .whiteboard-logo img {
+    margin-right: 10px;
+}
+
+nav.navbar {
+    position: fixed !important; top: 0; left: 0; right: 0;
+}
