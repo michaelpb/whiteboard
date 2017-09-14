@@ -64,7 +64,7 @@
         </x-button>
         -->
 
-        <x-button onclick={add_slide} class="Deck--add-slide-button">
+        <x-button skin="textured" onclick={add_slide} class="Deck--add-slide-button">
             <x-box>
                 <img src="png/si-glyph-plus.png" />
                 <x-label>Slide</x-label>
