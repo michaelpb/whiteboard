@@ -30,3 +30,12 @@ nav .whiteboard-logo img {
 nav.navbar {
     position: fixed !important; top: 0; left: 0; right: 0;
 }
+
+.carousel-cell {
+    margin-bottom: 50px;
+}
+
+.carousel-cell .content {
+    font-size: 1.5em;
+    font-weight: 200;
+}

@@ -51,17 +51,136 @@
                 </a>
 
                 <div class="block">
-                    <p>Whiteboard is slideshow application for demonstration-heavy
-                    presentations. It eliminates the need to be switching between
-                    code, browser, terminals, and descriptive text during live
-                    demonstrations, and enables more content to be prepared ahead
-                    of time. It's great for guiding code-heavy classroom lectures,
-                    tutorials, or workshops, or webinars.</p>
+                        <p>
+                            <big>
+                            Whiteboard is slideshow application for
+                            <strong>teaching programming</strong>.  It embeds a code
+                            editor, terminal, and web browser into a slide-show
+                            like interface to <strong>eliminate
+                            context-switches</strong> and dead-space, while
+                            enabling more content content to be set-up ahead of
+                            time.  It's great for guiding code-heavy classroom
+                            lectures, tutorials, workshops, and
+                            <strong>webinars</strong>.
+                            </big>
+                        </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="container">
+    <div class="notification is-warning">
+        <strong>Alpha Release: v0.0.20</strong> - Whiteboard is still being
+        developed! There might still be a few bugs here and there, so help
+        development by <a target="_blank" href="https://github.com/michaelpb/whiteboard/issues/">reporting them</a>.
+    </div>
+    <hr />
+</div>
+
+<section class="hero is-bold">
+    <div class="container">
+        <div>
+            <div class="carousel-cell">
+                <div class="columns">
+                    <div class="box column">
+                        <img src="images/panes/editor_context_menu.png" />
+                    </div>
+                    <div class="column content">
+                        <h3>Code editor</h3>
+                        <ul>
+                            <li>Save tab layouts of multiple files for your presentations</li>
+                            <li>Based on ACE Editor</li>
+                            <li>Syntax highlighting for 100+ languages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-cell">
+                <div class="columns">
+                    <div class="column content">
+                        <h3>Web Browser</h3>
+                        <ul>
+                            <li>Have fully-functioning websites embedded in your slides</li>
+                            <li>Uses Chromium-based WebView, for full support for all sites no matter how complex</li>
+                            <li>Use to demonstrate websites as you build them</li>
+                            <li>Useful for webinar tutorials</li>
+                        </ul>
+                    </div>
+                    <div class="box column">
+                        <img src="images/panes/browser.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-cell">
+                <div class="columns">
+                    <div class="box column">
+                        <img src="images/panes/terminal.png" />
+                    </div>
+                    <div class="column content">
+                        <h3>Terminal</h3>
+                        <ul>
+                            <li>Save a terminal to start at a working directory</li>
+                            <li>Useful for running example code as you write it</li>
+                            <li>Full color and cursor support, e.g. vim works</li>
+                            <li>Based on the same library (xterm.js) as VSCode</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-cell">
+                <div class="columns">
+                    <div class="column content">
+                        <h3>Markdown</h3>
+                        <ul>
+                            <li>Easily add rich text with Markdown</li>
+                            <li>Useful for content-only slides</li>
+                            <li>Can be mixed with other panes to add instructions or context</li>
+                        </ul>
+                    </div>
+                    <div class="box column">
+                        <img src="images/panes/markdown.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-cell">
+                <div class="columns">
+                    <div class="box column">
+                        <img src="images/panes/slides.png" />
+                    </div>
+                    <div class="column content">
+                        <h3>Save and edit slide decks</h3>
+                        <ul>
+                            <li>By saving preset combinations of the above
+                            activities, craft a slide deck that guides the
+                            </li>
+                            <li>Slides can be added, deleted, and re-arranged</li>
+                            <li>Supports 3 layouts and several theme presets</li>
+                            <li>Decks can be saved, loaded, or shared</li>
+                            <li>Saves to a plain-text format, for easy manual tweaking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
+
+<!--
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script>
+    var flkty = new Flickity( '.main-carousel', {
+    });
+</script>
+-->
 
 <section class="hero is-dark is-bold">
     <div class="hero-body">
@@ -83,26 +202,30 @@
 
                 <div class="column has-text-centered">
                     <span class="icon is-large">
-                        <i class="fa fa-code-fork"></i>
+                        <i class="fa fa-podcast"></i>
                     </span>
-                    <p class="title is-4"><strong>Free</strong></p>
-                    <p class="subtitle">Free/libre forever (GPL 3.0)</p>
+                    <p class="title is-4"><strong>Powerful</strong></p>
+                    <p class="subtitle">
+                        Built with the same libraries as Atom and VSCode
+                    </p>
                 </div>
 
                 <div class="column has-text-centered">
                     <span class="icon is-large">
-                        <i class="fa fa-podcast"></i>
+                        <i class="fa fa-check"></i>
                     </span>
-                    <p class="title is-4"><strong>Webcasts</strong></p>
-                    <p class="subtitle">Prepare for a smooth <strong>live demo</strong></p>
+                    <p class="title is-4"><strong>Easy</strong></p>
+                    <p class="subtitle">
+                        All tasks are a right-click away
+                    </p>
                 </div>
 
                 <div class="column has-text-centered">
-                <span class="icon is-large">
-                    <i class="fa fa-code"></i>
-                </span>
-                <p class="title is-4"><strong>Bootcamps</strong></p>
-                <p class="subtitle">Perfect for instruction in <strong>coding bootcamps</strong></p>
+                    <span class="icon is-large">
+                        <i class="fa fa-code-fork"></i>
+                    </span>
+                    <p class="title is-4"><strong>Free</strong></p>
+                    <p class="subtitle">Free/libre (GPL 3.0)</p>
                 </div>
             </nav>
         </div>

@@ -1,30 +1,106 @@
-<section class="hero is-medium">
-    <div class="hero-body">
-        <div class="container">
-            <h2 class="title">
-                Getting started
-            </h2>
 
-                <h1>Getting started</h1>
-                <p>Each presentation is called a <em>deck</em>. Get going by
-                clicking New Deck.  From here you must choose a location and
-                name for your new deck.</p>
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="content">
+        <h1 class="title">Getting started</h1>
+        <p>
+        <a class="button is-primary" href="downloads.html"><i class="fa fa-download"></i> &nbsp; Download</a>
+        <a class="button is-link" target="_blank" href="https://github.com/michaelpb/whiteboard-tutorial-processing-data-with-nodejs">Sample deck: a self-guided tutorial on processing text files with Node.js</a>
+        </p>
 
-                <p>Whiteboard is only controlled by the application menu, and
-                additionally the context menu (<em>Right click</em> or
-                <em>&#8984; + Click</em>).</p>
 
-                <p>Using the menu, or <code>F2</code>, you can create, edit,
-                delete, and re-arrange slides. Create a slide for each activity
-                you want to demo, and add an editor, terminal, markdown text,
-                or browser as appropriate for each slide. When you are done, be
-                sure to save from the <code>File</code> menu.</p>
+        <h3>Two ways of creating decks</h3>
 
-                <h1>The Whiteboard file format</h1>
-                <p>The decks are stored in a plaintext format that
-                resembles INI files, with the extension `.whiteboard`.
-                The format is simple and convenient enough to edit by
-                hand. Example file:</p>
+        <p>Each presentation is called a <em>deck</em>. You have two
+        routes for creating decks:</p>
+        <ol>
+            <li>GUI: You can create new decks entirely with the GUI, by
+            clicking on the <strong>NEW DECK</strong> button on first
+            screen. After you choose a location and filename to save, you
+            are good to go with your first slide-show.</li>
+
+            <li>Text: by editing the <code>.whiteboard</code> plain-text
+            file-format. If you are more at home in a text editor, this
+            might be the fastest. <a href="#fileformat">Click here to learn
+            how to do this.</a></li>
+        </ol>
+
+        <hr />
+        <h3>Using Whiteboard</h3>
+
+        <p><strong>Menus:</strong> Whiteboard is entirely controlled by the application menu and the
+        context menu (using <em>Right click</em> or <em>Ctrl + Click</em>). The
+        context menu is different depending on where you click, so if you
+        right-click on the Editor, for example, you will have options to save
+        the current file open in the editor.</p>
+
+        <p><strong>Shortcuts:</strong> Most menu actions have also a shortcut
+        key assigned. Like the context menu, the available shortcuts change
+        dependign on which pane you are using. For example: for the editor
+        <code>Ctrl+S</code> will save the open file, and for the browser,
+        <code>Ctrl+R</code> will hard-refresh. To see the list of all available
+        shortcuts, hit F1.</p>
+
+        <p><strong>Slide editing:</strong> Using the menu, or <code>F2</code>,
+        you can create, edit, delete, and re-arrange slides. Create a slide for
+        each activity you want to demo, and add an editor, terminal, markdown
+        text, or browser as appropriate for each slide. When you are done, be
+        sure to save from the <code>File</code> menu.</p>
+
+        <p id="fileformat"></p>
+        <hr />
+        <h3>The Whiteboard file format</h3>
+        <p>The decks are stored in a plaintext format that
+        resembles INI files, with the extension `.whiteboard`.  The format is
+        simple and convenient enough to edit by hand.
+        
+
+        <div class="columns">
+            <div class="column">
+                <h5>Accepted values in slides</h5>
+                <ul>
+                    <li><strong>title</strong> - a bold title at the top of the
+                    slide</li>
+
+                    <li><strong>browser</strong> - consists of a web-browser
+                    that can be pointed to a remote HTTP address (starting with
+                    <code>http://</code> or <code>https://</code>) or local
+                    HTML file (starting with <code>file://</code>).</li>
+
+                    <li><strong>editor</strong> - can edit multiple code files
+                    in tabs with syntax highlighting, consisting of comma (or
+                    new-line) separated of relative or absolute file paths.
+                    Wild cards / glob syntax is accepted.</li>
+
+                    <li><strong>terminal</strong> - bash terminal, specify a
+                    starting directory</li>
+
+                    <li><strong>markdown</strong> - multi-line element to
+                    contain arbitrary explanatory text</li>
+
+                    <li><em>maximize</em> - the value should be one of the
+                    above pane types, causing that pane be maximized at the
+                    start (useful while introducing a topic to avoid having
+                    unrelated or distracting text until the time comes)</li>
+
+                    <li><em>layout</em> - layout of the slide, the value should
+                    be one "horizontal", "vertical", or "grid"</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h5>Syntax</h5>
+                <p>
+                The Whiteboard format consists of lines of <code>[slide]</code>
+                followed by key/value pairs in the format of <code>key = value</code>,
+                each on a new line. For multi-line values, you can use the syntax
+                <code>key : ''' (... multiple lines of text ...) '''</code>. The only
+                requirement is that the final <code>'''</code> is alone on its own
+                line.
+                </p>
+                <h5>Example</h5>
+
 
 <pre>
 [slide]
@@ -44,5 +120,5 @@ markdown : '''
             </div>
         </div>
     </div>
-</section>
+</div>
 

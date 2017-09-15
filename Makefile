@@ -32,6 +32,7 @@ docs:
 	cat docs/src/header.html docs/src/index.html docs/src/footer.html > docs/index.html
 	cat docs/src/header.html docs/src/tutorial.html docs/src/footer.html > docs/tutorial.html
 	cat docs/src/header.html docs/src/downloads.html docs/src/footer.html > docs/downloads.html
+	cat docs/src/header.html docs/src/contact.html docs/src/footer.html > docs/contact.html
 
 release:
 	npm publish
