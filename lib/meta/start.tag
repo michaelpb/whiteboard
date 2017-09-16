@@ -1,5 +1,11 @@
 <wb-start>
     <style scoped>
+        h1,
+        h2,
+        p { 
+            color: black !important;
+        }
+
         x-box {
             align-items: flex-start !important;
         }
