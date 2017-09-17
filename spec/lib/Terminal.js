@@ -16,6 +16,13 @@ describe('Terminal', () => {
     let Terminal = null;
     let pty = null;
 
+    const LSOF_OUTPUT = [
+        'COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME\n',
+        'bash    3907 michaelb  cwd    DIR  179,5     4096 523326 /etc/init.d\n',
+    ].join('');
+
+    let execSyncReturn;
+
     beforeEach(() => {
         mockery.enable();
         pty = { spawn: mockMethod() };
@@ -27,7 +34,12 @@ describe('Terminal', () => {
         };
         mockery.registerMock('node-pty', pty);
         mockery.registerMock('electron-ipc-stream', mockObject());
-        mockery.registerMock('child_process', mockObject());
+        execSyncReturn = LSOF_OUTPUT;
+        const childProcess = { execSync: () => execSyncReturn };
+        mockery.registerMock('child_process', childProcess);
+        mockery.registerMock('os', {
+            type: mockMethod({returnValue: 'linux'}),
+        });
         mockery.warnOnUnregistered(false);
         Terminal = require('../../lib/terminal/Terminal');
         ({ manager } = mockWindowManager('terminal', Terminal));
@@ -44,9 +56,28 @@ describe('Terminal', () => {
 
     it('successfully returns a PID', (done) => {
         manager.createWindow('terminal', (terminal) => {
+            mockery.registerMock('child_process', mockObject());
             expect(Object.keys(terminal.getProps())).toEqual(['pid']);
             expect(terminal.getProps().pid).toEqual(123);
             done();
         }, '');
+    });
+
+    describe('has a feature to determine cwd', () => {
+        it('correctly parses lsof output when trying to determine cwd', (done) => {
+            manager.createWindow('terminal', (terminal) => {
+                expect(terminal.serialized()).toEqual('/etc/init.d');
+                done();
+            }, 'initial');
+        });
+
+        it('successfully handles errors when trying to determine cwd', (done) => {
+            // mashed keys here to ensure no dir has this
+            execSyncReturn = 'INVALID STRING THING b]x,vnjf093jf0aaoij3r0j';
+            manager.createWindow('terminal', (terminal) => {
+                expect(terminal.serialized()).toEqual('initial');
+                done();
+            }, 'initial');
+        });
     });
 });
