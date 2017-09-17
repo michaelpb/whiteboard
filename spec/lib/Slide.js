@@ -127,6 +127,14 @@ describe('Slide', () => {
                 expect(menu.length).toEqual(2);
             });
 
+            it('can delete panes with deletePane', () => {
+                // ensure works multiple times
+                expect(slide.panes.length).toEqual(3);
+                slide.deletePane('text');
+                expect(slide.panes.length).toEqual(2);
+                expect(slide.slideData.text).not.toBeTruthy();
+            });
+
             it('uses makePaneMenu to make custom menu of pane', () => {
                 // ensure works multiple times
                 const editor = slide.paneEditors['slide-1_pane_text'];
