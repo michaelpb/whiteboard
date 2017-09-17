@@ -18,6 +18,8 @@ node_modules/*
 tmp/*
 dist/*
 
+.nyc_output/
+
 # actually lets check the templated index in!
-DISABLED/static/index.html.templated
+#static/index.html.templated
 

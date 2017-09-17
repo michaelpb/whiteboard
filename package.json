@@ -99,6 +99,7 @@
     "jasmine-spec-reporter": "4.0.0",
     "magicmock": "1.4.0",
     "mockery": "2.0.0",
+    "nyc": "^11.2.1",
     "spectron": "3.7.2"
   },
   "optionalDependencies": {

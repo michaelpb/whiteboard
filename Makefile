@@ -1,4 +1,4 @@
-.PHONY: help list lint test release rebuild-icons docs
+.PHONY: help list lint test release rebuild-icons docs coverage
 
 help:
 	@echo "lint - check style with eslint"
@@ -15,6 +15,9 @@ clean-build:
 
 test:
 	npm run test-headless
+
+coverage:
+	./node_modules/.bin/nyc npm run test-headless
 
 test-watch:
 	find lib/ spec/ -name \*.js | entr -r npm run test-headless
