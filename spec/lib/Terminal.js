@@ -38,7 +38,7 @@ describe('Terminal', () => {
         const childProcess = { execSync: () => execSyncReturn };
         mockery.registerMock('child_process', childProcess);
         mockery.registerMock('os', {
-            type: mockMethod({returnValue: 'linux'}),
+            type: mockMethod({ returnValue: 'linux' }),
         });
         mockery.warnOnUnregistered(false);
         Terminal = require('../../lib/terminal/Terminal');
