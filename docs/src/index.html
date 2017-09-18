@@ -11,7 +11,7 @@
                 Whiteboard
             </h1>
             <h2 class="subtitle">
-                v0.0.20
+                v{{ version }}
             </h2>
             <h2 class="subtitle">
                 Create activity-based presentations that combine coding and
@@ -26,13 +26,13 @@
                         var v = navigator.appVersion;
                         if (v.indexOf("Win") !== -1) {
                             icon = '&nbsp; <i class="fa fa-windows"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-setup-0.0.20.exe";
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v{{ version }}/whiteboard-app-setup-{{ version }}.exe";
                         } else if (v.indexOf("Mac") !== -1) {
                             icon = '&nbsp; <i class="fa fa-apple"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/Whiteboard-0.0.20.dmg";
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v{{ version }}/Whiteboard-{{ version }}.dmg";
                         } else if (v.indexOf("X11") !== -1 || v.indexOf("Linux") !== -1) {
                             icon = '&nbsp; <i class="fa fa-linux"></i>';
-                            href = "https://github.com/michaelpb/whiteboard/releases/download/v0.0.20/whiteboard-app-0.0.20-x86_64.AppImage";
+                            href = "https://github.com/michaelpb/whiteboard/releases/download/v{{ version }}/whiteboard-app-{{ version }}-x86_64.AppImage";
                         }
 
                         var code = [
@@ -49,7 +49,7 @@
 
                 <br />
                 <a href="downloads.html" class="button is-link">
-                    All download links for v0.0.20
+                    All download links for v{{ version }}
                 </a>
 
                 <div class="block">
@@ -74,7 +74,7 @@
 
 <div class="container">
     <div class="notification is-warning">
-        <strong>Alpha Release: v0.0.20</strong> - Whiteboard is still being
+        <strong>Alpha Release: v{{ version }}</strong> - Whiteboard is still being
         developed! There might still be a few bugs here and there, so help
         development by <a target="_blank" href="https://github.com/michaelpb/whiteboard/issues/">reporting them</a>.
     </div>

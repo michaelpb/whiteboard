@@ -13,7 +13,8 @@ for (const filename of globSync(path.resolve(__dirname, 'src', 'includes', '*.ht
     const bname = path.basename(filename);
     const contents = fs.readFileSync(filename).toString();
     const template = TinyTiny(contents);
-    const result = template(context);
+    const result = new String(template(context));
+    result.safe = true;
     context['includes_' + bname.split('.')[0]] = result;
 }
 
@@ -23,9 +24,5 @@ for (const filename of globSync(path.resolve(__dirname, 'src', '*.html'))) {
     const result = template(context);
     const bname = path.basename(filename);
     const outputPath = path.resolve(__dirname, bname);
-    // fs.writeFileSync(outputPath, result);
-    console.log('result', outputPath);
+    fs.writeFileSync(outputPath, result);
 }
-
-console.log('result', context);
-
