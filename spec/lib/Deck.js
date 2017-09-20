@@ -131,6 +131,23 @@ describe('Deck', () => {
             expect(menu).toBeTruthy();
         });
 
+        it('has an autosave functionality', () => {
+            // Ensure setAutosave toggles the existence of the interval
+            deck.setAutosave(true, true);
+            expect(deck._autosaveInterval).toBeTruthy();
+            deck.setAutosave(false, true);
+            expect(deck._autosaveInterval).not.toBeTruthy();
+
+            // Now make sure that this interval calls saving
+            spyOn(deck, 'save');
+            expect(deck.save).not.toHaveBeenCalled();
+            deck.setAutosave(true, true);
+            deck._autosaveInterval._onTimeout();
+            expect(deck.save).toHaveBeenCalled();
+            deck.setAutosave(false, true);
+            expect(deck._autosaveInterval).not.toBeTruthy();
+        });
+
         xit('sets up two slides', () => {
             expect(deck.slideIDs.length).toEqual(2);
             expect(deck.activeSlideID).toBeTruthy();
