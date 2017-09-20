@@ -1,13 +1,14 @@
-
 [slide]
-title = Terminal and editor
-editor = ./testdir/test1.js,test2.html
-terminal = ./testdir
+title=Terminal and editor
+editor:"""
+/home/michaelb/projects/whiteboard/spec/support/data/kitchen-sink/testdir/test1.js
+/home/michaelb/projects/whiteboard/spec/support/data/kitchen-sink/test2.html
+"""
 
+terminal=/
 [slide]
-title = Second Slide With Markdown
-markdown : """
-
+title=Second Slide With Markdown
+markdown:"""
 # Dabat decurrit memini
 
 ## Digitorum lilia
@@ -32,3 +33,4 @@ Est [gentis mutor](http://www.bellumet.net/fuit.aspx), ubi est sospite ardor
 heros priora parce solo, non ducar feres, deae flector dotatissima. Defecisse
 plurimus priora et velis hastam laevaque quid.
 """
+
