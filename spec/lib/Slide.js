@@ -98,6 +98,13 @@ describe('Slide', () => {
                 }, { testpane: 'test' });
             });
 
+            it('has an expected default layout', () => {
+                // Ensure layout is vertical
+                expect(slide.layout).toEqual('vertical');
+                slide.info.layout = 'horizontal';
+                expect(slide.layout).toEqual('horizontal');
+            });
+
             it('generates expected number of panes', () => {
                 // ensure works multiple times
                 expect(slide.panes.length).toEqual(3);
