@@ -165,7 +165,7 @@ describe('Deck', () => {
         });
 
         it('deletes an active slide', () => {
-            const editor = deck.slideEditors[deck.slideIDs[0]];
+            // const editor = deck.slideEditors[deck.slideIDs[0]];
             // editor.onWindowClosed = mockMethod();
             const _fs = [deck.slideIDs[1]];
             deck.setFewerSlides(_fs);
