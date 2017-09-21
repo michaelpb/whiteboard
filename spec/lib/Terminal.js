@@ -66,7 +66,7 @@ describe('Terminal', () => {
     describe('has a feature to determine cwd', () => {
         it('correctly parses lsof output when trying to determine cwd', (done) => {
             manager.createWindow('terminal', (terminal) => {
-                expect(terminal.serialized()).toEqual('/etc');
+                expect(terminal.serialized()).toEqual('/bin');
                 done();
             }, 'initial');
         });
