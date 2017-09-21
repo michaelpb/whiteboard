@@ -18,7 +18,7 @@ describe('Terminal', () => {
 
     const LSOF_OUTPUT = [
         'COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME\n',
-        'bash    3907 michaelb  cwd    DIR  179,5     4096 523326 /etc/init.d\n',
+        'bash    3907 michaelb  cwd    DIR  179,5     4096 523326 /bin\n',
     ].join('');
 
     let execSyncReturn;
@@ -66,7 +66,7 @@ describe('Terminal', () => {
     describe('has a feature to determine cwd', () => {
         it('correctly parses lsof output when trying to determine cwd', (done) => {
             manager.createWindow('terminal', (terminal) => {
-                expect(terminal.serialized()).toEqual('/etc/init.d');
+                expect(terminal.serialized()).toEqual('/etc');
                 done();
             }, 'initial');
         });
