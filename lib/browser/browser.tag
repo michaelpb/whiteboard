@@ -40,6 +40,10 @@
                 <x-button onclick={trigger_navigate}>
                     Go
                 </x-button>
+                <br />
+                <x-button onclick={trigger_open}>
+                    Open local file...
+                </x-button>
             </main>
         </x-card>
 
@@ -59,6 +63,11 @@
             ev.preventUpdate = true;
         });
         */
+
+        trigger_open(ev) {
+            ev.preventUpdate = true;
+            this.opts.send('open_file_dialog');
+        }
 
         trigger_navigate(ev) {
             ev.preventUpdate = true;
