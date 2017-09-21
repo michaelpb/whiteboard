@@ -1,13 +1,8 @@
 [slide]
 title=This is just a test
-editor:"""
-/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/new editor
-/home/michaelb/projects/whiteboard/spec/support/data/dev-example-file/test.whiteboard
-"""
-
+editor=new editor,test.whiteboard
 layout=grid
-terminal=/
-maximizedPane=title
+terminal=../../../../../..
 [slide]
 title=Requests Example
 editor:"""
