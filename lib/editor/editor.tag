@@ -91,6 +91,7 @@
             if (ev) {
                 ev.preventUpdate = true;
             }
+            console.log('DOING SAVE!!!!');
             const name = is_saveas ? 'saveas' : 'save';
             clear_bullet();
             this.opts.send(name, this.editor.getValue());
