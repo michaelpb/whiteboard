@@ -38,7 +38,6 @@ describe('Browser', () => {
     });
 
     describe('has methods for manipulating URLs', () => {
-
         it('doesnt change remote URL', (done) => {
             manager.createWindow('browser', (browser) => {
                 expect(browser.getRelativeURL()).toEqual('http://lol.com/');
@@ -66,7 +65,6 @@ describe('Browser', () => {
         });
 
         it('correctly transforms remote URL', (done) => {
-            const URL = 'file:///localhost:8080/thing.html';
             manager.createWindow('browser', (browser) => {
                 browser.path = '/some/path/file.whiteboard';
                 expect(browser.getFullURL())
