@@ -49,6 +49,14 @@ describe('Editor', () => {
             }, 'file1.js\n   file2.js');
         });
 
+        it('successfully relativizes a list of files', (done) => {
+            manager.createWindow('editor', (editor) => {
+                editor.path = '/some/path/thing.whiteboard!slide-3!editor';
+                expect(editor.serialized()).toEqual('file1.js,file2.js');
+                done();
+            }, '/some/path/file1.js\n   /some/path/file2.js');
+        });
+
         it('is successful with a glob', (done) => {
             manager.createWindow('editor', (editor) => {
                 // Loading 4 total files

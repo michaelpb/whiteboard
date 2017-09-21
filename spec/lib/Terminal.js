@@ -66,7 +66,9 @@ describe('Terminal', () => {
     describe('has a feature to determine cwd', () => {
         it('correctly parses lsof output when trying to determine cwd', (done) => {
             manager.createWindow('terminal', (terminal) => {
-                expect(terminal.serialized()).toEqual('/bin');
+                // simulate being at root, and check for /bin
+                terminal.path = '/test.whiteboard!thing';
+                expect(terminal.serialized()).toEqual('bin');
                 done();
             }, 'initial');
         });
@@ -75,9 +77,20 @@ describe('Terminal', () => {
             // mashed keys here to ensure no dir has this
             execSyncReturn = 'INVALID STRING THING b]x,vnjf093jf0aaoij3r0j';
             manager.createWindow('terminal', (terminal) => {
+                terminal.path = '/test.whiteboard!thing';
                 expect(terminal.serialized()).toEqual('initial');
                 done();
             }, 'initial');
+        });
+
+        fit('correctly relativizes paths in all cases', (done) => {
+            // mashed keys here to ensure no dir has this
+            execSyncReturn = 'INVALID STRING THING b]x,vnjf093jf0aaoij3r0j';
+            manager.createWindow('terminal', (terminal) => {
+                terminal.path = '/a/different/path/wb.whiteboard!slide!term';
+                expect(terminal.serialized()).toEqual('../../path/initial');
+                done();
+            }, '/a/path/initial');
         });
     });
 });
