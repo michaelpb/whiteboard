@@ -83,7 +83,7 @@
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
     "electron-store": "1.2.0",
-    "elmoed": "0.0.30",
+    "elmoed": "0.0.31",
     "glob": "7.0.3",
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
