@@ -107,7 +107,6 @@
 
         this.on('mount', () => {
             const {editor_node} = this.refs;
-            // console.log('this is eidtor_node', editor_node);
             this.opts.on('trigger_save', () => this.do_save());
             this.opts.on('trigger_save_as', () => this.do_save(null, true));
             this.setup_editor(editor_node);
