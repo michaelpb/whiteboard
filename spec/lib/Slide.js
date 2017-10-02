@@ -280,22 +280,38 @@ describe('Slide', () => {
                 },
                 terminal: { getIconicPreview: () => '><' },
                 editor: { getIconicPreview: () => '--' },
-                html: {},
+                rawhtml: {},
             }[typename]),
         };
 
         const paneTitle = {
             hint: { prefer_top: true },
             preview: '::test-title::',
+            typename: 'title',
         };
-        const paneTerminal = { hint: {}, preview: '><' };
-        const paneEditor = { hint: {}, preview: '--' };
+        const paneTerminal = { hint: {}, preview: '><', typename: 'terminal' };
+        const paneEditor = { hint: {}, preview: '--', typename: 'editor' };
         const paneHtml = {
             hint: {},
             preview: Slide.getDefaultIconicPreview('lol'),
+            typename: 'rawhtml',
         };
 
-        const { layoutPanePreviews } = Slide;
+        const { layoutPanePreviews, sortPanes } = Slide;
+
+        it('sorts panes', () => {
+            expect(sortPanes([
+                paneTerminal,
+                paneTitle,
+                paneHtml,
+                paneEditor,
+            ])).toEqual([
+                paneTitle,
+                paneHtml,
+                paneEditor,
+                paneTerminal,
+            ]);
+        });
 
         it('lays out a standard 3 pane vertical look', () => {
             expect(layoutPanePreviews(manager, {
@@ -305,7 +321,7 @@ describe('Slide', () => {
                 layout: 'vertical',
             })).toEqual([
                 { width: 100, height: 60, rowPanes: [paneTitle] },
-                { width: 50, height: 40, rowPanes: [paneTerminal, paneEditor] },
+                { width: 50, height: 40, rowPanes: [paneEditor, paneTerminal] },
             ]);
         });
 
@@ -313,11 +329,11 @@ describe('Slide', () => {
             expect(layoutPanePreviews(manager, {
                 title: 'test-title',
                 terminal: 'thing',
-                html: 'lol',
+                rawhtml: 'lol',
             })).toEqual([
                 { width: 100, height: 60, rowPanes: [paneTitle] },
-                { width: 100, height: 20, rowPanes: [paneTerminal] },
                 { width: 100, height: 20, rowPanes: [paneHtml] },
+                { width: 100, height: 20, rowPanes: [paneTerminal] },
             ]);
         });
 
