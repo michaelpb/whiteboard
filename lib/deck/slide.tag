@@ -48,6 +48,27 @@
             box-sizing: border-box;
             clear: both;
         }
+
+        #slide_pane_editor x-textarea {
+            font-size: 2vw;
+        }
+
+        #slide_pane_editor x-textarea {
+            height: calc(90vh - 140px);  /* include h4  + footer */
+        }
+
+        #slide_pane_editor main {
+            height: calc(90vh - 70px);
+        }
+
+        #slide_pane_editor footer {
+            height: 70vh;
+        }
+
+        #slide_pane_editor {
+            width: 90vw;
+            height: 90vh;
+        }
     </style>
 
     <div each={opts.pane_rows} style="height: {height}vh;" class="slide-row">
