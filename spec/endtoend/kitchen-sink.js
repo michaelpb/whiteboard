@@ -73,7 +73,8 @@ function checkFirstSlide(app, done) {
 
         waitUntilBodyText(app, 'var', (bodyText2) => {
             expect(strip(bodyText2).toLowerCase())
-                .toContain(strip('var example_js_file = true'));
+                .toContain(strip('var example_js_file'));
+                // .toContain(strip('var example_js_file = true'));
             checkDone();
         });
 
