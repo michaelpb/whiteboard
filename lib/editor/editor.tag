@@ -117,7 +117,7 @@
             this.editor.setOptions({fontSize});
             if (this.opts.text != this.editor.getValue()) {
                 // update text
-                this.editor.setValue(this.opts.text, 1);
+                this.editor.getSession().setValue(this.opts.text, -1);
 
                 // update syntax highlight mode
                 const modelist = ace.require("ace/ext/modelist")
