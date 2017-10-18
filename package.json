@@ -83,7 +83,7 @@
     "ace-builds": "1.2.6",
     "electron-ipc-stream": "0.2.0",
     "electron-store": "1.2.0",
-    "elmoed": "0.0.34",
+    "elmoed": "0.0.35",
     "glob": "7.0.3",
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
@@ -112,7 +112,7 @@
     "jasmine-spec-reporter": "4.0.0",
     "magicmock": "1.4.0",
     "mockery": "2.0.0",
-    "nyc": "^11.2.1",
+    "nyc": "11.2.1",
     "spectron": "3.7.2"
   },
   "optionalDependencies": {
