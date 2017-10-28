@@ -91,7 +91,7 @@
             if (ev) {
                 ev.preventUpdate = true;
             }
-            console.log('DOING SAVE!!!!');
+            // console.log('Doing save');
             const name = is_saveas ? 'saveas' : 'save';
             clear_bullet();
             this.opts.send(name, this.editor.getValue());
@@ -118,12 +118,12 @@
             if (this.opts.text != this.editor.getValue()) {
                 // update text
                 this.editor.getSession().setValue(this.opts.text, -1);
-
-                // update syntax highlight mode
-                const modelist = ace.require("ace/ext/modelist")
-                const mode = modelist.getModeForPath(this.opts.path).mode
-                this.editor.getSession().setMode(mode);
             }
+
+            // update syntax highlight mode, always
+            const modelist = ace.require("ace/ext/modelist")
+            const mode = modelist.getModeForPath(this.opts.path).mode
+            this.editor.getSession().setMode(mode);
         });
     </script>
 </wb-editor>
