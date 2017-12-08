@@ -21,22 +21,35 @@ describe('Title', () => {
 
     it('successfully generates empty title', (done) => {
         manager.createWindow('title', (title) => {
-            expect(Object.keys(title.getProps())).toEqual(['text']);
-            const { text } = title.getProps();
-            expect(strip(text)).toEqual('');
+            expect(Object.keys(title.getProps())).toEqual(['html', 'locked']);
+            const { html } = title.getProps();
+            expect(strip(html)).toEqual('');
             done();
         }, '');
     });
 
     it('successfully generates typical title in props', (done) => {
         manager.createWindow('title', (title) => {
-            expect(Object.keys(title.getProps())).toEqual(['text']);
-            const { text } = title.getProps();
-            expect(strip(text)).toEqual(strip(`
+            expect(Object.keys(title.getProps())).toEqual(['html', 'locked']);
+            const { html } = title.getProps();
+            expect(strip(html)).toEqual(strip(`
                 This is a title!
             `));
             done();
         }, TITLE_EXAMPLE);
+    });
+
+    it('renders basic markdown', (done) => {
+        manager.createWindow('title', (title) => {
+            expect(Object.keys(title.getProps())).toEqual(['html', 'locked']);
+            const { html } = title.getProps();
+            expect(strip(html)).toEqual(strip(`
+                This <strong>is</strong> a title!
+                <br />
+                And another line!
+            `));
+            done();
+        }, 'This *is* a title\nAnd another line!');
     });
 
     it('class successfully generates preview', (done) => {

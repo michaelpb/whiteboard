@@ -96,6 +96,7 @@
     "riot": "3.4.3",
     "schemaconf": "0.1.1",
     "sortablejs": "1.5.1",
+    "taglex": "0.1.10",
     "tmp": "0.0.31",
     "to-markdown": "3.1.1",
     "walk-sync": "0.3.2",

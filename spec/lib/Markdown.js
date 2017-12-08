@@ -36,7 +36,7 @@ describe('Markdown', () => {
 
     it('successfully generates empty markdown', (done) => {
         manager.createWindow('markdown', (markdown) => {
-            expect(Object.keys(markdown.getProps())).toEqual(['html']);
+            expect(Object.keys(markdown.getProps())).toEqual(['html', 'locked']);
             const { html } = markdown.getProps();
             expect(strip(html)).toEqual('');
             done();
@@ -45,7 +45,6 @@ describe('Markdown', () => {
 
     it('successfully generates typical markdown in props', (done) => {
         manager.createWindow('markdown', (markdown) => {
-            expect(Object.keys(markdown.getProps())).toEqual(['html']);
             const { html } = markdown.getProps();
             expect(strip(html)).toEqual(strip(`
                 h1 id this is a test this is a test h1 ul li p and i am a p li
