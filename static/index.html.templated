@@ -19,6 +19,10 @@
     
         <link rel="stylesheet" type="text/css" href="../node_modules/xel/stylesheets/material.theme.css" />
     
+        <link rel="stylesheet" type="text/css" href="../node_modules/medium-editor/dist/css/medium-editor.css" />
+    
+        <link rel="stylesheet" type="text/css" href="../node_modules/medium-editor/dist/css/themes/beagle.css" />
+    
         <link rel="stylesheet" type="text/css" href="./css/xterm.css" />
     
         <link rel="stylesheet" type="text/css" href="./css/global-whiteboard.css" />
@@ -40,6 +44,10 @@
         <script src="../node_modules/xterm/dist/addons/fit/fit.js"></script>
     
         <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
+    
+        <script src="../node_modules/medium-editor/dist/js/medium-editor.js"></script>
+    
+        <script src="../node_modules/medium-editor-markdown/dist/me-markdown.standalone.js"></script>
     
         <script src="../node_modules/mousetrap/mousetrap.js"></script>
     

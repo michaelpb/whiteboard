@@ -30,5 +30,12 @@
             }
         }
     </style>
-    <raw html={opts.html} />
+
+    <div ref="wrapperNode"></div>
+
+    <script>
+        const { setupMediumEditor }  = require('./frontend-utils');
+        this.on('updated', () => setupMediumEditor(this));
+        this.on('mount', () => setupMediumEditor(this));
+    </script>
 </wb-markdown>

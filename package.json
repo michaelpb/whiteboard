@@ -88,6 +88,8 @@
     "javascript-detect-element-resize": "0.5.3",
     "lodash": "4.17.4",
     "marked": "0.3.6",
+    "medium-editor": "^5.23.2",
+    "medium-editor-markdown": "^2.6.0",
     "mime-types": "2.1.15",
     "mousetrap": "1.6.1",
     "node-pty": "0.7.0",
@@ -96,6 +98,7 @@
     "schemaconf": "0.1.1",
     "sortablejs": "1.5.1",
     "tmp": "0.0.31",
+    "to-markdown": "^3.1.1",
     "walk-sync": "0.3.2",
     "xel": "0.0.54",
     "xterm": "2.4.0"
