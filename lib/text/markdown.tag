@@ -18,6 +18,15 @@
             /*background: #fefefe;*/
         }
 
+        img, video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        em {
+            font-variant: italic !important;
+        }
+
         @media only screen and (min-width: 480px) {
             :scope {
                 font-size: 14px;
@@ -34,8 +43,12 @@
     <div ref="wrapperNode"></div>
 
     <script>
-        const { setupMediumEditor }  = require('./frontend-utils');
+        const { setupMediumEditor, handleInsert }  = require('./frontend-utils');
+
         this.on('updated', () => setupMediumEditor(this));
-        this.on('mount', () => setupMediumEditor(this));
+        this.on('mount', () => {
+            this.opts.on('insert', (ev, html) => handleInsert(this.editor, html));
+            setupMediumEditor(this);
+        });
     </script>
 </wb-markdown>

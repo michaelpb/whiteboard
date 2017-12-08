@@ -89,6 +89,7 @@
     "lodash": "4.17.4",
     "marked": "0.3.6",
     "medium-editor": "^5.23.2",
+    "medium-editor-insert-plugin": "^2.4.1",
     "medium-editor-markdown": "^2.6.0",
     "mime-types": "2.1.15",
     "mousetrap": "1.6.1",

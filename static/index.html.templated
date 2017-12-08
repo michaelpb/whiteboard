@@ -31,6 +31,8 @@
     
         <link rel="stylesheet" type="text/css" href="./fonts/font.css" />
     
+        <link rel="stylesheet" type="text/css" href="../node_modules/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css" />
+    
     
   </head>
   <body>
@@ -45,15 +47,13 @@
     
         <script src="../node_modules/xterm/dist/addons/fullscreen/fullscreen.js"></script>
     
-        <script src="../node_modules/medium-editor/dist/js/medium-editor.js"></script>
-    
-        <script src="../node_modules/medium-editor-markdown/dist/me-markdown.standalone.js"></script>
-    
         <script src="../node_modules/mousetrap/mousetrap.js"></script>
     
         <script src="../node_modules/ace-builds/src-noconflict/ace.js"></script>
     
         <script src="../node_modules/ace-builds/src-noconflict/ext-modelist.js"></script>
+    
+        <script src="../node_modules/medium-editor/dist/js/medium-editor.js"></script>
     
 
     <script>
