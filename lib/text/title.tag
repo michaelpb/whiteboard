@@ -3,10 +3,15 @@
         h1 {
             font-size: 7vh;
             text-align: center;
+            font-weight: normal;
         }
 
-        em {
+        em, i {
             font-variant: italic !important;
+        }
+
+        strong, b {
+            font-weight: bold !important;
         }
     </style>
     <h1 ref="wrapperNode" class="centered-10vh-when-fullscreen"></h1>
