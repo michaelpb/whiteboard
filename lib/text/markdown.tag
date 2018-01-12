@@ -8,7 +8,8 @@
         }
         :scope {
             color: #444;
-            font-size: 16px;
+            /*font-size: 16px;*/
+            font-size: 4vmin;
             line-height: 1.5em;
             padding: 1em;
             /*
@@ -31,6 +32,7 @@
             font-weight: bold !important;
         }
 
+        /*
         @media only screen and (min-width: 480px) {
             :scope {
                 font-size: 14px;
@@ -42,6 +44,7 @@
                 font-size: 16px;
             }
         }
+        */
     </style>
 
     <div ref="wrapperNode"></div>

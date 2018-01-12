@@ -31,8 +31,6 @@
     
         <link rel="stylesheet" type="text/css" href="./fonts/font.css" />
     
-        <link rel="stylesheet" type="text/css" href="../node_modules/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin.min.css" />
-    
     
   </head>
   <body>
