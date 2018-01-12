@@ -6,6 +6,7 @@
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
+
         :scope {
             color: #444;
             /*font-size: 16px;*/
@@ -32,6 +33,19 @@
             font-weight: bold !important;
         }
 
+        table {
+            border-spacing: 10px;
+            border-collapse: separate;
+        }
+
+        table td {
+            background-color: rgba(127, 127, 127, 0.4);
+        }
+
+        table td {
+            padding: 3px;
+        }
+
         /*
         @media only screen and (min-width: 480px) {
             :scope {
@@ -45,6 +59,7 @@
             }
         }
         */
+
     </style>
 
     <div ref="wrapperNode"></div>
