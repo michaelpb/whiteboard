@@ -80,7 +80,7 @@ describe('Slide', () => {
                 slide.addPane('title');
                 expect(slide.panes.length).toEqual(2);
                 expect(slide.slideData.title).toBeTruthy();
-                expect(slide.slideData.title).toEqual('new title');
+                expect(slide.slideData.title).toEqual(' ');
                 done();
             }, { testpane: 'test' });
         });

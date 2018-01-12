@@ -54,6 +54,19 @@ describe('Markdown', () => {
         }, MARKDOWN_EXAMPLE);
     });
 
+    it('relativizes file paths correctly', (done) => {
+        const IMAGE_EXAMPLE = '![alttext](file://./some/image.jpg)'
+
+        manager.createWindow('markdown', (markdown) => {
+            markdown.path = '/fake/path.whiteboard!slide1!markdown';
+            const { html } = markdown.getProps();
+            expect(strip(html)).toEqual(strip(`
+                p img src file fake some image jpg alt alttext p
+            `));
+            done();
+        }, IMAGE_EXAMPLE);
+    });
+
     it('class successfully generates preview', (done) => {
         const result = Markdown.getIconicPreview(MARKDOWN_EXAMPLE);
         expect(strip(result)).toEqual(strip(`
