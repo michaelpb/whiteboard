@@ -6,6 +6,7 @@ const path = require('path');
 
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
 const TWO_SLIDES = path.resolve(DATA_DIR, 'twoslides.whiteboard');
+const DECK_PROPS = path.resolve(DATA_DIR, 'deck_properties.whiteboard');
 // Mostly just a stub of integrat-y unit tests for Slide
 
 describe('Deck', () => {
@@ -99,6 +100,38 @@ describe('Deck', () => {
             expect(deck.makeFileMenu()).toBeTruthy();
             expect(deck.makeFileMenu().map(item => item.label))
                 .toContain('Save');
+        });
+
+        it('opens up expected slides', () => {
+            expect(deck.slideIDs.length).toEqual(1);
+            expect(deck.activeSlideID).toBeTruthy();
+            expect(Object.keys(deck.slideData).length).toEqual(1);
+            expect(Object.keys(deck.slideEditors).length).toEqual(1);
+        });
+
+        afterEach(() => {
+            deck = null;
+        });
+    });
+
+    describe('when opening a slide deck with global properties', () => {
+        let deck = null;
+        beforeEach((done) => {
+            manager.createWindow(DECK_PROPS, (newDeck) => {
+                deck = newDeck;
+                done();
+            });
+        });
+
+        it('read css from file and top property', () => {
+            expect(deck.globalCss).toBeTruthy();
+            expect(deck.globalCss)
+                .toEqual('.some-test-css { }\n.extra-css { }');
+        });
+
+
+        it('set to be readonly', () => {
+            expect(deck.readonly).toBeTruthy();
         });
 
         it('opens up expected slides', () => {

@@ -1,0 +1,11 @@
+[deck]
+readonly = true
+cssfile = ./testcss.css
+css : '''
+.extra-css { }
+'''
+
+[slide]
+title = title 1
+
+
