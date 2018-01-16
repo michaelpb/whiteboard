@@ -69,6 +69,11 @@ describe('Deck', () => {
             expect(menu).toBeTruthy();
             const fileMenu = menu.filter(i => i.label === 'File')[0];
             expect(fileMenu).toBeTruthy();
+
+            // Check for "Save" menu item
+            const save = fileMenu.submenu.filter(i => i.label === 'Save');
+            expect(save.length).toEqual(1);
+
             const recentMenu = fileMenu.submenu.filter(i => i.label === 'Recent')[0];
             expect(recentMenu).toBeTruthy();
             const { submenu } = recentMenu;
@@ -132,6 +137,8 @@ describe('Deck', () => {
 
         it('set to be readonly', () => {
             expect(deck.readonly).toBeTruthy();
+            // ensure its only a "nope" item here
+            expect(deck.makeFileMenu().length).toEqual(1);
         });
 
         it('opens up expected slides', () => {
