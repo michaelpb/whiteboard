@@ -55,7 +55,7 @@ describe('Markdown', () => {
     });
 
     it('relativizes file paths correctly', (done) => {
-        const IMAGE_EXAMPLE = '![alttext](file://./some/image.jpg)'
+        const IMAGE_EXAMPLE = '![alttext](file://./some/image.jpg)';
 
         manager.createWindow('markdown', (markdown) => {
             markdown.path = '/fake/path.whiteboard!slide1!markdown';
