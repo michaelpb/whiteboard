@@ -15,7 +15,7 @@ install:
 matrix:
   fast_finish: true
 build: off
-version: '0.0.40-{build}'
+version: '0.0.41-{build}'
 shallow_clone: true
 clone_depth: 1
 
