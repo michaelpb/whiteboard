@@ -60,6 +60,32 @@
         }
         */
 
+
+        li,
+        li p,
+        pre {
+            text-align: left;
+        }
+
+        td {
+            padding: 5px;
+            text-align: left;
+            font-size: 22pt;
+        }
+
+        table {
+            display: inline-block;
+            min-width: 40vh;
+        }
+
+        ul > li {
+            list-style: disc outside none;
+        }
+
+        ol > li {
+            list-style: decimal outside none;
+        }
+
     </style>
 
     <div ref="wrapperNode"></div>
