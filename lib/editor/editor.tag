@@ -67,10 +67,21 @@
             if (this.opts.text !== this.editor.getValue()) {
                 this.editor.setValue(this.opts.text, 1);
             }
+            //this.editor.setTheme("ace/theme/solarized_light");
             this.editor.setTheme("ace/theme/monokai");
             this.editor.setOptions({fontSize: "18pt"});
             const mode = modelist.getModeForPath(this.opts.path).mode;
             this.editor.getSession().setMode(mode);
+
+            // Disable some annoying auto-complete features
+            this.editor.setOptions({
+                enableBasicAutocompletion: false,
+                enableSnippets: false,
+                enableLiveAutocompletion: false,
+                showFoldWidgets: false,
+                behavioursEnabled: false,
+            });
+
             editor_node.style.height = 'calc(100% - 60px)';
             this.editor.resize();
 
