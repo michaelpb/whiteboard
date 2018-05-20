@@ -19,8 +19,11 @@ test:
 coverage:
 	./node_modules/.bin/nyc npm run test-headless
 
-test-watch:
+test-watch-e2e:
 	find lib/ spec/ -name \*.js | entr -r npm run test-headless
+
+test-watch:
+	find lib/ spec/ -name \*.js | entr -r npm run test
 
 rebuild-icons:
 	./node_modules/.bin/electron-icon-maker --input=./static/src/large_logo.png --output=./build/

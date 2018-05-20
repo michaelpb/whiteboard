@@ -7,6 +7,7 @@ const path = require('path');
 const DATA_DIR = path.resolve(__dirname, '..', 'support', 'data', 'deck');
 const TWO_SLIDES = path.resolve(DATA_DIR, 'twoslides.whiteboard');
 const DECK_PROPS = path.resolve(DATA_DIR, 'deck_properties.whiteboard');
+const DECK_PROPS_BROKEN = path.resolve(DATA_DIR, 'deck_properties_broken.whiteboard');
 // Mostly just a stub of integrat-y unit tests for Slide
 
 describe('Deck', () => {
@@ -119,6 +120,15 @@ describe('Deck', () => {
         });
     });
 
+    describe('when opening a slide deck with CSS file', () => {
+        it('fails gracefully', (done) => {
+            manager.createWindow(DECK_PROPS_BROKEN, (newDeck) => {
+                expect(newDeck.globalCss).not.toBeTruthy();
+                done();
+            });
+        });
+    });
+
     describe('when opening a slide deck with global properties', () => {
         let deck = null;
         beforeEach((done) => {
@@ -126,6 +136,10 @@ describe('Deck', () => {
                 deck = newDeck;
                 done();
             });
+        });
+
+        afterEach(() => {
+            deck = null;
         });
 
         it('read css from file and top property', () => {
@@ -147,13 +161,9 @@ describe('Deck', () => {
             expect(Object.keys(deck.slideData).length).toEqual(1);
             expect(Object.keys(deck.slideEditors).length).toEqual(1);
         });
-
-        afterEach(() => {
-            deck = null;
-        });
     });
 
-    describe('when opening a typical slide deck', () => {
+    xdescribe('when opening a typical slide deck', () => {
         let deck = null;
         beforeEach((done) => {
             manager.createWindow(TWO_SLIDES, (newDeck) => {
@@ -188,7 +198,7 @@ describe('Deck', () => {
             expect(deck._autosaveInterval).not.toBeTruthy();
         });
 
-        xit('sets up two slides', () => {
+        it('sets up two slides', () => {
             expect(deck.slideIDs.length).toEqual(2);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(2);
@@ -196,8 +206,8 @@ describe('Deck', () => {
         });
 
         it('deletes an inactive slide', () => {
-            const _fs = [deck.activeSlideID];
-            deck.setFewerSlides(_fs);
+            const _fewerSlides = [deck.activeSlideID];
+            deck.setFewerSlides(_fewerSlides);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(1);
             expect(Object.keys(deck.slideEditors).length).toEqual(1);
@@ -207,8 +217,9 @@ describe('Deck', () => {
         it('deletes an active slide', () => {
             // const editor = deck.slideEditors[deck.slideIDs[0]];
             // editor.onWindowClosed = mockMethod();
-            const _fs = [deck.slideIDs[1]];
-            deck.setFewerSlides(_fs);
+            const _fewerSlides = [deck.slideIDs[1]];
+            console.error(deck.slideIDs, deck.activeSlideID);
+            deck.setFewerSlides(_fewerSlides);
             expect(deck.activeSlideID).toBeTruthy();
             expect(Object.keys(deck.slideData).length).toEqual(1);
             expect(Object.keys(deck.slideEditors).length).toEqual(1);

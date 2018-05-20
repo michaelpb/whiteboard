@@ -1,0 +1,7 @@
+[deck]
+cssfile = ./thisdoesntexist.css
+
+[slide]
+title = title 1
+
+
