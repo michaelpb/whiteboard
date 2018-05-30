@@ -69,7 +69,7 @@
             }
             //this.editor.setTheme("ace/theme/solarized_light");
             this.editor.setTheme("ace/theme/monokai");
-            this.editor.setOptions({fontSize: "18pt"});
+            this.editor.setOptions({fontSize: "28pt"});
             const mode = modelist.getModeForPath(this.opts.path).mode;
             this.editor.getSession().setMode(mode);
 
