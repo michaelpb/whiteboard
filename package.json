@@ -1,7 +1,7 @@
 {
   "name": "whiteboard-app",
   "productName": "Whiteboard",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "Whiteboard - a slide-based activity presentation system",
   "bin": {
     "whiteboard": "./bin/whiteboard"
