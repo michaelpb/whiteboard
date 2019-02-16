@@ -86,6 +86,7 @@ describe('Editor', () => {
             ],
             text: MYFILE1,
             font_size: 28,
+            theme: 'light',
         };
         it('loads a single file', (done) => {
             manager.createWindow('editor', (editor) => {
@@ -104,6 +105,7 @@ describe('Editor', () => {
                     ],
                     text: MYFILE1,
                     font_size: 28,
+                    theme: 'light',
                 });
                 done();
             }, PATH);
@@ -131,6 +133,7 @@ describe('Editor', () => {
                     ],
                     text: MYFILE1,
                     font_size: 28,
+                    theme: 'light',
                 });
                 done();
             }, `${PATH1},${PATH2}`);
@@ -157,6 +160,7 @@ describe('Editor', () => {
                     ],
                     text: '',
                     font_size: 28,
+                    theme: 'light',
                 });
                 done();
             }, `${PATH1},${PATH2}`);
@@ -178,6 +182,7 @@ describe('Editor', () => {
                     ],
                     text: MYFILE1,
                     font_size: 28,
+                    theme: 'light',
                 });
                 done();
             }, `${PATH1},${PATH2}`);
