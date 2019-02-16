@@ -68,7 +68,8 @@
                 this.editor.setValue(this.opts.text, 1);
             }
             //this.editor.setTheme("ace/theme/solarized_light");
-            this.editor.setTheme("ace/theme/monokai");
+            //this.editor.setTheme("ace/theme/monokai");
+            this.editor.setTheme("ace/theme/xcode");
             this.editor.setOptions({fontSize: "28pt"});
             const mode = modelist.getModeForPath(this.opts.path).mode;
             this.editor.getSession().setMode(mode);
@@ -80,6 +81,7 @@
                 enableLiveAutocompletion: false,
                 showFoldWidgets: false,
                 behavioursEnabled: false,
+                highlightActiveLine: true,
             });
 
             editor_node.style.height = 'calc(100% - 60px)';
@@ -124,8 +126,17 @@
         });
 
         this.on('updated', () => {
+            // Set font size
             const fontSize = `${this.opts.font_size}pt`;
             this.editor.setOptions({fontSize});
+
+            // Set theme (light or dark)
+            if (this.opts.theme === 'light') {
+                this.editor.setTheme("ace/theme/xcode");
+            } else {
+                this.editor.setTheme("ace/theme/monokai");
+            }
+
             if (this.opts.text != this.editor.getValue()) {
                 // update text
                 this.editor.getSession().setValue(this.opts.text, -1);
